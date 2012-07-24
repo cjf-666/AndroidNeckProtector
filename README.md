@@ -3,4 +3,4 @@ AndoridApp
 
 developing by caojingfan &amp; lishengqiu
 
-在这里用一句话说明项目是什么，以及主要的特色。
+颈椎康复霸，帮助人们控制手机/平板电脑使用时间，督促使用者进行颈部运动。
