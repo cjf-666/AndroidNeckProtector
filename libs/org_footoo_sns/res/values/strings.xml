@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">Test</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_sina_micro_blog_share">分享到新浪微博/腾讯微博/人人网</string>
+
+</resources>
