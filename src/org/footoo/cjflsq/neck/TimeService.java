@@ -9,33 +9,39 @@ import android.os.Process;
 import android.os.Message;
 import android.os.Handler;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.IBinder;
 
 public class TimeService extends Service {
     private Looper mTimeServiceLooper;
     private TimeServiceHandler mTimeServiceHandler;
+    private HandlerThread thread = new HandlerThread("TimeThread", Process.THREAD_PRIORITY_BACKGROUND);
 
     private final class TimeServiceHandler extends Handler {
 	public TimeServiceHandler (Looper looper) {
 	    super(looper);
 	}
         public void handleMessage(Message msg) {
+	    mTimeServiceHandler.sendMessageDelayed(mTimeServiceHandler.obtainMessage(), 10000);
 	    Toast.makeText(getApplicationContext(), "哥么儿，时间到了", Toast.LENGTH_SHORT).show();
 	}
     }
 
     public void onCreate() {
-	HandlerThread thread = new HandlerThread("TimeThread", Process.THREAD_PRIORITY_BACKGROUND);
 	thread.start();
 	
+	IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
+	ScreenOffReceiver mScreenOffReceiver = new ScreenOffReceiver();
+	getApplicationContext().registerReceiver(mScreenOffReceiver, filter);
+
 	mTimeServiceLooper = thread.getLooper();
 	mTimeServiceHandler = new TimeServiceHandler(mTimeServiceLooper);
     }
     
     public int onStartCommand(Intent intent, int flags, int startID) {
 	Message msg = mTimeServiceHandler.obtainMessage();
-	
-	mTimeServiceHandler.sendMessageDelayed(msg, 10000);
+		
+	mTimeServiceHandler.sendMessageDelayed(msg, 5000);
 
 	return START_REDELIVER_INTENT;
     }
@@ -45,5 +51,6 @@ public class TimeService extends Service {
     }
 
     public void onDestroy() {
+	thread.quit();
     }
 }
