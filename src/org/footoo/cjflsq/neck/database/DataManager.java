@@ -8,6 +8,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.format.Time;
 
 public class DataManager {
 	private static final String DB_NAME = "neck.db";
@@ -104,27 +105,27 @@ public class DataManager {
 		return cv;	
 	}
 	
-	public void putData(Date begin, Date end) {
-		if ((int)(end.getHours() / 2) == (int)(begin.getHours() / 2)) {
+	public void putData(Time begin, Time end) {
+		if ((int)(end.hour / 2) == (int)(begin.hour / 2)) {
 			SQLiteDatabase db = dbHelper.getWritableDatabase();
 			String[] col = new String[1];
-			if (begin.getHours() % 2 == 0)
-				col[0] = "z" + begin.getHours() + "_" + (begin.getHours() + 2);
+			if (begin.hour % 2 == 0)
+				col[0] = "z" + begin.hour + "_" + (begin.hour + 2);
 			else
-				col[0] = "z" + (begin.getHours() - 1) + "_"
-						+ (begin.getHours() + 1);
+				col[0] = "z" + (begin.hour - 1) + "_"
+						+ (begin.hour + 1);
 
 			Cursor cursor = db.query(TABLE_DETAIL_NAME, col, null, null, null,
 					null, null);
 			if (cursor != null && cursor.moveToFirst() != false) {
 				
 				long time = Long.parseLong(cursor.getString(cursor.getColumnIndex(col[0])));
-				long tmp = end.getTime() - begin.getTime();
+				long tmp = end.toMillis(true) - begin.toMillis(true);
 				ContentValues cv = new ContentValues();
 				cv.put(col[0], tmp / 1000 + time);
 				db.update(TABLE_DETAIL_NAME, cv, null, null);
 			} else {
-				long tmp = end.getTime() - begin.getTime();
+				long tmp = end.toMillis(true) - begin.toMillis(true);
 				ContentValues cv = new ContentValues();
 				cv.put(col[0], tmp / 1000);
 				db.insert(TABLE_DETAIL_NAME, null, cv);
@@ -134,13 +135,13 @@ public class DataManager {
 					null, null);
 			if (cursor != null && cursor.moveToFirst() != false) {
 				long time = Long.parseLong(cursor.getString(cursor.getColumnIndex(col[0])));
-				long tmp = end.getTime() - begin.getTime();
+				long tmp = end.toMillis(true) - begin.toMillis(true);
 				ContentValues cv = new ContentValues();
 				cv.put(col[0], tmp / 1000 + time);
 				db.update(TABLE_STATISTICS_TIME_NAME, cv, null, null);
 				
 			} else {
-				long tmp = end.getTime() - begin.getTime();
+				long tmp = end.toMillis(true) - begin.toMillis(true);
 				ContentValues cv = new ContentValues();
 				cv.put(col[0], tmp / 1000);
 				db.insert(TABLE_STATISTICS_TIME_NAME, null, cv);
@@ -151,17 +152,17 @@ public class DataManager {
 			
 			db.close();
 		} else {
-			int sep = end.getHours() / 2;
-			Date tmp = new Date(begin.getTime());
-			tmp.setHours(sep - 1);
-			tmp.setMinutes(59);
-			tmp.setSeconds(59);
+			int sep = end.hour / 2;
+			Time tmp = new Time(begin);
+			tmp.hour = sep - 1;
+			tmp.minute = 59;
+			tmp.second = 59;
 			putData(begin, tmp);
 			
-			tmp = new Date(end.getTime());
-			tmp.setHours(sep);
-			tmp.setMinutes(0);
-			tmp.setSeconds(0);
+			tmp = new Time(end);
+			tmp.hour = sep;
+			tmp.minute = 0;
+			tmp.second = 0;
 			putData(tmp, end);
 		}
 	}
