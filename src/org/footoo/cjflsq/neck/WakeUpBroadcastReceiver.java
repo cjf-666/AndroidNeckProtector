@@ -9,9 +9,7 @@ import android.widget.Toast;
 
 public class WakeUpBroadcastReceiver extends BroadcastReceiver {
     
-    public void onReceive(Context context, Intent intent) {
-	context.startService(new Intent(context, RegisterService.class));
-	
+    public void onReceive(Context context, Intent intent) {	
 	Toast.makeText(context.getApplicationContext(), "屏幕解锁", Toast.LENGTH_SHORT).show();
 	Intent timeServiceIntent = new Intent(context, TimeService.class);
 	context.startService(timeServiceIntent);
