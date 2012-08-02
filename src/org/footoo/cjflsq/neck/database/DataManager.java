@@ -1,6 +1,8 @@
-package org.footoo.cjflsq.neck;
+package org.footoo.cjflsq.neck.database;
 
 import java.util.Date;
+
+import org.footoo.cjflsq.neck.MyApplication;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -14,7 +16,7 @@ public class DataManager {
 
 	private static final String TABLE_DETAIL_NAME = "detail";
 	
-	private static final String TABLE_DETAIL_LENGTH_CREATE = "detail_length";
+	private static final String TABLE_DETAIL_LENGTH_NAME = "detail_length";
 
 	private static final String TABLE_STATISTICS_TIME_NAME = "stat_time";
 
@@ -84,6 +86,24 @@ public class DataManager {
 		return theSingleton;
 	}
 
+	private ContentValues getStat(String name){
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		Cursor cursor = db.query(name, null, null, null, null, null, null);
+		if (cursor == null || cursor.moveToFirst() == false)
+		{
+			db.close();
+			return null;
+		}
+		ContentValues cv = new ContentValues();
+		for (int i = 0; i < 24; i+=2)
+		{
+			String title = "z" + i + "_" + (i+2);
+			long value = cursor.getLong(i+1);
+			cv.put(title, value);
+		}	
+		return cv;	
+	}
+	
 	public void putData(Date begin, Date end) {
 		if ((int)(end.getHours() / 2) == (int)(begin.getHours() / 2)) {
 			SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -118,6 +138,7 @@ public class DataManager {
 				ContentValues cv = new ContentValues();
 				cv.put(col[0], tmp / 1000 + time);
 				db.update(TABLE_STATISTICS_TIME_NAME, cv, null, null);
+				
 			} else {
 				long tmp = end.getTime() - begin.getTime();
 				ContentValues cv = new ContentValues();
@@ -125,7 +146,8 @@ public class DataManager {
 				db.insert(TABLE_STATISTICS_TIME_NAME, null, cv);
 			}
 			
-			
+			if (cursor != null)
+				cursor.close();
 			
 			db.close();
 		} else {
@@ -145,15 +167,11 @@ public class DataManager {
 	}
 	
 	public ContentValues getStatOfToday(){
-		ContentValues cv = new ContentValues();
-		
-		return cv;
+		return getStat(TABLE_DETAIL_NAME);
 	}
 	
 	public ContentValues getStat(){
-		ContentValues cv = new ContentValues();
-		
-		return cv;	
+		return getStat(TABLE_STATISTICS_TIME_NAME);
 	}
 
 }
