@@ -111,15 +111,26 @@ public class DataManager {
 			cv.put(title, value);
 		}	
 		cursor.close();
-		cursor = db.query(name, null, null, null, null, null, null);
+		cursor = db.query(name + "_length", null, null, null, null, null, null);
 		if (cursor == null)
 		{
 			db.close();
 			return null;
 		}	
+
+		if (cursor.moveToFirst() == false)
+		{
+			cursor.close();
+			db.close();
+			return null;
+		}
 		
+		cv.put("a0_5", cursor.getLong(1));
+		cv.put("a5_10", cursor.getLong(2));
+		cv.put("a10_30", cursor.getLong(3));
+		cv.put("a30_INF", cursor.getLong(4));
 		
-		
+		cursor.close();
 		db.close();
 		return cv;	
 	}
