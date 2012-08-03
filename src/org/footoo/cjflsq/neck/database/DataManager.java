@@ -1,7 +1,5 @@
 package org.footoo.cjflsq.neck.database;
 
-import java.util.Date;
-
 import org.footoo.cjflsq.neck.MyApplication;
 
 import android.content.ContentValues;
@@ -39,7 +37,7 @@ public class DataManager {
 				+ ", z16_18 TEXT, z18_20 TEXT, z20_22 TEXT, z22_24 TEXT)";
 
 		private static final String TABLE_DETAIL_LENGTH_CREATE = "CREATE TABLE "
-				+ TABLE_STATISTICS_LENGTH_NAME
+				+ TABLE_DETAIL_LENGTH_NAME
 				+ " ( _id INTEGER PRIMARY KEY, a0_5 TEXT, a5_10 TEXT, a10_30 TEXT, a30_INF TEXT)";
 		
 		private static final String TABLE_STATISTICS_TIME_CREATE = "CREATE TABLE "
@@ -99,7 +97,7 @@ public class DataManager {
 		for (int i = 0; i < 24; i+=2)
 		{
 			String title = "z" + i + "_" + (i+2);
-			long value = cursor.getLong(i+1);
+			long value = cursor.getLong(i / 2 +1);
 			cv.put(title, value);
 		}	
 		return cv;	

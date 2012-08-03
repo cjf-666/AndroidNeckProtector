@@ -17,7 +17,7 @@
 
 		用于获得全局唯一的数据库管理类
 
-- `public void putData(Date begin, Date end)`
+- `public void putData(Time begin, Time end)`
 
 	* ####Description 
   
@@ -25,9 +25,9 @@
 
 	* ####Parameters
 
-		begin *java.util.Date*	用户使用手机的起始时间
+		begin *android.text.format.Time*	用户使用手机的起始时间
 
-		end *java.util.Date*	用户使用手机的结束时间
+		end *android.text.format.Time*	用户使用手机的结束时间
 
 	* ####Returns
 
