@@ -11,11 +11,4 @@
 /home/chingfantsou/AndroidNeckProtector/res/drawable-hdpi/ic_action_search.png \
 /home/chingfantsou/AndroidNeckProtector/res/drawable-hdpi/ic_launcher.png \
 /home/chingfantsou/AndroidNeckProtector/res/drawable-ldpi/ic_launcher.png \
-/home/chingfantsou/AndroidNeckProtector/bin/res/drawable-mdpi/ic_action_search.png \
-/home/chingfantsou/AndroidNeckProtector/bin/res/drawable-mdpi/ic_launcher.png \
-/home/chingfantsou/AndroidNeckProtector/bin/res/drawable-xhdpi/ic_action_search.png \
-/home/chingfantsou/AndroidNeckProtector/bin/res/drawable-xhdpi/ic_launcher.png \
-/home/chingfantsou/AndroidNeckProtector/bin/res/drawable-hdpi/ic_action_search.png \
-/home/chingfantsou/AndroidNeckProtector/bin/res/drawable-hdpi/ic_launcher.png \
-/home/chingfantsou/AndroidNeckProtector/bin/res/drawable-ldpi/ic_launcher.png \
 /home/chingfantsou/AndroidNeckProtector/bin/AndroidManifest.xml \
