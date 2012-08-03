@@ -17,11 +17,39 @@
 
 		用于获得全局唯一的数据库管理类
 
+- `public void submitStartTime(Time begin)`
+
+	* ####Description 
+  
+		提供给监控的Listener或Service使用，用于提交使用手机的起始时间。
+
+	* ####Parameters
+
+		begin *android.text.format.Time*	用户使用手机的起始时间
+
+	* ####Returns
+
+		*No Returns Value*
+
+- `public void submitEndTime(Time end)`
+
+	* ####Description 
+  
+		提供给监控的Listener或Service使用，用于提交使用手机的结束时间。
+
+	* ####Parameters
+
+		end *android.text.format.Time*	用户使用手机的结束时间
+
+	* ####Returns
+
+		*No Returns Value*
+
 - `public void putData(Time begin, Time end)`
 
 	* ####Description 
   
-		提供给监控的Listener或Service使用，用于向数据库添加数据。
+		用于向数据库添加数据。
 
 	* ####Parameters
 
@@ -67,7 +95,7 @@
 
 		参看getStatOfToday函数。
 
-- `public long getHistroy(Date date)`
+- `public long getHistroy(Time date)`
 
 	* ####Description 
   
@@ -75,7 +103,7 @@
 
 	* ####Parameters
 
-		 date *java.util.Date* 需要获取的日期
+		 date *android.text.format.Time* 需要获取的日期
 	
 	* ####Returns
 

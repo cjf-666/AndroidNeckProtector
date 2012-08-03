@@ -17,7 +17,7 @@ public class DataManager {
 	
 	private static final String TABLE_DETAIL_LENGTH_NAME = "detail_length";
 
-	private static final String TABLE_STATISTICS_TIME_NAME = "stat_time";
+	private static final String TABLE_STATISTICS_TIME_NAME = "stat";
 
 	private static final String TABLE_STATISTICS_LENGTH_NAME = "stat_length";
 
@@ -27,6 +27,7 @@ public class DataManager {
 
 	private DatabaseHelper dbHelper = new DatabaseHelper();
 
+	private Time start = new Time();
 	// ----------------------------------------------
 	class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -79,6 +80,7 @@ public class DataManager {
 
 	// ----------------------------------------------
 	private DataManager() {
+		start.set(0);
 	}
 
 	public static DataManager getInstance() {
@@ -88,11 +90,19 @@ public class DataManager {
 	private ContentValues getStat(String name){
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		Cursor cursor = db.query(name, null, null, null, null, null, null);
-		if (cursor == null || cursor.moveToFirst() == false)
+		if (cursor == null)
 		{
 			db.close();
 			return null;
 		}
+		
+		if (cursor.moveToFirst() == false)
+		{
+			cursor.close();
+			db.close();
+			return null;
+		}
+		
 		ContentValues cv = new ContentValues();
 		for (int i = 0; i < 24; i+=2)
 		{
@@ -100,7 +110,30 @@ public class DataManager {
 			long value = cursor.getLong(i / 2 +1);
 			cv.put(title, value);
 		}	
+		cursor.close();
+		cursor = db.query(name, null, null, null, null, null, null);
+		if (cursor == null)
+		{
+			db.close();
+			return null;
+		}	
+		
+		
+		
+		db.close();
 		return cv;	
+	}
+	
+	public void submitStartTime(Time begin){
+		start = begin;
+	}
+	
+	public void submitEndTime(Time end){
+		if (start.toMillis(true) == 0)
+			return;
+		putData(start, end);
+		start.set(0);
+		return;
 	}
 	
 	public void putData(Time begin, Time end) {
@@ -171,6 +204,24 @@ public class DataManager {
 	
 	public ContentValues getStat(){
 		return getStat(TABLE_STATISTICS_TIME_NAME);
+	}
+	
+	public long getHistory(Time date){
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		
+		String[] col = new String[]{"date"};
+		String[] d = new String[]{String.valueOf(date.year)+date.month+date.monthDay};
+		Cursor cursor = db.query(TABLE_HISTORY_NAME, col, "date=?", d, null, null, null);
+		if (cursor == null || cursor.moveToFirst() == false)
+		{
+			db.close();
+			return -1;
+		}
+		cursor.moveToFirst();
+		long ret = cursor.getLong(2);
+		cursor.close();
+		db.close();
+		return ret;
 	}
 
 }
