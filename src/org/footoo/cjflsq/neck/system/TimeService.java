@@ -1,16 +1,15 @@
-package org.footoo.cjflsq.neck;
+package org.footoo.cjflsq.neck.system;
 
-import android.os.HandlerThread;
-import android.os.Looper;
 import android.app.Service;
-import android.widget.Toast;
-import android.content.Context;
-import android.os.Process;
-import android.os.Message;
-import android.os.Handler;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.IBinder;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Process;
+import android.widget.Toast;
 
 public class TimeService extends Service {
     private Looper mTimeServiceLooper;
@@ -30,9 +29,9 @@ public class TimeService extends Service {
     public void onCreate() {
 	thread.start();
 	
-	IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
-	ScreenOffReceiver mScreenOffReceiver = new ScreenOffReceiver();
-	getApplicationContext().registerReceiver(mScreenOffReceiver, filter);
+	//IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
+	//ScreenOffReceiver mScreenOffReceiver = new ScreenOffReceiver();
+	//getApplicationContext().registerReceiver(mScreenOffReceiver, filter);
 
 	mTimeServiceLooper = thread.getLooper();
 	mTimeServiceHandler = new TimeServiceHandler(mTimeServiceLooper);

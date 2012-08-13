@@ -24,14 +24,14 @@
         </activity>
 	
 	<receiver
-	    android:name = ".WakeUpBroadcastReceiver">
+	    android:name = ".system.WakeUpBroadcastReceiver">
 	    <intent-filter>
 	        <action android:name="android.intent.action.USER_PRESENT" />
 	    </intent-filter>
 	</receiver>
 
 	<service
-	    android:name=".TimeService">
+	    android:name=".system.TimeService">
 	</service>
 
     </application>

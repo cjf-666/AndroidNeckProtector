@@ -1,97 +1,128 @@
 package org.footoo.cjflsq.neck;
 
-import android.app.ActionBar.Tab;
-import android.app.FragmentTransaction;
+import org.footoo.cjflsq.neck.viewpager.MyViewPagerAdapter;
+
+import android.app.Activity;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.os.Bundle;
-import android.view.MotionEvent;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.SherlockActivity;
+public class MainActivity extends Activity {
+	private ViewPager mPager;
 
-public class MainActivity extends SherlockActivity {
+	MyViewPagerAdapter viewAdapter;
+	private ImageView cursor;// 动画图片
+	private TextView t1, t2, t3;// 页卡头标
+	private int offset = 0;// 动画图片偏移量
+	private int currIndex = 0;// 当前页卡编号
+	private int bmpW;// 动画图片宽度
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//使ActionBar变得透明
+		// 使ActionBar变得透明
 		requestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
 		setContentView(R.layout.activity_main);
 
-		final ActionBar actionBar = getSupportActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		// remove the activity title to make space for tabs
-		actionBar.setDisplayShowTitleEnabled(false);
+		viewAdapter = new MyViewPagerAdapter();
 
-		AFragment aFragment = new AFragment(); 
-		actionBar.addTab(actionBar.newTab().setText("Tab-A")            
-				.setTabListener(new ListenerA(aFragment))); 
+		mPager = (ViewPager) findViewById(R.id.mPager);
+		mPager.setAdapter(viewAdapter);
+		mPager.setOnPageChangeListener(new MyPageListener());
+		InitImageView();
+		t1 = (TextView) findViewById(R.id.infoText);
+		t2 = (TextView) findViewById(R.id.settingText);
+		t3 = (TextView) findViewById(R.id.aboutText);
+		t1.setOnClickListener(new MyTabOnClickListener(0));
+		t2.setOnClickListener(new MyTabOnClickListener(1));
+		t3.setOnClickListener(new MyTabOnClickListener(2));
 		
-		BFragment bFragment = new BFragment(); 
-		actionBar.addTab(actionBar.newTab().setText("Tab-B")            
-				.setTabListener(new ListenerB(bFragment)));
 	}
-	//点击显示or隐藏ActionBar
-	public boolean onTouchEvent(MotionEvent event){
-		ActionBar bar = getSupportActionBar();
-		switch(event.getAction()){
-			case MotionEvent.ACTION_UP:
-				if(bar.isShowing()) bar.hide();
-				else bar.show();
+
+	/**
+	 * 初始化动画
+	 */
+	private void InitImageView() {
+		cursor = (ImageView) findViewById(R.id.anim);
+		bmpW = BitmapFactory.decodeResource(getResources(), R.drawable.anim)
+				.getWidth();// 获取图片宽度
+		DisplayMetrics dm = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(dm);
+		int screenW = dm.widthPixels;// 获取分辨率宽度
+		offset = (screenW / 3 - bmpW) / 2;// 计算偏移量
+		Matrix matrix = new Matrix();
+		matrix.postTranslate(offset, 0);
+		cursor.setImageMatrix(matrix);// 设置动画初始位置
+	}
+
+	class MyTabOnClickListener implements OnClickListener {
+		private int index = 0;
+
+		public MyTabOnClickListener(int i) {
+			index = i;
+		}
+
+		@Override
+		public void onClick(View arg0) {
+			// TODO Auto-generated method stub
+			mPager.setCurrentItem(index);
+		}
+
+	}
+
+	class MyPageListener implements OnPageChangeListener {
+
+		@Override
+		public void onPageSelected(int arg0) {
+			int one = offset * 2 + bmpW;// 页卡1 -> 页卡2 偏移量
+			int two = one * 2;// 页卡1 -> 页卡3 偏移量
+			Animation animation = null;
+			switch (arg0) {
+			case 0:
+				if (currIndex == 1) {
+					animation = new TranslateAnimation(one, 0, 0, 0);
+				} else if (currIndex == 2) {
+					animation = new TranslateAnimation(two, 0, 0, 0);
+				}
 				break;
-			default:
-					break;
-		}
-		return true;
-	}
-	
-	private class ListenerA implements ActionBar.TabListener {
-		private AFragment mFragment;
-		// Called to create an instance of the listener when adding a new tab
-		public ListenerA(AFragment fragment) {
-			mFragment = fragment;
-		}
-		public void onTabSelected(com.actionbarsherlock.app.ActionBar.Tab tab,
-				android.support.v4.app.FragmentTransaction ft) {
-			// TODO Auto-generated method stub
-			
-		}
-		public void onTabUnselected(
-				com.actionbarsherlock.app.ActionBar.Tab tab,
-				android.support.v4.app.FragmentTransaction ft) {
-			// TODO Auto-generated method stub
-			
-		}
-		public void onTabReselected(
-				com.actionbarsherlock.app.ActionBar.Tab tab,
-				android.support.v4.app.FragmentTransaction ft) {
-			// TODO Auto-generated method stub
-			
-		}
-	}
-
-	private class ListenerB implements ActionBar.TabListener {
-		public ListenerB(BFragment fragment) {
-		}
-		public void onTabSelected(com.actionbarsherlock.app.ActionBar.Tab tab,
-				android.support.v4.app.FragmentTransaction ft) {
-			// TODO Auto-generated method stub
-			
+			case 1:
+				if (currIndex == 0) {
+					animation = new TranslateAnimation(0, one, 0, 0);
+				} else if (currIndex == 2) {
+					animation = new TranslateAnimation(two, one, 0, 0);
+				}
+				break;
+			case 2:
+				if (currIndex == 0) {
+					animation = new TranslateAnimation(offset, two, 0, 0);
+				} else if (currIndex == 1) {
+					animation = new TranslateAnimation(one, two, 0, 0);
+				}
+				break;
+			}
+			currIndex = arg0;
+			animation.setFillAfter(true);// True:图片停在动画结束位置
+			animation.setDuration(300);
+			cursor.startAnimation(animation);
 		}
 
-		public void onTabUnselected(
-				com.actionbarsherlock.app.ActionBar.Tab tab,
-				android.support.v4.app.FragmentTransaction ft) {
-			// TODO Auto-generated method stub
-			
+		@Override
+		public void onPageScrolled(int arg0, float arg1, int arg2) {
 		}
 
-		public void onTabReselected(
-				com.actionbarsherlock.app.ActionBar.Tab tab,
-				android.support.v4.app.FragmentTransaction ft) {
-			// TODO Auto-generated method stub
-			
+		@Override
+		public void onPageScrollStateChanged(int arg0) {
 		}
-
 	}
 }

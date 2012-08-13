@@ -1,14 +1,56 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent" 
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_world"
-        tools:context=".MainActivity" />
-
-</RelativeLayout>
+	<android.support.v4.view.ViewPager
+		android:id="@+id/mPager"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_gravity="center"
+		android:layout_weight="1.0"
+		android:background="#000000"
+		android:flipInterval="30"
+		android:persistentDrawingCache="animation" />
+        
+        <ImageView 
+            android:id="@+id/anim"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="matrix"
+            android:src="@drawable/anim"
+            />
+        <LinearLayout
+		android:id="@+id/linearLayout1"
+		android:layout_width="fill_parent"
+		android:layout_height="50.0dip"
+		android:background="#FFFFFF" >
+        
+        <TextView 
+            android:id="@+id/infoText"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+			android:textColor="#000000"
+            android:text="统计信息"/>
+        <TextView 
+            android:id="@+id/settingText"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+			android:textColor="#000000"
+            android:text="设置"/>      
+        <TextView 
+            android:id="@+id/aboutText"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+			android:textColor="#000000"
+            android:text="关于"/>
+        </LinearLayout>
+</LinearLayout>
