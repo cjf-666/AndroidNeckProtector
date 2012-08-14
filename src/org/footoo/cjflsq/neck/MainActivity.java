@@ -6,9 +6,11 @@ import android.app.Activity;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -18,7 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
-	private ViewPager mPager;
+	private MyViewPager mPager;
 
 	MyViewPagerAdapter viewAdapter;
 	private ImageView cursor;// 动画图片
@@ -26,7 +28,8 @@ public class MainActivity extends Activity {
 	private int offset = 0;// 动画图片偏移量
 	private int currIndex = 0;// 当前页卡编号
 	private int bmpW;// 动画图片宽度
-
+	private GestureDetector gestureDetector;
+	private int flaggingWidth;
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -36,8 +39,12 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		viewAdapter = new MyViewPagerAdapter();
-
-		mPager = (ViewPager) findViewById(R.id.mPager);
+		gestureDetector = new GestureDetector(new MainViewTouch());
+		DisplayMetrics dm = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(dm);
+		flaggingWidth = dm.widthPixels / 4;
+		
+		mPager = (MyViewPager) findViewById(R.id.mPager);
 		mPager.setAdapter(viewAdapter);
 		mPager.setOnPageChangeListener(new MyPageListener());
 		InitImageView();
@@ -50,6 +57,38 @@ public class MainActivity extends Activity {
 		
 	}
 
+	@Override
+	public boolean dispatchTouchEvent(MotionEvent event) {
+		if (gestureDetector.onTouchEvent(event)) {
+			event.setAction(MotionEvent.ACTION_CANCEL);
+		}
+		return super.dispatchTouchEvent(event);
+	}
+	
+	private class MainViewTouch extends SimpleOnGestureListener {
+		@Override
+		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+				float velocityY) {
+				if (Math.abs(e1.getX() - e2.getX()) > Math.abs(e1.getY()
+						- e2.getY())
+						&& (e1.getX() - e2.getX() <= (-flaggingWidth) || e1
+								.getX() - e2.getX() >= flaggingWidth)) {
+					if (e1.getX() - e2.getX() >= flaggingWidth) {
+						if (currIndex < 2){
+							mPager.setCurrentItem(currIndex + 1);
+							return true;
+						}
+					}else{
+						if (currIndex > 0){
+							mPager.setCurrentItem(currIndex - 1);
+							return true;
+						}
+					}
+				}
+			return false;
+		}
+	}
+	
 	/**
 	 * 初始化动画
 	 */
