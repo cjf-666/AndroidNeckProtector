@@ -1,10 +1,11 @@
-package org.footoo.cjflsq.neck;
+package org.footoo.cjflsq.neck.system;
+
+import org.footoo.cjflsq.neck.database.DataManager;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.format.Time;
-import org.footoo.cjflsq.neck.database.DataManager;
 
 public class ScreenOffReceiver extends BroadcastReceiver {
     static public Time endTime = new Time();

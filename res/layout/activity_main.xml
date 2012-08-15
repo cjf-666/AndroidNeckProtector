@@ -1,54 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" 
-    android:orientation="horizontal"
-    android:background="#ff990077"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
-    android:layout_marginTop="5dp"
-    android:paddingBottom="5dp"
-    android:layout_gravity="center_horizontal">
+    android:layout_height="match_parent" 
+    android:orientation="vertical">
 
-    <LinearLayout
-	android:orientation="vertical"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:layout_gravity="left">
-
-      <TextView
-          style="@style/rating_title_text"
-          android:text="今日得分"
-          />
-
-      <ProgressBar
-       	  android:progressDrawable="@drawable/ratingbar"
-	  android:layout_width="170dp"
-       	  android:layout_height="25dp"
-	  style="?android:attr/progressBarStyleHorizontal"
-	  android:progress="70"
-	  android:background="@drawable/ratingbar_box"
-	  />
-    </LinearLayout>
-    
-    <ImageView
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:src="@drawable/rating_number_0"
-	android:layout_gravity="center"
-	android:layout_marginLeft="30dp"
-	/>
-    <ImageView
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:src="@drawable/rating_number_0"
-	android:layout_gravity="center"
-	/>
-    <ImageView
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:src="@drawable/rating_number_1"
-	android:layout_gravity="center"
-	/>
-
+	<org.footoo.cjflsq.neck.MyViewPager
+		android:id="@+id/mPager"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_gravity="center"
+		android:layout_weight="1.0"
+		android:background="#000000"
+		android:flipInterval="30"
+		android:persistentDrawingCache="animation" />
+        
+        <ImageView 
+            android:id="@+id/anim"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="matrix"
+            android:src="@drawable/anim"
+            />
+        <LinearLayout
+		android:id="@+id/linearLayout1"
+		android:layout_width="fill_parent"
+		android:layout_height="50.0dip"
+		android:background="#FFFFFF" >
+        
+        <TextView 
+            android:id="@+id/infoText"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+			android:textColor="#000000"
+            android:text="统计信息"/>
+        <TextView 
+            android:id="@+id/settingText"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+			android:textColor="#000000"
+            android:text="设置"/>      
+        <TextView 
+            android:id="@+id/aboutText"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+			android:textColor="#000000"
+            android:text="关于"/>
+        </LinearLayout>
 </LinearLayout>

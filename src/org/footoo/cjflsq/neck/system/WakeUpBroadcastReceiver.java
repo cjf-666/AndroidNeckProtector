@@ -1,13 +1,12 @@
-package org.footoo.cjflsq.neck;
+package org.footoo.cjflsq.neck.system;
+
+import org.footoo.cjflsq.neck.database.DataManager;
 
 import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import android.content.Intent;
 import android.content.Context;
-import android.app.IntentService;
-import android.widget.Toast;
+import android.content.Intent;
 import android.text.format.Time;
-import org.footoo.cjflsq.neck.database.DataManager;
+import android.widget.Toast;
 
 public class WakeUpBroadcastReceiver extends BroadcastReceiver {
     
