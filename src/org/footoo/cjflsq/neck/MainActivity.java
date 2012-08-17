@@ -2,10 +2,11 @@ package org.footoo.cjflsq.neck;
 
 import org.footoo.cjflsq.neck.viewpager.MyViewPagerAdapter;
 
-import android.app.Activity;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
 import android.view.GestureDetector;
@@ -19,7 +20,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 	private MyViewPager mPager;
 
 	MyViewPagerAdapter viewAdapter;
@@ -35,10 +36,9 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// 使ActionBar变得透明
-		requestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
-
-		viewAdapter = new MyViewPagerAdapter();
+		viewAdapter = new MyViewPagerAdapter(getSupportFragmentManager());
 		gestureDetector = new GestureDetector(new MainViewTouch());
 		DisplayMetrics dm = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(dm);
