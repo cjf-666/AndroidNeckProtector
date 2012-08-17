@@ -2,7 +2,7 @@
 
 <PreferenceScreen 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:cjflsq="http://schemas.android.com/apk/res/org.footoo.cjflsq.neck.settings.TimeSeekBarPreference">
+    xmlns:cjflsq="http://schemas.android.com/apk/res/org.footoo.cjflsq.neck">
     
     <org.footoo.cjflsq.neck.settings.TimeSeekBarPreference
         android:key="@string/pref_key_time"
@@ -11,7 +11,7 @@
 	android:summary="@string/pref_summ_time"
 	android:persistent="true"
 	android:defaultValue="10"
-	cjflsq:minValue="5"
-	cjflsq:maxValue="20" />
+	cjflsq:minTime="5"
+	cjflsq:maxTime="20" />
     
 </PreferenceScreen>
