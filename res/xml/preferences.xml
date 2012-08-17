@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cjflsq="http://schemas.android.com/apk/res/org.footoo.cjflsq.neck.settings.TimeSeekBarPreference">
+    
+    <org.footoo.cjflsq.neck.settings.TimeSeekBarPreference
+        android:key="@string/pref_key_time"
+	android:title="@string/pref_title_time"
+	android:dialogTitle="@string/pref_title_time"
+	android:summary="@string/pref_summ_time"
+	android:persistent="true"
+	android:defaultValue="10"
+	cjflsq:minValue="5"
+	cjflsq:maxValue="20" />
+    
+</PreferenceScreen>
