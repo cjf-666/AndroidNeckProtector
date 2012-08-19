@@ -1,5 +1,7 @@
 package org.footoo.cjflsq.neck.system;
 
+import org.footoo.cjflsq.neck.DialogActivity;
+
 import android.app.Service;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -21,17 +23,20 @@ public class TimeService extends Service {
 	    super(looper);
 	}
         public void handleMessage(Message msg) {
-	    mTimeServiceHandler.sendMessageDelayed(mTimeServiceHandler.obtainMessage(), 10000);
-	    Toast.makeText(getApplicationContext(), "哥么儿，时间到了", Toast.LENGTH_SHORT).show();
+	    mTimeServiceHandler.sendMessageDelayed(mTimeServiceHandler.obtainMessage(), 5000);
+	    
+	    Intent mDialogIntent = new Intent(TimeService.this,DialogActivity.class); 
+	    mDialogIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	    startActivity(mDialogIntent);
 	}
     }
 
     public void onCreate() {
 	thread.start();
 	
-	//IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
-	//ScreenOffReceiver mScreenOffReceiver = new ScreenOffReceiver();
-	//getApplicationContext().registerReceiver(mScreenOffReceiver, filter);
+	IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
+	ScreenOffReceiver mScreenOffReceiver = new ScreenOffReceiver();
+	getApplicationContext().registerReceiver(mScreenOffReceiver, filter);
 
 	mTimeServiceLooper = thread.getLooper();
 	mTimeServiceHandler = new TimeServiceHandler(mTimeServiceLooper);

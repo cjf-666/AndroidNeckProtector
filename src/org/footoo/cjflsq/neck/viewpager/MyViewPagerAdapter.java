@@ -7,8 +7,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class MyViewPagerAdapter extends FragmentPagerAdapter {
-    InfoFragment infoFragment = new InfoFragment();
-    SettingsFragment settingsFragment = new SettingsFragment();
+    private InfoFragment infoFragment = new InfoFragment();
+    //SettingsFragment settingsFragment = new SettingsFragment();
     
     public MyViewPagerAdapter(FragmentManager fm) {
 	super(fm);
@@ -27,7 +27,7 @@ public class MyViewPagerAdapter extends FragmentPagerAdapter {
 	case 0:
 	    return infoFragment;
 	case 1:
-	    return (Fragment)settingsFragment;
+	    return new InfoFragment();
 	case 2:
 	    return new InfoFragment();
 	}
