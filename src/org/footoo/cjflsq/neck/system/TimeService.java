@@ -22,9 +22,7 @@ public class TimeService extends Service {
 	public TimeServiceHandler (Looper looper) {
 	    super(looper);
 	}
-        public void handleMessage(Message msg) {
-	    mTimeServiceHandler.sendMessageDelayed(mTimeServiceHandler.obtainMessage(), 5000);
-	    
+        public void handleMessage(Message msg) {	    
 	    Intent mDialogIntent = new Intent(TimeService.this,DialogActivity.class); 
 	    mDialogIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 	    startActivity(mDialogIntent);

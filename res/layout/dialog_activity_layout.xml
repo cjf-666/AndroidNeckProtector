@@ -12,7 +12,7 @@
 	android:layout_height="wrap_content" />
 
     <Button
-	android:id="@+id/return_button"
+	android:id="@+id/quit_button"
 	android:text="不，我还要玩"  
 	android:layout_width="wrap_content"  
 	android:layout_height="wrap_content" /> 

@@ -59,6 +59,11 @@
 	    android:label="@string/dialog_activity_remind" >
 	</activity>
 
+	<activity
+	    android:name=".settings.SettingsActivity"
+	    android:label="@string/settings_activity_label">
+	</activity>
+
     </application>
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission> 
 	<uses-permission android:name="android.permission.WRITE_APN_SETTINGS"></uses-permission>
