@@ -29,9 +29,9 @@ public class TimeService extends Service {
     public void onCreate() {
 	thread.start();
 	
-	//IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
-	//ScreenOffReceiver mScreenOffReceiver = new ScreenOffReceiver();
-	//getApplicationContext().registerReceiver(mScreenOffReceiver, filter);
+	IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
+	ScreenOffReceiver mScreenOffReceiver = new ScreenOffReceiver();
+	getApplicationContext().registerReceiver(mScreenOffReceiver, filter);
 
 	mTimeServiceLooper = thread.getLooper();
 	mTimeServiceHandler = new TimeServiceHandler(mTimeServiceLooper);

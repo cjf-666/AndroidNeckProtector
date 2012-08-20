@@ -3,10 +3,11 @@ package org.footoo.cjflsq.neck.viewpager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import org.footoo.cjflsq.neck.viewpager.SettingsFragment;;
 
 public class MyViewPagerAdapter extends FragmentPagerAdapter {
 	InfoFragment infoFragment = new InfoFragment();
-
+	SettingsFragment settingsFragment = new SettingsFragment();
 	public MyViewPagerAdapter(FragmentManager fm) {
 		super(fm);
 		// TODO Auto-generated constructor stub
@@ -24,7 +25,7 @@ public class MyViewPagerAdapter extends FragmentPagerAdapter {
 		case 0:
 			return infoFragment;
 		case 1:
-			return new InfoFragment();
+			return settingsFragment;
 		case 2:
 			return new InfoFragment();
 		}
