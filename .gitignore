@@ -3,4 +3,6 @@ bin/
 gen/
 build.xml
 local.properties
+gen/
+bin/
 

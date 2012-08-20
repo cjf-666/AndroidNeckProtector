@@ -7,21 +7,21 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class MyViewPagerAdapter extends FragmentPagerAdapter {
-    private InfoFragment infoFragment = new InfoFragment();
-    //SettingsFragment settingsFragment = new SettingsFragment();
-    
+	InfoFragment infoFragment = new InfoFragment();
+
+    @override
     public MyViewPagerAdapter(FragmentManager fm) {
 	super(fm);
 	// TODO Auto-generated constructor stub
     }
     
     @Override
-	public int getCount() {
+    public int getCount() {
 	return 3;
     }
     
     @Override
-	public Fragment getItem(int arg0) {
+    public Fragment getItem(int arg0) {
 	// TODO Auto-generated method stub
 	switch (arg0) {
 	case 0:
