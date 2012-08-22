@@ -3,6 +3,7 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="dialog_activity_remind">提示您：</string>
+    <string name="settings_activity_label">设置</string>
 
     <string name="day_rating">今日得分</string>
     <string name="week_rating">本周得分</string>

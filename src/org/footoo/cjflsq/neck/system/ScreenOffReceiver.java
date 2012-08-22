@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.text.format.Time;
 
 public class ScreenOffReceiver extends BroadcastReceiver {
-    static public Time endTime = new Time();
+    static private Time endTime = new Time();
     
     public void onReceive(Context context, Intent intent) {
 	endTime.setToNow();

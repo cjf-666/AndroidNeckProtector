@@ -27,19 +27,23 @@
             </intent-filter>
         </activity>
         
-        <activity android:name="com.umeng.api.activity.OauthActivity"
-                  android:screenOrientation="unspecified"
-                  android:windowSoftInputMode="adjustResize"
-                  android:configChanges="orientation|keyboardHidden">
+        <activity
+	    android:name="com.umeng.api.activity.OauthActivity"
+	    android:screenOrientation="unspecified"
+	    android:windowSoftInputMode="adjustResize"
+	    android:configChanges="orientation|keyboardHidden">
         </activity>
-        <activity android:name="com.umeng.api.activity.UpdateStatusActivity"
-                  android:theme="@style/Theme.IOSched"
-                  android:windowSoftInputMode="stateVisible|adjustResize"
-                  android:screenOrientation="unspecified"
-                  android:configChanges="orientation|keyboardHidden">
+
+        <activity
+	    android:name="com.umeng.api.activity.UpdateStatusActivity"
+	    android:theme="@style/Theme.IOSched"
+	    android:windowSoftInputMode="stateVisible|adjustResize"
+	    android:screenOrientation="unspecified"
+	    android:configChanges="orientation|keyboardHidden" > 
         </activity>
+
 	<receiver
-	    android:name = ".system.WakeUpBroadcastReceiver">
+	    android:name=".system.WakeUpBroadcastReceiver" >
 	    <intent-filter>
 	        <action android:name="android.intent.action.USER_PRESENT" />
 	    </intent-filter>
@@ -49,10 +53,21 @@
 	    android:name=".system.TimeService">
 	</service>
 
+	<activity
+	    android:name=".DialogActivity"
+	    android:theme="@android:style/Theme.Dialog"
+	    android:label="@string/dialog_activity_remind" >
+	</activity>
+
+	<activity
+	    android:name=".settings.SettingsActivity"
+	    android:label="@string/settings_activity_label">
+	</activity>
+
     </application>
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission> 
 	<uses-permission android:name="android.permission.WRITE_APN_SETTINGS"></uses-permission>
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>   
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission> 
 	<uses-permission android:name="android.permission.WRITE_APN_SETTINGS"></uses-permission>
 	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>

@@ -2,7 +2,7 @@
 
 <PreferenceScreen 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:cjflsq="http://schemas.android.com/apk/res/org.footoo.cjflsq.neck">
+    xmlns:cjflsq="http://schemas.android.com/apk/res/org.footoo.cjflsq.neck" >
     
     <org.footoo.cjflsq.neck.settings.TimeSeekBarPreference
         android:key="@string/pref_key_time"

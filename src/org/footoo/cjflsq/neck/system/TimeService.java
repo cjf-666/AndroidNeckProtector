@@ -1,5 +1,8 @@
 package org.footoo.cjflsq.neck.system;
 
+import org.footoo.cjflsq.neck.DialogActivity;
+import org.footoo.cjflsq.neck.R;
+
 import android.app.Service;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -20,9 +23,10 @@ public class TimeService extends Service {
 	public TimeServiceHandler (Looper looper) {
 	    super(looper);
 	}
-        public void handleMessage(Message msg) {
-	    mTimeServiceHandler.sendMessageDelayed(mTimeServiceHandler.obtainMessage(), 10000);
-	    Toast.makeText(getApplicationContext(), "哥么儿，时间到了", Toast.LENGTH_SHORT).show();
+        public void handleMessage(Message msg) {	    
+	    Intent mDialogIntent = new Intent(TimeService.this,DialogActivity.class); 
+	    mDialogIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	    startActivity(mDialogIntent);
 	}
     }
 
@@ -39,8 +43,9 @@ public class TimeService extends Service {
     
     public int onStartCommand(Intent intent, int flags, int startID) {
 	Message msg = mTimeServiceHandler.obtainMessage();
-		
-	mTimeServiceHandler.sendMessageDelayed(msg, 5000);
+	
+	int intervalTime = getSharedPreferences("org.footoo.cjflsq.neck_preferences", 0).getInt(getString(R.string.pref_key_time).toString(), 5);
+	mTimeServiceHandler.sendMessageDelayed(msg, intervalTime*1000);
 
 	return START_REDELIVER_INTENT;
     }
