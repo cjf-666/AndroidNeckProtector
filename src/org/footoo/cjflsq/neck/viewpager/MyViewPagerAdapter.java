@@ -7,9 +7,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class MyViewPagerAdapter extends FragmentPagerAdapter {
-	InfoFragment infoFragment = new InfoFragment();
+    InfoFragment infoFragment = new InfoFragment();
 
-    @override
     public MyViewPagerAdapter(FragmentManager fm) {
 	super(fm);
 	// TODO Auto-generated constructor stub

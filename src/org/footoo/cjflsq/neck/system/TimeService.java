@@ -1,6 +1,7 @@
 package org.footoo.cjflsq.neck.system;
 
 import org.footoo.cjflsq.neck.DialogActivity;
+import org.footoo.cjflsq.neck.R;
 
 import android.app.Service;
 import android.content.Intent;
@@ -42,8 +43,9 @@ public class TimeService extends Service {
     
     public int onStartCommand(Intent intent, int flags, int startID) {
 	Message msg = mTimeServiceHandler.obtainMessage();
-		
-	mTimeServiceHandler.sendMessageDelayed(msg, 5000);
+	
+	int intervalTime = getSharedPreferences("org.footoo.cjflsq.neck_preferences", 0).getInt(getString(R.string.pref_key_time).toString(), 5);
+	mTimeServiceHandler.sendMessageDelayed(msg, intervalTime*1000);
 
 	return START_REDELIVER_INTENT;
     }
