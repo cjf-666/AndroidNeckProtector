@@ -39,31 +39,31 @@ public class MainActivity extends FragmentActivity {
 	super.onCreate(savedInstanceState);
 	requestWindowFeature(Window.FEATURE_NO_TITLE);
 	setContentView(R.layout.activity_main);
-	viewAdapter = new MyViewPagerAdapter(getSupportFragmentManager());
-	gestureDetector = new GestureDetector(new MainViewTouch());
+	//viewAdapter = new MyViewPagerAdapter(getSupportFragmentManager());
+	//gestureDetector = new GestureDetector(new MainViewTouch());
 	DisplayMetrics dm = new DisplayMetrics();
 	getWindowManager().getDefaultDisplay().getMetrics(dm);
 	flaggingWidth = dm.widthPixels / 4;
 		
-	mPager = (MyViewPager) findViewById(R.id.mPager);
-	mPager.setAdapter(viewAdapter);
-	mPager.setOnPageChangeListener(new MyPageListener());
-	InitImageView();
-	t1 = (TextView) findViewById(R.id.infoText);
-	t2 = (TextView) findViewById(R.id.settingText);
-	t3 = (TextView) findViewById(R.id.aboutText);
-	t4 = (ImageView) findViewById(R.id.settingsImg);
-	t1.setOnClickListener(new MyTabOnClickListener(0));
-	t2.setOnClickListener(new MyTabOnClickListener(1));
-	t3.setOnClickListener(new MyTabOnClickListener(2));
-	t4.setOnClickListener(new SettingsOnClickListener());
+	//mPager = (MyViewPager) findViewById(R.id.mPager);
+	//mPager.setAdapter(viewAdapter);
+	//mPager.setOnPageChangeListener(new MyPageListener());
+	//InitImageView();
+	//t1 = (TextView) findViewById(R.id.infoText);
+	//t2 = (TextView) findViewById(R.id.settingText);
+	//t3 = (TextView) findViewById(R.id.aboutText);
+	//t4 = (ImageView) findViewById(R.id.settingsImg);
+	//t1.setOnClickListener(new MyTabOnClickListener(0));
+	//t2.setOnClickListener(new MyTabOnClickListener(1));
+	//t3.setOnClickListener(new MyTabOnClickListener(2));
+	//t4.setOnClickListener(new SettingsOnClickListener());
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-	if (gestureDetector.onTouchEvent(event)) {
-	    event.setAction(MotionEvent.ACTION_CANCEL);
-	}
+	//if (gestureDetector.onTouchEvent(event)) {
+	   // event.setAction(MotionEvent.ACTION_CANCEL);
+	//}
 	return super.dispatchTouchEvent(event);
     }
 	
@@ -95,7 +95,6 @@ public class MainActivity extends FragmentActivity {
      * 初始化动画
      */
     private void InitImageView() {
-	cursor = (ImageView) findViewById(R.id.anim);
 	bmpW = BitmapFactory.decodeResource(getResources(), R.drawable.anim)
 	    .getWidth();// 获取图片宽度
 	DisplayMetrics dm = new DisplayMetrics();
