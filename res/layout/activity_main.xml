@@ -1,62 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
-	<org.footoo.cjflsq.neck.MyViewPager
-		android:id="@+id/mPager"
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		android:layout_gravity="center"
-		android:layout_weight="1.0"
-		android:background="#000000"
-		android:flipInterval="30"
-		android:persistentDrawingCache="animation" />
-        
-        <ImageView 
-            android:id="@+id/anim"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:scaleType="matrix"
-            android:src="@drawable/anim"
-            />
-        <LinearLayout
-		android:id="@+id/linearLayout1"
-		android:layout_width="fill_parent"
-		android:layout_height="50.0dip"
-		android:background="#FFFFFF" >
-        
-        <TextView 
-            android:id="@+id/infoText"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1.0"
-            android:gravity="center"
-			android:textColor="#000000"
-            android:text="统计信息"/>
-        <TextView 
-            android:id="@+id/settingText"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1.0"
-            android:gravity="center"
-			android:textColor="#000000"
-            android:text="设置"/>      
-        <TextView 
-            android:id="@+id/aboutText"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1.0"
-            android:gravity="center"
-			android:textColor="#000000"
-            android:text="关于"/>
+    <RelativeLayout
+        android:id="@+id/main_title_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:background="@drawable/title_bar_bg" >
+
         <ImageView
-            android:id="@+id/settingsImg"
-            android:layout_height="fill_parent"
+            android:id="@+id/textView1"
             android:layout_width="wrap_content"
-            android:src="@drawable/settings_img"
-            />
+            android:layout_height="25dip"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50dip"
+            android:src="@drawable/title_bar_text" />
+
+        <Button
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dip"
+            android:background="@drawable/ios_left_button"
+            android:text="  统计"
+            android:textColor="#FFF" />
+
+        <Button
+            android:id="@+id/settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ios_right_button"
+            android:text="  设置  "
+            android:textColor="#FFF" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#ff990077"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp" >
+
+        <!-- android:layout_gravity="center_horizontal" -->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/rating_title_text"
+                android:text="@string/day_rating" />
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="170dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ratingbar_box"
+                android:progress="70"
+                android:progressDrawable="@drawable/ratingbar" />
         </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:src="@drawable/rating_number_0" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:src="@drawable/rating_number_0" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:src="@drawable/rating_number_1" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="266dp"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
 </LinearLayout>
