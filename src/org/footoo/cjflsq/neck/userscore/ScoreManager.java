@@ -8,44 +8,42 @@ import android.content.SharedPreferences.Editor;
 
 public class ScoreManager {
 	
-	private static final ScoreManager theSingleton = new ScoreManager();
+    private int score;
 	
-	private int score;
+    private SharedPreferences mSharedPreferences;
 	
-	private SharedPreferences sp = MyApplication.getAppContext().getSharedPreferences("score", Context.MODE_PRIVATE);
+    private Editor mEditor;
+
+    private String scoreCate;
 	
-	private Editor editor = sp.edit();
+    public ScoreManager(String scoreType) {
+	mSharedPreferences = MyApplication.getAppContext().getSharedPreferences(scoreType, Context.MODE_PRIVATE);
+	mEditor = mSharedPreferences.edit();
+	scoreCate = scoreType;
+	score = mSharedPreferences.getInt(scoreCate, 100);
+    }
 	
-	private ScoreManager(){
-		score = sp.getInt("score", 100);
-	}
+    public int deductScore(int n){
+	score -= n;
+	mEditor.putInt(scoreCate, score);
+	mEditor.commit();
+	return score;
+    }
 	
-	public static ScoreManager getInstance(){
-		return theSingleton;
-	}
+    public int getScore(){
+	return score;
+    }
 	
-	public int deductScore(int n){
-		score -= n;
-		editor.putInt("score", score);
-		editor.commit();
-		return score;
-	}
+    public int rewardScore(int n){
+	score += n;
+	mEditor.putInt(scoreCate, score);
+	mEditor.commit();
+	return score;
+    }
 	
-	public int getScore(){
-		return score;
-	}
-	
-	public int rewardScore(int n){
-		score += n;
-		editor.putInt("score", score);
-		editor.commit();
-		return score;
-	}
-	
-	public void reset(){
-		score = 100;
-		editor.putInt("score", score);
-		editor.commit();
-	}
-	
+    public void reset(){
+	score = 100;
+	mEditor.putInt(scoreCate, score);
+	mEditor.commit();
+    }
 }

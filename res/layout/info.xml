@@ -2,57 +2,56 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" 
-    android:orientation="vertical"
-    >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" 
-    android:orientation="horizontal"
-    android:background="#ff990077"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
-    android:layout_marginTop="5dp"
-    android:paddingBottom="5dp">
-    <!--android:layout_gravity="center_horizontal"-->
-
+    android:orientation="vertical" >
     <LinearLayout
-	android:orientation="vertical"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:layout_gravity="left">
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content" 
+	android:orientation="horizontal"
+	android:background="#ff990077"
+	android:layout_marginLeft="5dp"
+	android:layout_marginRight="5dp"
+	android:layout_marginTop="5dp"
+	android:paddingBottom="5dp">
+      <!--android:layout_gravity="center_horizontal"-->
 
-      <TextView
-          style="@style/rating_title_text"
-          android:text="@string/day_rating"
-          />
+      <LinearLayout
+	  android:orientation="vertical"
+	  android:layout_width="wrap_content"
+	  android:layout_height="wrap_content"
+	  android:layout_gravity="left">
 
-      <ProgressBar
-       	  android:progressDrawable="@drawable/ratingbar"
-	  android:layout_width="170dp"
-       	  android:layout_height="25dp"
-	  style="?android:attr/progressBarStyleHorizontal"
-	  android:progress="70"
-	  android:background="@drawable/ratingbar_box"
-	  />
+	<TextView
+	    style="@style/rating_title_text"
+	    android:text="@string/day_rating" />
+
+	<ProgressBar
+	    android:progressDrawable="@drawable/ratingbar"
+	    android:layout_width="170dp"
+	    android:layout_height="25dp"
+	    style="?android:attr/progressBarStyleHorizontal"
+	    android:progress="70"
+	    android:background="@drawable/ratingbar_box" />
+      </LinearLayout>
+      
+      
+      <ImageView
+	  android:layout_width="wrap_content"
+	  android:layout_height="30dp"
+	  android:src="@drawable/rating_number_0" />
+      <ImageView
+	  android:layout_width="wrap_content"
+	  android:layout_height="30dp"
+	  android:src="@drawable/rating_number_0" />
+      <ImageView
+	  android:layout_width="wrap_content"
+	  android:layout_height="30dp"
+	  android:src="@drawable/rating_number_1" />
     </LinearLayout>
-    
-	
-    <ImageView
-	android:layout_width="wrap_content"
-	android:layout_height="30dp"
-	android:src="@drawable/rating_number_0"
-	/>
-    <ImageView
-	android:layout_width="wrap_content"
-	android:layout_height="30dp"
-	android:src="@drawable/rating_number_0"
-	/>
-    <ImageView
-	android:layout_width="wrap_content"
-	android:layout_height="30dp"
-	android:src="@drawable/rating_number_1"
-	/>
+
+    <TextView
+	android:layout_width="fill_parent"  
+	android:layout_height="wrap_content"  
+	android:text="@string/cervicalknowledge">  
+    </TextView>
+
 </LinearLayout>
-     <LinearLayout android:id="@+id/chart" android:orientation="horizontal"
-		android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1" />
- </LinearLayout>

@@ -12,4 +12,44 @@
     <string name="pref_key_time">time_interval</string>
     <string name="pref_title_time">时间间隔</string>
     <string name="pref_summ_time">调整两次提醒之间的时间间隔</string>
+
+    <string name="cervical_test_score_filename">org.footoo.cjflsq.neck_cervicaltest</string>
+    <string name="phone_using_score_filename">org.footoo.cjflsq.neck_phoneusing</string>
+
+    <string name="cervicalknowledge">颈椎病是一种常见病，凡长期从事办公室工作的人，如打字、写作等都会因姿势不当造成颈椎伤，此外，其发病还与受寒及潮湿等因素刺激有关。要防止颈椎病的发生，除了要纠正不良姿势、注意防潮、防冷外，还应积极加强锻炼，经常活动颈部。猫头鹰颈椎保健应用为您的颈椎保驾护航！</string>
+
+    <string-array name="test_issues">
+        <item>年龄30岁以上</item>
+	<item>肩膀疼痛</item>
+	<item>恶心呕吐</item>
+	<item>背部酸胀</item>
+	<item>上肢没有知觉或有麻木感</item>
+	<item>耳鸣、听力减退</item>
+	<item>记忆力减退</item>
+	<item>吞咽困难</item>
+	<item>肌肉萎缩</item>
+	<item>小关节紊乱</item>
+	<item>心率不齐</item>
+	<item>目眩</item>
+	<item>容易激动发脾气</item>
+	<item>下肢发软无力</item>
+	<item>视力障碍</item>
+
+	<item>每天开车</item>
+	<item>脖子发硬</item>
+	<item>有急慢性颈部炎既往史</item>
+	<item>生活无规律</item>
+	<item>工作压力大</item>
+	<item>过度疲劳</item>
+	<item>习惯高枕头</item>
+	<item>头晕头疼</item>
+	<item>血压异常</item>
+	<item>脑供血不足</item>
+
+	<item>经常久坐</item>
+	<item>经常使用电脑</item>
+	<item>长时间伏案</item>
+	<item>头、颈部及肩部上肢活动受限</item>
+	<item>睡姿不好</item>
+    </string-array>
 </resources>
