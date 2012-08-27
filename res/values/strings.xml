@@ -16,7 +16,8 @@
     <string name="cervical_test_score_filename">org.footoo.cjflsq.neck_cervicaltest</string>
     <string name="phone_using_score_filename">org.footoo.cjflsq.neck_phoneusing</string>
 
-    <string name="cervicalknowledge">颈椎病是一种常见病，凡长期从事办公室工作的人，如打字、写作等都会因姿势不当造成颈椎伤，此外，其发病还与受寒及潮湿等因素刺激有关。要防止颈椎病的发生，除了要纠正不良姿势、注意防潮、防冷外，还应积极加强锻炼，经常活动颈部。猫头鹰颈椎保健应用为您的颈椎保驾护航！</string>
+    <string name="cervical_knowledge">颈椎病是一种常见病，凡长期从事办公室工作的人，如打字、写作等都会因姿势不当造成颈椎伤，此外，其发病还与受寒及潮湿等因素刺激有关。要防止颈椎病的发生，除了要纠正不良姿势、注意防潮、防冷外，还应积极加强锻炼，经常活动颈部。猫头鹰颈椎保健应用为您的颈椎保驾护航！</string>
+    <string name="start_test">现在来为颈椎做个测试</string>
 
     <string-array name="test_issues">
         <item>年龄30岁以上</item>

@@ -15,7 +15,7 @@
 		<meta-data android:value="50164e76527015234e000054" android:name="UMENG_APPKEY"></meta-data>
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main">
+            android:theme="@android:style/Theme.NoTitleBar">
         </activity>
 	
         <activity
@@ -62,6 +62,11 @@
 	<activity
 	    android:name=".settings.SettingsActivity"
 	    android:label="@string/settings_activity_label">
+	</activity>
+	
+	<activity
+	    android:name=".cervicaltest.CervicalTestActivity"
+	    android:theme="@android:style/Theme.NoTitleBar" >
 	</activity>
 
     </application>

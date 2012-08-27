@@ -1,4 +1,4 @@
-package org.footoo.cjflsq.neck;
+package org.footoo.cjflsq.neck.cervicaltest;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

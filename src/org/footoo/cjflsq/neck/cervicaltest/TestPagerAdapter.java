@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class TestPagerAdapter extends FragmentPagerAdapter {
-    InfoFragment infoFragment = new InfoFragment();
 
     public TestPagerAdapter(FragmentManager fm) {
 	super(fm);

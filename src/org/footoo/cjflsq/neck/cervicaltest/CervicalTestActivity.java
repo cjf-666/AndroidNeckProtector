@@ -1,4 +1,4 @@
-package org.footoo.cjflsq.neck;
+package org.footoo.cjflsq.neck.cervicaltest;
 
 import org.footoo.cjflsq.neck.viewpager.TestPagerAdapter;
 import org.footoo.cjflsq.neck.userscore.ScoreManager;
