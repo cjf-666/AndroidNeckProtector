@@ -1,6 +1,7 @@
 package org.footoo.cjflsq.neck.system;
 
 import org.footoo.cjflsq.neck.DialogActivity;
+import org.footoo.cjflsq.neck.MyApplication;
 import org.footoo.cjflsq.neck.R;
 
 import android.app.Service;
@@ -13,20 +14,32 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import android.widget.Toast;
+import android.content.Context;
+import android.app.NotificationManager;
+import android.app.Notification;
+import android.app.PendingIntent;
 
 public class TimeService extends Service {
     private Looper mTimeServiceLooper;
     private TimeServiceHandler mTimeServiceHandler;
     private HandlerThread thread = new HandlerThread("TimeThread", Process.THREAD_PRIORITY_BACKGROUND);
+    private int intervalTime;
+    private NotificationManager mNotificationManager;
+    private CharSequence tickerText;
+    private Notification mNotification;
+    private int iconId;
+    private Context mContext;
+    private CharSequence contentTitle;
+    private CharSequence contentText;
+    private PendingIntent contentIntent;
 
     private final class TimeServiceHandler extends Handler {
 	public TimeServiceHandler (Looper looper) {
 	    super(looper);
 	}
         public void handleMessage(Message msg) {	    
-	    Intent mDialogIntent = new Intent(TimeService.this,DialogActivity.class); 
-	    mDialogIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-	    startActivity(mDialogIntent);
+	    startNotification();
+	    mTimeServiceHandler.sendMessageDelayed(mTimeServiceHandler.obtainMessage(), intervalTime*1000);
 	}
     }
 
@@ -39,12 +52,13 @@ public class TimeService extends Service {
 
 	mTimeServiceLooper = thread.getLooper();
 	mTimeServiceHandler = new TimeServiceHandler(mTimeServiceLooper);
+	initNotification();
     }
     
     public int onStartCommand(Intent intent, int flags, int startID) {
 	Message msg = mTimeServiceHandler.obtainMessage();
 	
-	int intervalTime = getSharedPreferences("org.footoo.cjflsq.neck_preferences", 0).getInt(getString(R.string.pref_key_time).toString(), 5);
+	intervalTime = getSharedPreferences(getString(R.string.settings_preferences_filename).toString(), 0).getInt(getString(R.string.pref_key_time).toString(), 5);
 	mTimeServiceHandler.sendMessageDelayed(msg, intervalTime*1000);
 
 	return START_REDELIVER_INTENT;
@@ -56,5 +70,26 @@ public class TimeService extends Service {
 
     public void onDestroy() {
 	thread.quit();
+    }
+
+    private void initNotification() {
+	String ns = Context.NOTIFICATION_SERVICE;
+        mNotificationManager = (NotificationManager) getSystemService(ns);
+	iconId = R.drawable.umeng_share_face_08;
+	tickerText = getString(R.string.notification_ticker_text).toString();
+
+	mContext = MyApplication.getAppContext();
+	contentTitle = getString(R.string.notification_content_title).toString();
+	contentText = getString(R.string.notification_content_text).toString();
+	Intent notificationIntent = new Intent(this, DialogActivity.class);
+	contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+    }
+
+    private void startNotification() {
+	long when = System.currentTimeMillis();
+	mNotification = new Notification(iconId, tickerText, when);
+	mNotification.setLatestEventInfo(mContext, contentTitle, contentText, contentIntent);
+	mNotification.flags |= Notification.FLAG_AUTO_CANCEL;
+	mNotificationManager.notify(1, mNotification);
     }
 }
