@@ -1,16 +1,13 @@
-package org.footoo.cjflsq.neck.viewpager;
+package org.footoo.cjflsq.neck.cervicaltest;
 
-import org.footoo.cjflsq.neck.R;
 import org.footoo.cjflsq.neck.MyApplication;
+import org.footoo.cjflsq.neck.R;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class IssueFragment extends Fragment {

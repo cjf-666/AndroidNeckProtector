@@ -1,20 +1,16 @@
 package org.footoo.cjflsq.neck.cervicaltest;
 
-import org.footoo.cjflsq.neck.viewpager.TestPagerAdapter;
-import org.footoo.cjflsq.neck.userscore.ScoreManager;
 import org.footoo.cjflsq.neck.R;
+import org.footoo.cjflsq.neck.userscore.ScoreManager;
 
-import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.DisplayMetrics;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.content.Intent;
 import android.view.Window;
 import android.widget.Button;
 

@@ -1,6 +1,4 @@
-package org.footoo.cjflsq.neck.viewpager;
-
-import org.footoo.cjflsq.neck.settings.SettingsFragment;
+package org.footoo.cjflsq.neck.cervicaltest;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
