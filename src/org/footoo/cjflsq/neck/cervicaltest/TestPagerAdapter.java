@@ -7,14 +7,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class TestPagerAdapter extends FragmentPagerAdapter {
-
+    
+    public static int PAGER_COUNT = 30;
+    
     public TestPagerAdapter(FragmentManager fm) {
 	super(fm);
     }
     
     @Override
     public int getCount() {
-	return 30;
+	return PAGER_COUNT;
     }
     
     @Override
