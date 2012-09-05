@@ -1,6 +1,7 @@
 package org.footoo.cjflsq.neck.userscore;
 
 import org.footoo.cjflsq.neck.MyApplication;
+import org.footoo.cjflsq.neck.R;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -17,7 +18,7 @@ public class ScoreManager {
     private String scoreCate;
 	
     public ScoreManager(String scoreType) {
-	mSharedPreferences = MyApplication.getAppContext().getSharedPreferences(scoreType, Context.MODE_PRIVATE);
+	mSharedPreferences = MyApplication.getAppContext().getSharedPreferences(MyApplication.getAppContext().getString(R.string.score_filename).toString(), Context.MODE_PRIVATE);
 	mEditor = mSharedPreferences.edit();
 	scoreCate = scoreType;
 	score = mSharedPreferences.getInt(scoreCate, 100);

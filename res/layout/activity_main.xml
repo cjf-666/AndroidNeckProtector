@@ -66,27 +66,34 @@
 
             <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
+		android:id="@+id/score_progressbar"
                 android:layout_width="170dp"
                 android:layout_height="25dp"
                 android:background="@drawable/ratingbar_box"
-                android:progress="70"
+		android:max="100"
                 android:progressDrawable="@drawable/ratingbar" />
         </LinearLayout>
 
         <ImageView
+	    android:id="@+id/score_image_0"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
+	    android:layout_gravity="center_vertical"
             android:src="@drawable/rating_number_0" />
 
         <ImageView
+	    android:id="@+id/score_image_1"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
+	    android:layout_gravity="center_vertical"
             android:src="@drawable/rating_number_0" />
 
         <ImageView
+	    android:id="@+id/score_image_2"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:src="@drawable/rating_number_1" />
+	    android:layout_gravity="center_vertical"
+            android:src="@drawable/rating_number_0" />
     </LinearLayout>
 
     <TextView

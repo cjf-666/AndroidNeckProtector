@@ -3,6 +3,7 @@ package org.footoo.cjflsq.neck.cervicaltest;
 import org.footoo.cjflsq.neck.viewpager.TestPagerAdapter;
 import org.footoo.cjflsq.neck.userscore.ScoreManager;
 import org.footoo.cjflsq.neck.R;
+import org.footoo.cjflsq.neck.MainActivity;
 
 import android.graphics.Matrix;
 import android.os.Bundle;
@@ -54,7 +55,7 @@ public class CervicalTestActivity extends FragmentActivity {
 	mPager.setOnPageChangeListener(new MyPageListener());
 	mPager.setCurrentItem(currIndex);
 
-	score = new int[30];
+	score = new int[TestPagerAdapter.PAGER_COUNT];
 	for (int i = 0; i <= 14; i++) {
 	    score[i] = 2;
 	}
@@ -83,8 +84,17 @@ public class CervicalTestActivity extends FragmentActivity {
 	
 	@Override
         public void onClick(View v) {
-	    if (index == 1) {
-		new ScoreManager(getString(R.string.cervical_test_score_filename).toString()).deductScore(score[currIndex]);
+	    if (currIndex == TestPagerAdapter.PAGER_COUNT - 1) {
+		Intent mIntent = new Intent(CervicalTestActivity.this, MainActivity.class);
+		startActivity(mIntent);
+		CervicalTestActivity.this.finish();
+	    }
+	    ScoreManager mScoreManager = new ScoreManager(getString(R.string.cervical_test_score).toString());
+	    if (currIndex == 0) {
+		mScoreManager.reset();
+	    }
+	    if (index == 1) {		
+		mScoreManager.deductScore(score[currIndex]);
 	    }
 	    mPager.setCurrentItem(currIndex + 1);
 	}    
