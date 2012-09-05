@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+import android.content.Intent;
 
 public class CervicalTestActivity extends FragmentActivity {
     private TestViewPager mPager;
