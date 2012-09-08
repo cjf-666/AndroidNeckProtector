@@ -18,6 +18,7 @@ import android.content.Context;
 import android.app.NotificationManager;
 import android.app.Notification;
 import android.app.PendingIntent;
+import android.os.Vibrator;
 
 public class TimeService extends Service {
     private Looper mTimeServiceLooper;
@@ -32,6 +33,7 @@ public class TimeService extends Service {
     private CharSequence contentTitle;
     private CharSequence contentText;
     private PendingIntent contentIntent;
+    private Vibrator mVibrator;
 
     private final class TimeServiceHandler extends Handler {
 	public TimeServiceHandler (Looper looper) {
@@ -39,7 +41,8 @@ public class TimeService extends Service {
 	}
         public void handleMessage(Message msg) {	    
 	    startNotification();
-	    mTimeServiceHandler.sendMessageDelayed(mTimeServiceHandler.obtainMessage(), intervalTime*1000);
+	    mVibrator.vibrate(500);
+	    //mTimeServiceHandler.sendMessageDelayed(mTimeServiceHandler.obtainMessage(), intervalTime*1000);
 	}
     }
 
@@ -53,6 +56,7 @@ public class TimeService extends Service {
 	mTimeServiceLooper = thread.getLooper();
 	mTimeServiceHandler = new TimeServiceHandler(mTimeServiceLooper);
 	initNotification();
+	mVibrator = (Vibrator) MyApplication.getAppContext().getSystemService(Service.VIBRATOR_SERVICE);
     }
     
     public int onStartCommand(Intent intent, int flags, int startID) {
