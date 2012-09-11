@@ -1,6 +1,6 @@
 package org.footoo.cjflsq.neck.system;
 
-import org.footoo.cjflsq.neck.DialogActivity;
+import org.footoo.cjflsq.neck.sns.DialogActivity;
 import org.footoo.cjflsq.neck.MyApplication;
 import org.footoo.cjflsq.neck.R;
 

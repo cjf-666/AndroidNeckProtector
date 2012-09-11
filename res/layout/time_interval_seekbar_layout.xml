@@ -10,8 +10,27 @@
 	android:layout_width="260dip"
 	android:layout_height="match_parent"
 	android:layout_gravity="center_horizontal"
-	android:progress="10"
 	android:background="@drawable/ratingbar_box"
 	android:progressDrawable="@drawable/ratingbar"/>
+
+    <LinearLayout
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal">
+        
+         <TextView
+	     android:text="5"
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content" >
+	 </TextView>
+
+	 <TextView
+	      android:paddingLeft="240dp"
+	      android:text="20"
+	      android:layout_width="wrap_content"
+	      android:layout_height="wrap_content" >
+	  </TextView>
+        
+    </LinearLayout>
 
 </LinearLayout>
