@@ -103,10 +103,10 @@
         android:layout_height="wrap_content"
         android:text="@string/cervical_knowledge" />
 
-    <Button
-        android:id="@+id/start_test_button"
+     <Button
+        android:id="@+id/sns_share_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/start_test" />
+        android:text="分享" />
 
 </LinearLayout>

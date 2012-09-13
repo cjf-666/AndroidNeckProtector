@@ -1,6 +1,6 @@
 package org.footoo.cjflsq.neck.system;
 
-import org.footoo.cjflsq.neck.DialogActivity;
+import org.footoo.cjflsq.neck.MainActivity;
 import org.footoo.cjflsq.neck.MyApplication;
 import org.footoo.cjflsq.neck.R;
 
@@ -18,6 +18,7 @@ import android.content.Context;
 import android.app.NotificationManager;
 import android.app.Notification;
 import android.app.PendingIntent;
+import android.os.Vibrator;
 
 public class TimeService extends Service {
     private Looper mTimeServiceLooper;
@@ -32,6 +33,7 @@ public class TimeService extends Service {
     private CharSequence contentTitle;
     private CharSequence contentText;
     private PendingIntent contentIntent;
+    private Vibrator mVibrator;
 
     private final class TimeServiceHandler extends Handler {
 	public TimeServiceHandler (Looper looper) {
@@ -39,7 +41,8 @@ public class TimeService extends Service {
 	}
         public void handleMessage(Message msg) {	    
 	    startNotification();
-	    mTimeServiceHandler.sendMessageDelayed(mTimeServiceHandler.obtainMessage(), intervalTime*1000);
+	    mVibrator.vibrate(500);
+	    //mTimeServiceHandler.sendMessageDelayed(mTimeServiceHandler.obtainMessage(), intervalTime*1000);
 	}
     }
 
@@ -53,6 +56,7 @@ public class TimeService extends Service {
 	mTimeServiceLooper = thread.getLooper();
 	mTimeServiceHandler = new TimeServiceHandler(mTimeServiceLooper);
 	initNotification();
+	mVibrator = (Vibrator) MyApplication.getAppContext().getSystemService(Service.VIBRATOR_SERVICE);
     }
     
     public int onStartCommand(Intent intent, int flags, int startID) {
@@ -81,7 +85,7 @@ public class TimeService extends Service {
 	mContext = MyApplication.getAppContext();
 	contentTitle = getString(R.string.notification_content_title).toString();
 	contentText = getString(R.string.notification_content_text).toString();
-	Intent notificationIntent = new Intent(this, DialogActivity.class);
+	Intent notificationIntent = new Intent(this, MainActivity.class);
 	contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
     }
 
