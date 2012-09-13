@@ -19,6 +19,8 @@ import android.app.NotificationManager;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.os.Vibrator;
+import android.app.ActivityManager;
+import android.content.ComponentName;
 
 public class TimeService extends Service {
     private Looper mTimeServiceLooper;
@@ -41,8 +43,12 @@ public class TimeService extends Service {
 	}
         public void handleMessage(Message msg) {	    
 	    startNotification();
-	    mVibrator.vibrate(500);
-	    //mTimeServiceHandler.sendMessageDelayed(mTimeServiceHandler.obtainMessage(), intervalTime*1000);
+	    ActivityManager mActivityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+	    ComponentName mComponentName = mActivityManager.getRunningTasks(1).get(0).topActivity;
+	    if (!mComponentName.getClassName().equals(MainActivity.class.getName())) {
+		mVibrator.vibrate(700);
+	    }
+	    sendMsgDld();
 	}
     }
 
@@ -60,14 +66,18 @@ public class TimeService extends Service {
     }
     
     public int onStartCommand(Intent intent, int flags, int startID) {
-	Message msg = mTimeServiceHandler.obtainMessage();
-	
-	intervalTime = getSharedPreferences(getString(R.string.settings_preferences_filename).toString(), 0).getInt(getString(R.string.pref_key_time).toString(), 5);
-	mTimeServiceHandler.sendMessageDelayed(msg, intervalTime*1000);
-
+	sendMsgDld();
 	return START_REDELIVER_INTENT;
     }
     
+    private void sendMsgDld() {
+	Message msg = mTimeServiceHandler.obtainMessage();
+	msg.what = 1;
+	
+	intervalTime = getSharedPreferences(getString(R.string.settings_preferences_filename).toString(), 0).getInt(getString(R.string.pref_key_time).toString(), 5);
+	mTimeServiceHandler.sendMessageDelayed(msg, intervalTime*1000);
+    }
+
     public IBinder onBind(Intent intent) {
 	return null;
     }

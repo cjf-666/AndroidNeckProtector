@@ -4,6 +4,7 @@ import org.footoo.cjflsq.neck.R;
 import org.footoo.cjflsq.neck.settings.SettingsActivity;
 import org.footoo.cjflsq.neck.sns.SNSSupport;
 import org.footoo.cjflsq.neck.sns.SNSShareActivity;
+import org.footoo.cjflsq.neck.system.TimeService;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,8 +15,9 @@ import android.widget.ProgressBar;
 import android.widget.ImageView;
 import android.content.Intent;
 import android.os.Handler;
-
 import android.widget.Toast;
+
+import java.lang.Thread;
 import java.lang.Integer;
 
 public class MainActivity extends Activity {
@@ -109,7 +111,7 @@ public class MainActivity extends Activity {
 	public void onClick(View v) {
 	    Intent intent = new Intent(MainActivity.this, SNSShareActivity.class);
 	    startActivity(intent);
-	    //MainActivity.this.finish();
+	    MainActivity.this.finish();
 	}
     }
 }

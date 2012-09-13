@@ -1,6 +1,7 @@
 package org.footoo.cjflsq.neck.system;
 
 import org.footoo.cjflsq.neck.database.DataManager;
+import org.footoo.cjflsq.neck.system.ScreenOffReceiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -19,6 +20,7 @@ public class WakeUpBroadcastReceiver extends BroadcastReceiver {
 	Toast.makeText(context.getApplicationContext(), "屏幕解锁", Toast.LENGTH_SHORT).show();
 
 	Intent timeServiceIntent = new Intent(context, TimeService.class);
+	ScreenOffReceiver.firstTime = false;
 	context.startService(timeServiceIntent);
     }
 }
