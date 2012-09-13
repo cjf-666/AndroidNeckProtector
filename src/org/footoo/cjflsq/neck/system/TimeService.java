@@ -1,6 +1,6 @@
 package org.footoo.cjflsq.neck.system;
 
-import org.footoo.cjflsq.neck.sns.DialogActivity;
+import org.footoo.cjflsq.neck.MainActivity;
 import org.footoo.cjflsq.neck.MyApplication;
 import org.footoo.cjflsq.neck.R;
 
@@ -85,7 +85,7 @@ public class TimeService extends Service {
 	mContext = MyApplication.getAppContext();
 	contentTitle = getString(R.string.notification_content_title).toString();
 	contentText = getString(R.string.notification_content_text).toString();
-	Intent notificationIntent = new Intent(this, DialogActivity.class);
+	Intent notificationIntent = new Intent(this, MainActivity.class);
 	contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
     }
 

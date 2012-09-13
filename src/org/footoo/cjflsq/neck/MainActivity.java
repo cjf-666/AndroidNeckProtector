@@ -2,9 +2,8 @@ package org.footoo.cjflsq.neck;
 
 import org.footoo.cjflsq.neck.R;
 import org.footoo.cjflsq.neck.settings.SettingsActivity;
-import org.footoo.cjflsq.neck.cervicaltest.CervicalTestActivity;
 import org.footoo.cjflsq.neck.sns.SNSSupport;
-import org.footoo.cjflsq.neck.sns.DialogActivity;
+import org.footoo.cjflsq.neck.sns.SNSShareActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -29,9 +28,6 @@ public class MainActivity extends Activity {
 
 	Button settingButton = (Button) findViewById(R.id.settings_button);
 	settingButton.setOnClickListener(new SettingOnClickListener());
-	
-	Button testButton = (Button) findViewById(R.id.start_test_button);
-	testButton.setOnClickListener(new TestOnClickListener());
 	
 	Button snsButton = (Button) findViewById(R.id.sns_share_button);
 	snsButton.setOnClickListener(new SnsOnClickListener());
@@ -107,19 +103,11 @@ public class MainActivity extends Activity {
 	    MainActivity.this.finish();
 	}
     }
-    private class TestOnClickListener implements OnClickListener {
-	@Override
-        public void onClick(View v) {
-	    Intent intent = new Intent(MainActivity.this, CervicalTestActivity.class);
-	    startActivity(intent);
-	    MainActivity.this.finish();
-	}
-    }
 
     private class SnsOnClickListener implements OnClickListener {
 	@Override 
 	public void onClick(View v) {
-	    Intent intent = new Intent(MainActivity.this, DialogActivity.class);
+	    Intent intent = new Intent(MainActivity.this, SNSShareActivity.class);
 	    startActivity(intent);
 	    //MainActivity.this.finish();
 	}
