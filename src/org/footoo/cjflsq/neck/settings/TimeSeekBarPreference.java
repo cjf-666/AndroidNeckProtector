@@ -27,7 +27,7 @@ public class TimeSeekBarPreference extends DialogPreference implements OnSeekBar
 
 	// Inflate layout
 	LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	View view = inflater.inflate(R.layout.time_interval_seekbar_layout, null);
+	View view = inflater.inflate(R.layout.time_seekbar_scrollview, null);
 
 	// Put minimum and maximum
 	//((TextView) view.findViewById(R.id.min_value)).setText(Integer.toString(mMinTime));

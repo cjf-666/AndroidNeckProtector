@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
+
+  <LinearLayout
+      android:id="@+id/home_page_view"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/main_title_bar"
@@ -10,36 +16,36 @@
         android:layout_height="50.0dip"
         android:background="@drawable/title_bar_bg" >
 
-        <ImageView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="25dip"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="50dip"
-            android:src="@drawable/title_bar_text" />
+      <ImageView
+	  android:id="@+id/textView1"
+	  android:layout_width="wrap_content"
+	  android:layout_height="25dip"
+	  android:layout_centerHorizontal="true"
+	  android:layout_centerVertical="true"
+	  android:layout_marginLeft="50dip"
+	  android:src="@drawable/title_bar_text" />
 
-        <Button
-            android:id="@+id/info_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dip"
-            android:background="@drawable/ios_left_button"
-            android:text="  统计  "
-            android:textColor="#FFF" />
+      <Button
+	  android:id="@+id/info_button"
+	  android:layout_width="wrap_content"
+	  android:layout_height="wrap_content"
+	  android:layout_alignParentLeft="true"
+	  android:layout_centerVertical="true"
+	  android:layout_marginLeft="5dip"
+	  android:background="@drawable/ios_left_button"
+	  android:text="  统计  "
+	  android:textColor="#FFF" />
 
-        <Button
-            android:id="@+id/settings_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="5dip"
-            android:background="@drawable/ios_right_button"
-            android:text="  设置  "
-            android:textColor="#FFF" />
+      <Button
+	  android:id="@+id/settings_button"
+	  android:layout_width="wrap_content"
+	  android:layout_height="wrap_content"
+	  android:layout_alignParentRight="true"
+	  android:layout_centerVertical="true"
+	  android:layout_marginRight="5dip"
+	  android:background="@drawable/ios_right_button"
+	  android:text="  设置  "
+	  android:textColor="#FFF" />
 
     </RelativeLayout>
 
@@ -53,48 +59,48 @@
         android:orientation="horizontal"
         android:paddingBottom="5dp" >
 
-        <!-- android:layout_gravity="center_horizontal" -->
+      <!-- android:layout_gravity="center_horizontal" -->
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:orientation="vertical" >
+      <LinearLayout
+	  android:layout_width="wrap_content"
+	  android:layout_height="wrap_content"
+	  android:layout_gravity="left"
+	  android:orientation="vertical" >
 
-            <TextView
-                style="@style/rating_title_text"
-                android:text="@string/day_rating" />
+	<TextView
+	    style="@style/rating_title_text"
+	    android:text="@string/day_rating" />
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-		android:id="@+id/score_progressbar"
-                android:layout_width="170dp"
-                android:layout_height="25dp"
-                android:background="@drawable/ratingbar_box"
-		android:max="100"
-                android:progressDrawable="@drawable/ratingbar" />
-        </LinearLayout>
+	<ProgressBar
+	    style="?android:attr/progressBarStyleHorizontal"
+	    android:id="@+id/score_progressbar"
+	    android:layout_width="170dp"
+	    android:layout_height="25dp"
+	    android:background="@drawable/ratingbar_box"
+	    android:max="100"
+	    android:progressDrawable="@drawable/ratingbar" />
+      </LinearLayout>
 
-        <ImageView
-	    android:id="@+id/score_image_0"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-	    android:layout_gravity="center_vertical"
-            android:src="@drawable/rating_number_0" />
+      <ImageView
+	  android:id="@+id/score_image_0"
+	  android:layout_width="wrap_content"
+	  android:layout_height="30dp"
+	  android:layout_gravity="center_vertical"
+	  android:src="@drawable/rating_number_0" />
 
-        <ImageView
-	    android:id="@+id/score_image_1"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-	    android:layout_gravity="center_vertical"
-            android:src="@drawable/rating_number_0" />
+      <ImageView
+	  android:id="@+id/score_image_1"
+	  android:layout_width="wrap_content"
+	  android:layout_height="30dp"
+	  android:layout_gravity="center_vertical"
+	  android:src="@drawable/rating_number_0" />
 
-        <ImageView
-	    android:id="@+id/score_image_2"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-	    android:layout_gravity="center_vertical"
-            android:src="@drawable/rating_number_0" />
+      <ImageView
+	  android:id="@+id/score_image_2"
+	  android:layout_width="wrap_content"
+	  android:layout_height="30dp"
+	  android:layout_gravity="center_vertical"
+	  android:src="@drawable/rating_number_0" />
     </LinearLayout>
 
     <TextView
@@ -103,10 +109,30 @@
         android:layout_height="wrap_content"
         android:text="@string/cervical_knowledge" />
 
-     <Button
+    <Button
         android:id="@+id/sns_share_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="分享" />
 
-</LinearLayout>
+  </LinearLayout>
+
+  <org.footoo.cjflsq.neck.settings.TimeSettingScrollView
+      android:id="@+id/seekbar_scroll_view"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:background="#00ffffff"
+      android:scrollbars="none" >
+      <!-- android:fadingEdge="none" -->
+
+    <LinearLayout
+	android:id="@+id/top"
+	android:layout_width="fill_parent"
+	android:layout_height="50dip"
+	android:background="#00ffffff"
+	android:orientation="horizontal" >
+    </LinearLayout>
+
+  </org.footoo.cjflsq.neck.settings.TimeSettingScrollView>
+
+</FrameLayout>
