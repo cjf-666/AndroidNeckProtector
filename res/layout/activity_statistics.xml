@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F0F8FF">
+ <RelativeLayout
+        android:id="@+id/main_title_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:background="@drawable/title_bar_bg" >
+
+        <ImageView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="25dip"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50dip"
+            android:src="@drawable/title_bar_text" />
+
+        <Button
+            android:id="@+id/ret_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dip"
+            android:background="@drawable/ios_left_button"
+            android:text="  返回  "
+            android:textColor="#FFF" />
+
+    </RelativeLayout>
+    <LinearLayout android:id="@+id/chart" 
+        android:orientation="horizontal"
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent" 
+		android:layout_weight="1" 
+		android:layout_marginLeft="5dip"
+		android:layout_marginRight="5dip"
+		android:layout_marginTop="5dip"/>
+     <LinearLayout android:id="@+id/text" android:orientation="horizontal"
+		android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1" >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dip"
+        android:text="@string/hello_world" 
+        android:textColor="#999999"
+        android:textSize="20dip"/>
+	</LinearLayout>
+</LinearLayout>

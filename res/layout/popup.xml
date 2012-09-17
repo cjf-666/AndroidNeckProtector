@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dip"
+    android:layout_height="500dip"
+    android:orientation="vertical"
+    android:background="#F0F8FF">
+    <LinearLayout android:id="@+id/chart" 
+        android:orientation="horizontal"
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent" 
+		android:layout_weight="1" />
+</LinearLayout>
