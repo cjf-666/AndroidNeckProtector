@@ -36,6 +36,7 @@ public class TimeService extends Service {
     private CharSequence contentText;
     private PendingIntent contentIntent;
     private Vibrator mVibrator;
+    private ScreenOffReceiver mScreenOffReceiver;
 
     private final class TimeServiceHandler extends Handler {
 	public TimeServiceHandler (Looper looper) {
@@ -56,7 +57,7 @@ public class TimeService extends Service {
 	thread.start();
 	
 	IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
-	ScreenOffReceiver mScreenOffReceiver = new ScreenOffReceiver();
+	mScreenOffReceiver = new ScreenOffReceiver();
 	getApplicationContext().registerReceiver(mScreenOffReceiver, filter);
 
 	mTimeServiceLooper = thread.getLooper();
@@ -83,13 +84,14 @@ public class TimeService extends Service {
     }
 
     public void onDestroy() {
+	getApplicationContext().unregisterReceiver(mScreenOffReceiver);
 	thread.quit();
     }
 
     private void initNotification() {
 	String ns = Context.NOTIFICATION_SERVICE;
         mNotificationManager = (NotificationManager) getSystemService(ns);
-	iconId = R.drawable.umeng_share_face_08;
+	iconId = R.drawable.umeng_share_logo_renren;
 	tickerText = getString(R.string.notification_ticker_text).toString();
 
 	mContext = MyApplication.getAppContext();

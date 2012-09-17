@@ -12,11 +12,12 @@
     <string name="pref_key_time">time_interval</string>
     <string name="pref_title_time">时间间隔</string>
     <string name="pref_summ_time">调整两次提醒之间的时间间隔</string>
+    <string name="settings_preferences_filename">org.footoo.cjflsq.neck_preferences</string>
 
     <string name="cervical_test_score">test_score</string>
 
+    <string name="everyday_score">score_key_today</string>
     <string name="score_filename">org.footoo.cjflsq.neck_score</string>
-    <string name="settings_preferences_filename">org.footoo.cjflsq.neck_preferences</string>
 
     <string name="notification_ticker_text">猫头鹰颈椎保健提示您：时间到了，休息一下</string>
     <string name="notification_content_title">猫头鹰颈椎保健提示您</string>
