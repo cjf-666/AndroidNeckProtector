@@ -135,4 +135,9 @@
 
   </org.footoo.cjflsq.neck.settings.TimeSettingScrollView>
 
+<org.footoo.cjflsq.neck.gallery.GalleryFlow
+    android:id="@+id/gallery"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+
 </FrameLayout>

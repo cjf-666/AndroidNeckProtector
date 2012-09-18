@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Camera;
 import android.graphics.Matrix;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Transformation;
 import android.widget.Gallery;
@@ -77,7 +78,13 @@ public class GalleryFlow extends Gallery {
         }
         return true;
     }
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+    @Override
+	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+			float velocityY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         mCoveflowCenter = getCenterOfCoverflow();
         super.onSizeChanged(w, h, oldw, oldh);
     }
