@@ -42,29 +42,36 @@
             android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
-            android:name=".settings.SettingsActivity"
-            android:label="@string/settings_activity_label" >
-        </activity>
-        <activity
-            android:name=".cervicaltest.CervicalTestActivity"
-            android:theme="@android:style/Theme.NoTitleBar" >
-        </activity>
-        <activity
             android:name=".StatisticsActivity"
             android:theme="@android:style/Theme.NoTitleBar">
         </activity>
+	<receiver
+	    android:name=".system.WakeUpBroadcastReceiver" >
+	    <intent-filter>
+	        <action android:name="android.intent.action.USER_PRESENT" />
+	    </intent-filter>
+	</receiver>
+
+	<service
+	    android:name=".system.TimeService">
+	</service>
+
+	<activity
+	    android:name=".sns.SNSShareActivity"
+	    android:theme="@style/custom_dialog_style">
+	</activity>
+
+	<activity
+	    android:name=".settings.SettingsActivity"
+	    android:label="@string/settings_activity_label">
+	</activity>
     </application>
-
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.INTERNET" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission> 
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.WRITE_APN_SETTINGS"></uses-permission>
+	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+	<uses-permission android:name="android.permission.WRITE_APN_SETTINGS"></uses-permission>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.GET_TASKS"/>
 </manifest>
