@@ -2,14 +2,13 @@ package org.footoo.cjflsq.neck.settings;
 
 import org.footoo.cjflsq.neck.R;
 
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.SeekBar;
-import android.preference.DialogPreference;
 import android.content.Context;
+import android.preference.DialogPreference;
 import android.util.AttributeSet;
-import android.view.View;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 
 public class TimeSeekBarPreference extends DialogPreference implements OnSeekBarChangeListener {
     public TimeSeekBarPreference (Context context, AttributeSet attrs) {
@@ -27,7 +26,7 @@ public class TimeSeekBarPreference extends DialogPreference implements OnSeekBar
 
 	// Inflate layout
 	LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	View view = inflater.inflate(R.layout.time_interval_seekbar_layout, null);
+	View view = inflater.inflate(R.layout.time_seekbar_scrollview, null);
 
 	// Put minimum and maximum
 	//((TextView) view.findViewById(R.id.min_value)).setText(Integer.toString(mMinTime));

@@ -1,6 +1,7 @@
 package org.footoo.cjflsq.neck.system;
 
 import org.footoo.cjflsq.neck.database.DataManager;
+import org.footoo.cjflsq.neck.userscore.ScoreManager;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -15,6 +16,7 @@ public class WakeUpBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 	startTime.setToNow();
 	DataManager.getInstance().submitStartTime(startTime);
+	ScoreManager.getInstance().submitStartTime(startTime);
 
 	Toast.makeText(context.getApplicationContext(), "屏幕解锁", Toast.LENGTH_SHORT).show();
 

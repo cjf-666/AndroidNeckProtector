@@ -1,4 +1,4 @@
-package org.footoo.sns;
+package org.footoo.cjflsq.neck.sns;
 
 import android.app.Activity;
 import android.app.Dialog;

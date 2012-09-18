@@ -2,8 +2,8 @@ package org.footoo.cjflsq.neck.settings;
 
 import org.footoo.cjflsq.neck.R;
 
-import android.preference.PreferenceFragment;
 import android.os.Bundle;
+import android.preference.PreferenceFragment;
 
 public class SettingsFragment extends PreferenceFragment {
     

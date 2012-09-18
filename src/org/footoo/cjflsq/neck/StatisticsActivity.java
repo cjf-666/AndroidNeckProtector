@@ -26,7 +26,6 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.PopupWindow;
-import android.widget.Toast;
 
 public class StatisticsActivity extends Activity {
 	public static final String TYPE = "type";

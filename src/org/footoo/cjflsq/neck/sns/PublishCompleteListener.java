@@ -1,4 +1,4 @@
-package org.footoo.sns;
+package org.footoo.cjflsq.neck.sns;
 
 public interface PublishCompleteListener {
 	public static final int PUBLISH_SUCCESS = 0;
