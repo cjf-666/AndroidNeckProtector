@@ -50,4 +50,8 @@
     <string name="sns_snsservice_oauth_failed">抱歉，授权失败！</string>
     <string name="sns_snsservice_no_network">抱歉，无网络服务！</string>
 
+<<<<<<< HEAD
 </resources>
+=======
+</resources>
+>>>>>>> ba68458007eeb8f38cb291ef3220f632b84ff021

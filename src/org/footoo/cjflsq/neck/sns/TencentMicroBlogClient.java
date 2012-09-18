@@ -1,3 +1,4 @@
+
 package org.footoo.cjflsq.neck.sns;
 
 import android.app.Activity;
@@ -8,6 +9,7 @@ import com.tencent.weibo.oauthv1.OAuthV1;
 public class TencentMicroBlogClient {
 	private final static String APP_KEY = "801203325";	          
 	private final static String APP_SECRET = "7c1373f22f63cee29497fa5ee2ed29ae";
+
 	private final static String oauthCallback = "null";
 	
 	private TencentAuthorizeDialog authDialog;
@@ -24,6 +26,4 @@ public class TencentMicroBlogClient {
 	public void publishStatus(Activity ac, String msg){
 		authorize(ac);
 	}
-	
-	
 }

@@ -1,6 +1,7 @@
 package org.footoo.cjflsq.neck.settings;
 
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class SizeCallBackForSetting implements SizeCallBack {
 

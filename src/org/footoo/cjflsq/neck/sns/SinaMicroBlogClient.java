@@ -23,7 +23,7 @@ public class SinaMicroBlogClient {
 	private ProgressDialog mpDialog;
 	private Activity activity;
 	private PublishCompleteListener mListener;
-
+	
 	private String token = null;
 	private String expires_in = null;
 	private AccessToken accessToken;

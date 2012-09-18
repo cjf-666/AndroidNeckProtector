@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 public class SNSShareActivity extends Activity {
     
     private EditText mEditText;

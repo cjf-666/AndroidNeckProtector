@@ -17,4 +17,5 @@ public class SNSSupport {
     	TencentMicroBlogClient tmbc = new TencentMicroBlogClient();
 		tmbc.publishStatus(activity, msg);
 	}   
+
 }

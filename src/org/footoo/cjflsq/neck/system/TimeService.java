@@ -19,7 +19,14 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
+import android.widget.Toast;
+import android.content.Context;
+import android.app.NotificationManager;
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.os.Vibrator;
+import android.app.ActivityManager;
+import android.content.ComponentName;
 
 public class TimeService extends Service {
     private Looper mTimeServiceLooper;

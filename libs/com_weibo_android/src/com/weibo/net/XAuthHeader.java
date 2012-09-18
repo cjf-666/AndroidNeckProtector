@@ -24,7 +24,10 @@ import javax.crypto.spec.SecretKeySpec;
 
 import android.text.TextUtils;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ba68458007eeb8f38cb291ef3220f632b84ff021
 /**
  * Encapsulation Weibo http headers for authorizing by xauth. the order of
  * weiboParameters will not be changed. Otherwise the signature should be

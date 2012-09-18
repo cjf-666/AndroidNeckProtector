@@ -20,6 +20,10 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
+<<<<<<< HEAD
+=======
+import android.annotation.SuppressLint;
+>>>>>>> ba68458007eeb8f38cb291ef3220f632b84ff021
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;

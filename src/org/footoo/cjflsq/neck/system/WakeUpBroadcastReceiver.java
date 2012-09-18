@@ -1,6 +1,7 @@
 package org.footoo.cjflsq.neck.system;
 
 import org.footoo.cjflsq.neck.database.DataManager;
+import org.footoo.cjflsq.neck.system.ScreenOffReceiver;
 import org.footoo.cjflsq.neck.userscore.ScoreManager;
 
 import android.content.BroadcastReceiver;
