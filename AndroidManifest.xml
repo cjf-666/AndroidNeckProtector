@@ -8,72 +8,63 @@
         android:targetSdkVersion="15" />
 
     <application
-        android:name = ".MyApplication"
+        android:name=".MyApplication"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-		<meta-data android:value="50164e76527015234e000054" android:name="UMENG_APPKEY"></meta-data>
+
         <activity
             android:name=".MainActivity"
             android:theme="@android:style/Theme.NoTitleBar">
         </activity>
-	
         <activity
             android:name=".WelcomeActivity"
-            android:label="@string/title_activity_main">
+            android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity
-	    android:name="com.umeng.api.activity.OauthActivity"
-	    android:screenOrientation="unspecified"
-	    android:windowSoftInputMode="adjustResize"
-	    android:configChanges="orientation|keyboardHidden">
-        </activity>
+
+        <receiver android:name=".system.WakeUpBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".system.TimeService" >
+        </service>
 
         <activity
-	    android:name="com.umeng.api.activity.UpdateStatusActivity"
-	    android:theme="@style/Theme.IOSched"
-	    android:windowSoftInputMode="stateVisible|adjustResize"
-	    android:screenOrientation="unspecified"
-	    android:configChanges="orientation|keyboardHidden" > 
+            android:name=".DialogActivity"
+            android:label="@string/dialog_activity_remind"
+            android:theme="@android:style/Theme.Dialog" >
         </activity>
-
-	<receiver
-	    android:name=".system.WakeUpBroadcastReceiver" >
-	    <intent-filter>
-	        <action android:name="android.intent.action.USER_PRESENT" />
-	    </intent-filter>
-	</receiver>
-
-	<service
-	    android:name=".system.TimeService">
-	</service>
-
-	<activity
-	    android:name=".DialogActivity"
-	    android:theme="@android:style/Theme.Dialog"
-	    android:label="@string/dialog_activity_remind" >
-	</activity>
-
-	<activity
-	    android:name=".settings.SettingsActivity"
-	    android:label="@string/settings_activity_label">
-	</activity>
-	
-	<activity
-	    android:name=".cervicaltest.CervicalTestActivity"
-	    android:theme="@android:style/Theme.NoTitleBar" >
-	</activity>
-
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:label="@string/settings_activity_label" >
+        </activity>
+        <activity
+            android:name=".cervicaltest.CervicalTestActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".StatisticsActivity"
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
     </application>
-	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission> 
-	<uses-permission android:name="android.permission.WRITE_APN_SETTINGS"></uses-permission>
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission> 
-	<uses-permission android:name="android.permission.WRITE_APN_SETTINGS"></uses-permission>
-	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
 </manifest>
