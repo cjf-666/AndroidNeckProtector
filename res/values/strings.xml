@@ -5,9 +5,9 @@
     <string name="dialog_activity_remind">提示您：</string>
     <string name="settings_activity_label">设置</string>
 
-    <string name="day_rating">今日得分</string>
-    <string name="week_rating">本周得分</string>
-    <string name="month_rating">本月得分</string>
+    <string name="main_title_bar_text">颈椎休息区</string>
+    <string name="tips_title_bar_text">颈椎病小贴士</string>
+    <string name="today_rating_text">您的颈椎健康得分是</string>
 
     <string name="pref_key_time">time_interval</string>
     <string name="pref_title_time">时间间隔</string>
