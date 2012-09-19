@@ -1,7 +1,9 @@
 package org.footoo.cjflsq.neck;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -59,12 +61,12 @@ public class MainActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 if (parent.getSelectedItemId() == id) {
-                    Toast.makeText(MyApplication.getAppContext(), "aaaaaa", Toast.LENGTH_LONG).show();
-                    /*Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
-                            "://org.footoo.cjflsq.neck/" + R.raw.sample.m4v);
+                    Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                            //"://org.footoo.cjflsq.neck/res/raw/m" + (id + 1) + ".mp4");
+                            "://org.footoo.cjflsq.neck/" + R.raw.m2);
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setDataAndType(uri, "video/mp4");
-                    startActivity(intent);*/
+                    intent.setDataAndType(uri, "video/*");
+                    startActivity(intent);
                 }
             }
 
