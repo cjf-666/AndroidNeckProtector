@@ -1,17 +1,18 @@
 <resources>
 
-    <style name="AppTheme" parent="android:Theme.Light" />
+    <style name="AppTheme" parent="android:Theme.Light"/>
     <style name="title_text_style">
         <item name="android:textSize">25.0sp</item>
-	<item name="android:textColor">#66cc66</item>
+        <item name="android:textColor">#66cc66</item>
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:background">@drawable/title_bar_bg</item>
-	<item name="android:gravity">center</item>
+        <item name="android:gravity">center</item>
     </style>
-    
+
     <style name="custom_dialog_style" parent="android:style/Theme.Dialog">
-	<item name="android:windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
+
 </resources>
 

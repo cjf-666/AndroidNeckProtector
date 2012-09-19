@@ -6,21 +6,21 @@ import android.database.sqlite.SQLiteDatabase;
 import android.text.format.Time;
 
 public class DataManager {
-	
-	private static final DataManager theSingleton = new DataManager();
 
-	private DatabaseHelper dbHelper = new DatabaseHelper();
+    private static final DataManager theSingleton = new DataManager();
 
-	private Time start = new Time();
-	
-	// ----------------------------------------------
-	private DataManager() {
-		start.set(0);
-	}
+    private DatabaseHelper dbHelper = new DatabaseHelper();
 
-	public static DataManager getInstance() {
-		return theSingleton;
-	}
+    private Time start = new Time();
+
+    // ----------------------------------------------
+    private DataManager() {
+        start.set(0);
+    }
+
+    public static DataManager getInstance() {
+        return theSingleton;
+    }
 
 /*	private ContentValues getStat(String name){
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -81,44 +81,67 @@ public class DataManager {
 		start.set(0);
 		return;
 	}*/
-	
-	public void putData(int score, Time total) {
-		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		Time date = new Time();
-		date.setToNow();
-		String[] col = new String[]{"date"};
-		String[] d = new String[]{String.valueOf(date.year)+date.month+date.monthDay};
-		Cursor cursor = db.query(DatabaseMetadata.TABLE_SCORE_NAME, col, "date=?", d, null, null, null);
-		if (cursor == null || cursor.moveToFirst() == false)
-		{
-			ContentValues cv = new ContentValues();
-			cv.put("score", score);
-			db.update(DatabaseMetadata.TABLE_SCORE_NAME, cv, "date=?", d);
-		}else{
-			ContentValues cv = new ContentValues();
-			cv.put("score", score);
-			cv.put("date", d[0]);
-			db.insert(DatabaseMetadata.TABLE_SCORE_NAME, null, cv);
-		}
-		cursor.close();
-		
-		cursor = db.query(DatabaseMetadata.TABLE_TIME_NAME, col, "date=?", d, null, null, null);
-		if (cursor == null || cursor.moveToFirst() == false)
-		{
-			ContentValues cv = new ContentValues();
-			long tmp = total.toMillis(true);
-			cv.put("time", tmp);
-			db.update(DatabaseMetadata.TABLE_TIME_NAME, cv, "date=?", d);
-		}else{
-			ContentValues cv = new ContentValues();
-			long tmp = total.toMillis(true);
-			cv.put("time", tmp);
-			cv.put("score", score);
-			db.insert(DatabaseMetadata.TABLE_TIME_NAME, null, cv);
-		}
-		cursor.close();
-	}
-	
+
+    public void putData(int score, Time total) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Time date = new Time();
+        date.setToNow();
+        String[] col = new String[]{"date"};
+        String[] d = new String[]{String.valueOf(date.year) + date.month + date.monthDay};
+        Cursor cursor = db.query(DatabaseMetadata.TABLE_SCORE_NAME, col, "date=?", d, null, null, null);
+        if (cursor == null || cursor.moveToFirst() == false) {
+            ContentValues cv = new ContentValues();
+            cv.put("score", score);
+            db.update(DatabaseMetadata.TABLE_SCORE_NAME, cv, "date=?", d);
+        } else {
+            ContentValues cv = new ContentValues();
+            cv.put("score", score);
+            cv.put("date", d[0]);
+            db.insert(DatabaseMetadata.TABLE_SCORE_NAME, null, cv);
+        }
+        cursor.close();
+
+        cursor = db.query(DatabaseMetadata.TABLE_TIME_NAME, col, "date=?", d, null, null, null);
+        if (cursor == null || cursor.moveToFirst() == false) {
+            ContentValues cv = new ContentValues();
+            long tmp = total.toMillis(true);
+            cv.put("time", tmp);
+            db.update(DatabaseMetadata.TABLE_TIME_NAME, cv, "date=?", d);
+        } else {
+            ContentValues cv = new ContentValues();
+            long tmp = total.toMillis(true);
+            cv.put("time", tmp);
+            cv.put("score", score);
+            db.insert(DatabaseMetadata.TABLE_TIME_NAME, null, cv);
+        }
+        cursor.close();
+    }
+
+    public int getScore(Time date) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] col = new String[]{"date"};
+        String[] d = new String[]{String.valueOf(date.year) + date.month + date.monthDay};
+        Cursor cursor = db.query(DatabaseMetadata.TABLE_SCORE_NAME, col, "date=?", d, null, null, null);
+        if (cursor == null || cursor.moveToFirst() == false) {
+            return 0;
+        }
+        int ret = cursor.getInt(2);
+        cursor.close();
+        return ret;
+    }
+
+    public long getTime(Time date) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] col = new String[]{"date"};
+        String[] d = new String[]{String.valueOf(date.year) + date.month + date.monthDay};
+        Cursor cursor = db.query(DatabaseMetadata.TABLE_TIME_NAME, col, "date=?", d, null, null, null);
+        if (cursor == null || cursor.moveToFirst() == false) {
+            return 0;
+        }
+        long ret = cursor.getLong(2);
+        cursor.close();
+        return ret;
+    }
 	/*public void putData(Time begin, Time end) {
 		if ((int)(end.hour / 2) == (int)(begin.hour / 2)) {
 			SQLiteDatabase db = dbHelper.getWritableDatabase();
