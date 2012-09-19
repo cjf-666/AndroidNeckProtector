@@ -1,13 +1,5 @@
 package com.weibo.net;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.InetSocketAddress;
-import java.net.Proxy;
-import java.net.SocketAddress;
-import java.net.URL;
-
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -29,8 +21,11 @@ import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-
 import com.weibo.android.R;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.*;
 
 public class WeiboDialog extends Dialog {
 
@@ -147,7 +142,7 @@ public class WeiboDialog extends Dialog {
 
         @Override
         public void onReceivedError(WebView view, int errorCode, String description,
-                String failingUrl) {
+                                    String failingUrl) {
             super.onReceivedError(view, errorCode, description, failingUrl);
             mListener.onError(new DialogError(description, errorCode, failingUrl));
             WeiboDialog.this.dismiss();

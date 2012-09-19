@@ -16,11 +16,6 @@
  */
 package com.weibo.net;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -35,25 +30,22 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import android.widget.*;
 import com.weibo.android.R;
 import com.weibo.net.AsyncWeiboRunner.RequestListener;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 
 /**
  * A dialog activity for sharing any text or image message to weibo. Three
  * parameters , accessToken, tokenSecret, consumer_key, are needed, otherwise a
  * WeiboException will be throwed.
- * 
+ * <p/>
  * ShareActivity should implement an interface, RequestListener which will
  * return the request result.
- * 
+ *
  * @author ZhangJie (zhangjie2@staff.sina.com.cn)
  */
 
@@ -75,8 +67,8 @@ public class ShareActivity extends Activity implements OnClickListener, RequestL
 
     public static final int WEIBO_MAX_LENGTH = 140;
 
-    
-	public void onCreate(Bundle savedInstanceState) {
+
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.share_mblog_view);
 
@@ -108,21 +100,23 @@ public class ShareActivity extends Activity implements OnClickListener, RequestL
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String mText = mEdit.getText().toString();
                 String mStr;
                 int len = mText.length();
                 if (len <= WEIBO_MAX_LENGTH) {
                     len = WEIBO_MAX_LENGTH - len;
                     mTextNum.setTextColor(getResources().getColor(R.color.text_num_gray));
-                    if (!mSend.isEnabled())
+                    if (!mSend.isEnabled()) {
                         mSend.setEnabled(true);
+                    }
                 } else {
                     len = len - WEIBO_MAX_LENGTH;
 
                     mTextNum.setTextColor(Color.RED);
-                    if (mSend.isEnabled())
+                    if (mSend.isEnabled()) {
                         mSend.setEnabled(false);
+                    }
                 }
                 mTextNum.setText(String.valueOf(len));
             }
@@ -193,7 +187,7 @@ public class ShareActivity extends Activity implements OnClickListener, RequestL
     }
 
     private String upload(Weibo weibo, String source, String file, String status, String lon,
-            String lat) throws WeiboException {
+                          String lat) throws WeiboException {
         WeiboParameters bundle = new WeiboParameters();
         bundle.add("source", source);
         bundle.add("pic", file);

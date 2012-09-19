@@ -16,19 +16,18 @@
  */
 package com.weibo.net;
 
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
+import android.text.TextUtils;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
-
-import android.text.TextUtils;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Encapsulation Weibo http headers for authorizing by xauth. the order of
  * weiboParameters will not be changed. Otherwise the signature should be
  * calculated wrong.
- * 
+ *
  * @author ZhangJie (zhangjie2@staff.sina.com.cn)
  */
 public class XAuthHeader extends HttpHeaderFactory {
