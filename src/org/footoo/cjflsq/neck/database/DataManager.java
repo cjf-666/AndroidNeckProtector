@@ -1,9 +1,13 @@
 package org.footoo.cjflsq.neck.database;
 
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.format.Time;
+import org.footoo.cjflsq.neck.MyApplication;
+import org.footoo.cjflsq.neck.R;
 
 public class DataManager {
 
@@ -13,76 +17,95 @@ public class DataManager {
 
     private Time start = new Time();
 
+    private Time last = new Time();
+
     // ----------------------------------------------
     private DataManager() {
         start.set(0);
+        last.setToNow();
     }
 
     public static DataManager getInstance() {
         return theSingleton;
     }
 
-/*	private ContentValues getStat(String name){
-		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		Cursor cursor = db.query(name, null, null, null, null, null, null);
-		if (cursor == null)
-		{
-			db.close();
-			return null;
-		}
-		
-		if (cursor.moveToFirst() == false)
-		{
-			cursor.close();
-			db.close();
-			return null;
-		}
-		
-		ContentValues cv = new ContentValues();
-		for (int i = 0; i < 24; i+=2)
-		{
-			String title = "z" + i + "_" + (i+2);
-			long value = cursor.getLong(i / 2 +1);
-			cv.put(title, value);
-		}	
-		cursor.close();
-		cursor = db.query(name + "_length", null, null, null, null, null, null);
-		if (cursor == null)
-		{
-			db.close();
-			return null;
-		}	
+    /*	private ContentValues getStat(String name){
+         SQLiteDatabase db = dbHelper.getWritableDatabase();
+         Cursor cursor = db.query(name, null, null, null, null, null, null);
+         if (cursor == null)
+         {
+             db.close();
+             return null;
+         }
 
-		if (cursor.moveToFirst() == false)
-		{
-			cursor.close();
-			db.close();
-			return null;
-		}
-		
-		cv.put("a0_5", cursor.getLong(1));
-		cv.put("a5_10", cursor.getLong(2));
-		cv.put("a10_30", cursor.getLong(3));
-		cv.put("a30_INF", cursor.getLong(4));
-		
-		cursor.close();
-		db.close();
-		return cv;	
-	}*/
-	
-/*	public void submitStartTime(Time begin){
-		start = begin;
-	}
-	
-	public void submitEndTime(Time end){
-		if (start.toMillis(true) == 0)
-			return;
-		putData(start, end);
-		start.set(0);
-		return;
-	}*/
+         if (cursor.moveToFirst() == false)
+         {
+             cursor.close();
+             db.close();
+             return null;
+         }
 
-    public void putData(int score, Time total) {
+         ContentValues cv = new ContentValues();
+         for (int i = 0; i < 24; i+=2)
+         {
+             String title = "z" + i + "_" + (i+2);
+             long value = cursor.getLong(i / 2 +1);
+             cv.put(title, value);
+         }
+         cursor.close();
+         cursor = db.query(name + "_length", null, null, null, null, null, null);
+         if (cursor == null)
+         {
+             db.close();
+             return null;
+         }
+
+         if (cursor.moveToFirst() == false)
+         {
+             cursor.close();
+             db.close();
+             return null;
+         }
+
+         cv.put("a0_5", cursor.getLong(1));
+         cv.put("a5_10", cursor.getLong(2));
+         cv.put("a10_30", cursor.getLong(3));
+         cv.put("a30_INF", cursor.getLong(4));
+
+         cursor.close();
+         db.close();
+         return cv;
+     }*/
+    public void putData(Time begin, Time end) {
+
+        SharedPreferences mSharedPreferences = MyApplication.getAppContext().getSharedPreferences(MyApplication.getAppContext().getString(R.string.score_filename), Context.MODE_PRIVATE);
+        SharedPreferences.Editor mEditor = mSharedPreferences.edit();
+        long dura = mSharedPreferences.getLong("time", 0);
+        dura = dura + end.toMillis(true) - begin.toMillis(true);
+        if (end.yearDay != last.yearDay) {
+            last = end;
+            putDayTime(dura);
+        } else {
+            mEditor.putLong("time", dura);
+            mEditor.commit();
+        }
+
+    }
+
+    public void submitStartTime(Time begin) {
+        start = begin;
+    }
+
+    public void submitEndTime(Time end) {
+        if (start.toMillis(true) == 0) {
+            return;
+        }
+        putData(start, end);
+        start.set(0);
+        return;
+    }
+
+    public void putScore(int score) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         Time date = new Time();
         date.setToNow();
@@ -101,17 +124,25 @@ public class DataManager {
         }
         cursor.close();
 
+
+    }
+
+    public void putDayTime(long total) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Time date = new Time();
+        date.setToNow();
+        String[] col = new String[]{"date"};
+        String[] d = new String[]{String.valueOf(date.year) + date.month + date.monthDay};
+        Cursor cursor = db.query(DatabaseMetadata.TABLE_SCORE_NAME, col, "date=?", d, null, null, null);
         cursor = db.query(DatabaseMetadata.TABLE_TIME_NAME, col, "date=?", d, null, null, null);
         if (cursor == null || cursor.moveToFirst() == false) {
             ContentValues cv = new ContentValues();
-            long tmp = total.toMillis(true);
-            cv.put("time", tmp);
+            cv.put("time", total);
             db.update(DatabaseMetadata.TABLE_TIME_NAME, cv, "date=?", d);
         } else {
             ContentValues cv = new ContentValues();
-            long tmp = total.toMillis(true);
-            cv.put("time", tmp);
-            cv.put("score", score);
+            cv.put("time", total);
+            cv.put("date", d[0]);
             db.insert(DatabaseMetadata.TABLE_TIME_NAME, null, cv);
         }
         cursor.close();
@@ -141,6 +172,11 @@ public class DataManager {
         long ret = cursor.getLong(2);
         cursor.close();
         return ret;
+    }
+
+    public long getDayTime() {
+        SharedPreferences mSharedPreferences = MyApplication.getAppContext().getSharedPreferences(MyApplication.getAppContext().getString(R.string.score_filename), Context.MODE_PRIVATE);
+        return mSharedPreferences.getLong("time", 0);
     }
 	/*public void putData(Time begin, Time end) {
 		if ((int)(end.hour / 2) == (int)(begin.hour / 2)) {
