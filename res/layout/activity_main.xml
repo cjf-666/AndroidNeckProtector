@@ -1,143 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:id="@+id/home_page_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/home_bg"
+    android:orientation="vertical">
 
-  <LinearLayout
-      android:id="@+id/home_page_view"
-      android:layout_width="fill_parent"
-      android:layout_height="fill_parent"
-      android:orientation="vertical">
+  <TextView
+      android:id="@+id/main_title_text"
+      style="@style/title_text_style"
+      android:text="@string/main_title_bar_text" />
 
-    <RelativeLayout
-        android:id="@+id/main_title_bar"
-        android:layout_width="fill_parent"
-        android:layout_height="50.0dip"
-        android:background="@drawable/title_bar_bg" >
-
-      <ImageView
-	  android:id="@+id/textView1"
-	  android:layout_width="wrap_content"
-	  android:layout_height="25dip"
-	  android:layout_centerHorizontal="true"
-	  android:layout_centerVertical="true"
-	  android:layout_marginLeft="50dip"
-	  android:src="@drawable/title_bar_text" />
-
-      <Button
-	  android:id="@+id/info_button"
-	  android:layout_width="wrap_content"
-	  android:layout_height="wrap_content"
-	  android:layout_alignParentLeft="true"
-	  android:layout_centerVertical="true"
-	  android:layout_marginLeft="5dip"
-	  android:background="@drawable/ios_left_button"
-	  android:text="  统计  "
-	  android:textColor="#FFF" />
-
-      <Button
-	  android:id="@+id/settings_button"
-	  android:layout_width="wrap_content"
-	  android:layout_height="wrap_content"
-	  android:layout_alignParentRight="true"
-	  android:layout_centerVertical="true"
-	  android:layout_marginRight="5dip"
-	  android:background="@drawable/ios_right_button"
-	  android:text="  设置  "
-	  android:textColor="#FFF" />
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:background="#ff990077"
-        android:orientation="horizontal"
-        android:paddingBottom="5dp" >
-
-      <!-- android:layout_gravity="center_horizontal" -->
-
-      <LinearLayout
-	  android:layout_width="wrap_content"
-	  android:layout_height="wrap_content"
-	  android:layout_gravity="left"
-	  android:orientation="vertical" >
-
-	<TextView
-	    style="@style/rating_title_text"
-	    android:text="@string/day_rating" />
-
-	<ProgressBar
-	    style="?android:attr/progressBarStyleHorizontal"
-	    android:id="@+id/score_progressbar"
-	    android:layout_width="170dp"
-	    android:layout_height="25dp"
-	    android:background="@drawable/ratingbar_box"
-	    android:max="100"
-	    android:progressDrawable="@drawable/ratingbar" />
-      </LinearLayout>
-
-      <ImageView
-	  android:id="@+id/score_image_0"
-	  android:layout_width="wrap_content"
-	  android:layout_height="30dp"
-	  android:layout_gravity="center_vertical"
-	  android:src="@drawable/rating_number_0" />
-
-      <ImageView
-	  android:id="@+id/score_image_1"
-	  android:layout_width="wrap_content"
-	  android:layout_height="30dp"
-	  android:layout_gravity="center_vertical"
-	  android:src="@drawable/rating_number_0" />
-
-      <ImageView
-	  android:id="@+id/score_image_2"
-	  android:layout_width="wrap_content"
-	  android:layout_height="30dp"
-	  android:layout_gravity="center_vertical"
-	  android:src="@drawable/rating_number_0" />
-    </LinearLayout>
-
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+    
     <TextView
-        android:id="@+id/knowledge_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/cervical_knowledge" />
+	android:id="@+id/rating_textview"
+	android:text="@string/today_rating_text"
+	android:textSize="20sp"
+	android:layout_marginLeft="20dp"
+	android:textColor="#000000"
+	android:layout_width="wrap_content"
+	android:layout_height="40dp"
+	android:layout_alignParentTop="true"/>
+
+    <ImageView
+	android:id="@+id/score_image_0"
+	android:layout_below="@id/rating_textview"
+	android:layout_alignParentLeft="true"
+	android:layout_marginLeft="20dp"
+	android:layout_width="wrap_content"
+	android:layout_height="100dp"
+	android:src="@drawable/green_0" />
+
+    <ImageView
+	android:id="@+id/score_image_1"
+	android:layout_below="@id/rating_textview"
+	android:layout_toRightOf="@id/score_image_0"
+	android:layout_marginLeft="5dp"
+	android:layout_width="wrap_content"
+	android:layout_height="100dp"
+	android:src="@drawable/green_0" />
 
     <Button
-        android:id="@+id/sns_share_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="分享" />
+	android:id="@+id/info_button"
+	android:layout_below="@id/rating_textview"
+	android:layout_toRightOf="@id/score_image_1"
+	android:layout_marginLeft="10dp"
+	android:layout_marginTop="10dp"
+	android:layout_width="30dp"
+	android:layout_height="30dp"
+	android:background="@drawable/home_explain" />
 
-  </LinearLayout>
+    <ImageView
+	android:id="@+id/score_image_2"
+	android:layout_below="@id/info_button"
+	android:layout_toRightOf="@id/score_image_1"
+	android:layout_marginLeft="10dp"
+	android:layout_marginTop="10dp"
+	android:layout_width="wrap_content"
+	android:layout_height="50dp"
+	android:src="@drawable/green_score"/>      
 
-  <org.footoo.cjflsq.neck.settings.TimeSettingScrollView
-      android:id="@+id/seekbar_scroll_view"
+    <Button
+	android:id="@+id/sns_share_button"
+	android:layout_below="@id/info_button"
+	android:layout_toRightOf="@id/score_image_2"
+	android:layout_marginLeft="20dp"
+	android:layout_alignBottom="@id/score_image_2"
+	android:layout_width="wrap_content"
+	android:layout_height="30dp"
+	android:background="@drawable/home_share" />
+    
+    <Button
+	android:id="@+id/count_info_button"
+	android:layout_below="@id/info_button"
+	android:layout_toRightOf="@id/sns_share_button"
+	android:layout_alignBottom="@id/score_image_2"
+	android:layout_width="wrap_content"
+	android:layout_height="30dp"
+	android:layout_alignParentRight="true"
+	android:background="@drawable/home_bar" />
+
+  </RelativeLayout>
+
+  <RelativeLayout
       android:layout_width="fill_parent"
       android:layout_height="wrap_content"
-      android:background="#00ffffff"
-      android:scrollbars="none" >
-      <!-- android:fadingEdge="none" -->
+      android:orientation="horizontal"
+      android:layout_alignParentBottom="true">
 
-    <LinearLayout
-	android:id="@+id/top"
-	android:layout_width="fill_parent"
-	android:layout_height="50dip"
-	android:background="#00ffffff"
-	android:orientation="horizontal" >
-    </LinearLayout>
+     <Button
+	android:id="@+id/knowledge_button"
+	android:layout_width="30dp"
+	android:layout_height="30dp"
+	android:background="@drawable/home_explain" />
+     <Button
+	android:id="@+id/help_button"
+	android:layout_toRightOf="@id/knowledge_button"
+	android:layout_gravity="right"
+	android:layout_width="30dp"
+	android:layout_height="30dp"
+	android:background="@drawable/home_explain" />
+  </RelativeLayout>
 
-  </org.footoo.cjflsq.neck.settings.TimeSettingScrollView>
-
-<org.footoo.cjflsq.neck.gallery.GalleryFlow
-    android:id="@+id/gallery"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
-
-</FrameLayout>
+</LinearLayout>

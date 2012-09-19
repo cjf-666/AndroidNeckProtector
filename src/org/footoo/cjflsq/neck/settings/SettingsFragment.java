@@ -3,7 +3,7 @@ package org.footoo.cjflsq.neck.settings;
 import org.footoo.cjflsq.neck.R;
 
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
+/*import android.preference.PreferenceFragment;
 
 public class SettingsFragment extends PreferenceFragment {
     
@@ -11,4 +11,4 @@ public class SettingsFragment extends PreferenceFragment {
 	super.onCreate(savedInstanceState);
 	addPreferencesFromResource(R.xml.preferences);
     }
-}
+}*/

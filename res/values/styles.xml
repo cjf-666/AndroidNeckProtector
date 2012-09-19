@@ -1,14 +1,13 @@
 <resources>
 
     <style name="AppTheme" parent="android:Theme.Light" />
-    <style name="rating_title_text">
-        <item name="android:textSize">20.0sp</item>
-	<item name="android:textColor">#fffff8dc</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">5.0dip</item>
-        <item name="android:layout_marginRight">5.0dip</item>
-        <item name="android:singleLine">true</item>
+    <style name="title_text_style">
+        <item name="android:textSize">25.0sp</item>
+	<item name="android:textColor">#66cc66</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@drawable/title_bar_bg</item>
+	<item name="android:gravity">center</item>
     </style>
     
     <style name="custom_dialog_style" parent="android:style/Theme.Dialog">
