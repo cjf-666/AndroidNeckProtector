@@ -126,7 +126,7 @@ public class MainActivity extends Activity {
     private class KNOnClickListener implements OnClickListener {
 	@Override
 	public void onClick(View v) {
-	    Intent intent = new Intent(MainActivity.this, KnowActivity.class);
+	    Intent intent = new Intent(MainActivity.this, KNActivity.class);
 	    startActivity(intent);
 	    MainActivity.this.finish();
 	}
