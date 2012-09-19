@@ -3,7 +3,7 @@
 <!-- 分项列表标题背景 --> 
 <shape xmlns:android="http://schemas.android.com/apk/res/android">   
     
-    <gradient android:startColor="#35a1ce" android:endColor="#157ab6"   
+    <gradient android:startColor="#66cc66" android:endColor="#66cc66"   
         android:angle="270">
     </gradient>   
    
