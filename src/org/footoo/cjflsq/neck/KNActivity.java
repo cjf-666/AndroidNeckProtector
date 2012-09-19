@@ -35,5 +35,4 @@ public class KNActivity extends Activity {
 	}
 	return super.onKeyDown(keyCode, event);
     }	
->>>>>>> ui-mainact
 }

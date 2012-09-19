@@ -41,7 +41,7 @@ public class ScoreManager {
             tmp.minute = 0;
 
             calc(duration - (int) ((tmp.toMillis(false) - startTime.toMillis(false)) / 60000));
-	    /*putScoreToDatabase()*/
+	    DataManager.getInstance().putScore(score);
             set(99);
             calc(duration - (int) ((endTime.toMillis(false) - tmp.toMillis(false)) / 60000));
         } else {
@@ -50,90 +50,67 @@ public class ScoreManager {
     }
 
     private void calc(int drt) {
-        Log.v("caojingfan", new Integer(drt).toString());
-        if (drt > 3) {
-            deductScore(min(3, drt - 3) * factor * 2);
-        }
-        if (drt > 6) {
-            deductScore(min(6, drt - 6) * factor * 3);
-        }
-        if (drt > 12) {
-            deductScore((drt - 12) * factor * 4);
-        }
+	//Log.v("caojingfan",new Integer(drt).toString());
+	if (drt > 3) {
+	    deductScore(min(3, drt - 3) * factor * 1);
+	}
+	if (drt > 6) {
+	    deductScore(min(6, drt - 6) * factor * 2);
+	}
+	if (drt > 12) {
+	    deductScore((drt - 12) * factor * 3);
+	}
 
-        if (score < 0) {
-            set(0);
-        }
-	set(99);
-	calc(duration - (int) ((endTime.toMillis(false) - tmp.toMillis(false)) / 60000));
-    }     
-    else {
-	calc(duration);
-    }
-}
+	if (score < 0) {
+	    set(0);
+	}
 
-private void calc(int drt) {
-    Log.v("caojingfan",new Integer(drt).toString());
-    if (drt > 3) {
-	deductScore(min(3, drt - 3) * factor * 1);
-    }
-    if (drt > 6) {
-	deductScore(min(6, drt - 6) * factor * 2);
-    }
-    if (drt > 12) {
-	deductScore((drt - 12) * factor * 3);
     }
 
-    if (score < 0) {
-	set(0);
+    private int min(int a, int b) {
+	if (a < b) {
+	    return a;
+	} else {
+	    return b;
+	}
     }
 
-}
-
-private int min(int a, int b) {
-    if (a < b) {
-	return a;
-    } else {
-	return b;
-    }
-}
-
-public void submitStartTime(Time stTime) {
-    startTime = new Time(stTime);
-    if (startTime.hour >= 23 || startTime.hour <= 7 || startTime.hour >= 12 && startTime.hour <= 14) {
-	factor = 2;
-    }
-    else {
-	factor = 1;
-    }
+    public void submitStartTime(Time stTime) {
+	startTime = new Time(stTime);
+	if (startTime.hour >= 23 || startTime.hour <= 7 || startTime.hour >= 12 && startTime.hour <= 14) {
+	    factor = 2;
+	}
+	else {
+	    factor = 1;
+	}
 	
-    if (startTime.yearDay > endTime.yearDay || startTime.year > endTime.year) {
-	/*putdata*/
-	set(99);
+	if (startTime.yearDay > endTime.yearDay || startTime.year > endTime.year) {
+	    DataManager.getInstance().putScore(score);
+	    set(99);
+	}
     }
-}
 
-private int deductScore(int n) {
-    score -= n;
-    mEditor.putInt(scoreCate, score);
-    mEditor.commit();
-    return score;
-}
+    private int deductScore(int n) {
+	score -= n;
+	mEditor.putInt(scoreCate, score);
+	mEditor.commit();
+	return score;
+    }
 
-private int getScore() {
-    return score;
-}
+    private int getScore() {
+	return score;
+    }
 
-private int rewardScore(int n) {
-    score += n;
-    mEditor.putInt(scoreCate, score);
-    mEditor.commit();
-    return score;
-}
+    private int rewardScore(int n) {
+	score += n;
+	mEditor.putInt(scoreCate, score);
+	mEditor.commit();
+	return score;
+    }
 
-private void set(int s) {
-    score = s;
-    mEditor.putInt(scoreCate, score);
-    mEditor.commit();
-}
+    private void set(int s) {
+	score = s;
+	mEditor.putInt(scoreCate, score);
+	mEditor.commit();
+    }
 }
