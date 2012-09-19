@@ -81,8 +81,8 @@ public class TimeService extends Service {
     private void initNotification() {
         String ns = Context.NOTIFICATION_SERVICE;
         mNotificationManager = (NotificationManager) getSystemService(ns);
-        iconId = R.drawable.umeng_share_logo_renren;
-        tickerText = getString(R.string.notification_ticker_text).toString();
+	iconId = R.drawable.ic_launcher;
+	tickerText = getString(R.string.notification_ticker_text).toString();
 
         mContext = MyApplication.getAppContext();
         contentTitle = getString(R.string.notification_content_title).toString();

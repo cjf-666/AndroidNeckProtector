@@ -1,55 +1,68 @@
 <resources>
+  <string name="app_name">AndroidNeckProtector</string>
+  <string name="menu_settings">Settings</string>
+  <string name="title_activity_main">MainActivity</string>
+  <string name="dialog_activity_remind">提示您：</string>
+  <string name="settings_activity_label">设置</string>
 
-    <string name="app_name">AndroidNeckProtector</string>
-    <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="dialog_activity_remind">提示您：</string>
-    <string name="settings_activity_label">设置</string>
+  <string name="main_title_bar_text">颈椎休息区</string>
+  <string name="tips_title_bar_text">颈椎病小贴士</string>
+  <string name="today_rating_text">您的颈椎健康得分是</string>
 
-    <string name="main_title_bar_text">颈椎休息区</string>
-    <string name="tips_title_bar_text">颈椎病小贴士</string>
-    <string name="today_rating_text">您的颈椎健康得分是</string>
+  <string name="pref_key_time">time_interval</string>
+  <string name="pref_title_time">时间间隔</string>
+  <string name="pref_summ_time">调整两次提醒之间的时间间隔</string>
+  <string name="settings_preferences_filename">org.footoo.cjflsq.neck_preferences</string>
 
-    <string name="pref_key_time">time_interval</string>
-    <string name="pref_title_time">时间间隔</string>
-    <string name="pref_summ_time">调整两次提醒之间的时间间隔</string>
+  <string name="cervical_test_score">test_score</string>
 
-    <string name="settings_preferences_filename">org.footoo.cjflsq.neck_preferences</string>
+  <string name="everyday_score">score_key_today</string>
+  <string name="score_filename">org.footoo.cjflsq.neck_score</string>
 
-    <string name="cervical_test_score">test_score</string>
+  <string name="notification_ticker_text">猫头鹰颈椎保健提示您：时间到了，休息一下</string>
+  <string name="notification_content_title">猫头鹰颈椎保健提示您</string>
+  <string name="notification_content_text">时间到了，休息一下</string>
 
-    <string name="everyday_score">score_key_today</string>
-    <string name="score_filename">org.footoo.cjflsq.neck_score</string>
+  <string name="cervical_knowledge">颈椎病是一种常见病，凡长期从事办公室工作的人，如打字、写作等都会因姿势不当造成颈椎伤，此外，其发病还与受寒及潮湿等因素刺激有关。要防止颈椎病的发生，除了要纠正不良姿势、注意防潮、防冷外，还应积极加强锻炼，经常活动颈部。猫头鹰颈椎保健应用为您的颈椎保驾护航！</string>
 
-    <string name="notification_ticker_text">猫头鹰颈椎保健提示您：时间到了，休息一下</string>
-    <string name="notification_content_title">猫头鹰颈椎保健提示您</string>
-    <string name="notification_content_text">时间到了，休息一下</string>
-    <string name="cervical_knowledge">颈椎病是一种常见病，凡长期从事办公室工作的人，如打字、写作等都会因姿势不当造成颈椎伤，此外，其发病还与受寒及潮湿等因素刺激有关。要防止颈椎病的发生，除了要纠正不良姿势、注意防潮、防冷外，还应积极加强锻炼，经常活动颈部。猫头鹰颈椎保健应用为您的颈椎保驾护航！</string>
+  <string name="know_title_0">7：00——早晨主动调温</string>
+  <string name="know_title_1">10：00——5分钟的颈椎操</string>
+  <string name="know_title_2">14：00——两种按摩的方法</string>
+  <string name="know_title_3">18：00——做做户外运动</string>
+  <string name="know_title_4">20：00——晚餐补肾加分</string>
+  <string name="know_title_5">22：00——享受传统的热敷</string>
+  <string name="know_title_6">23：00——选择健康枕头</string>
 
-    
-    <string name="sns_shareto_top"> 选择分享方式</string>
-    <string name="sns_shareto_renren">人人网</string>
-    <string name="sns_shareto_sina">新浪微博</string>
-    <string name="sns_shareto_tencent">腾讯微博</string>
-    <string name="sns_update_edittext_hint">说点什么...</string>
-    <string name="sns_update_send">发布</string>
-    <string name="sns_update_img_load_failed">抱歉，图片文件加载失败！</string>
-    <string name="sns_update_content_empty">抱歉，分享内容不能为空！</string>
-    <string name="sns_update_unedit_topic">抱歉，尚未编辑话题！</string>
-    <string name="sns_update_updated"> 发布成功！ </string>
-    <string name="sns_update_updatefailed">抱歉，发布失败</string>
-    <string name="sns_update_repeated"> 抱歉，重复发布！ </string>
-    <string name="sns_update_file_too_large"> 抱歉，图片大小超过限制！ </string>
-    <string name="sns_update_file_not_exist"> 抱歉，文件不存在！ </string>
-    <string name="sns_update_msg_length_extends_limit">抱歉，字数超过限制！</string>
-    <string name="sns_update_network_unavailable">抱歉，网络原因请稍后再试！</string>
-    <string name="sns_update_extends_send_limit">抱歉，已超过一小时内的最大发送限制，请稍后重试！</string>
-    <string name="sns_update_uid_not_exist">尚未绑定账号或有效期已过，请重新绑定</string>
-    <string name="sns_update_app_blocked">抱歉，该分享功能已被停用！</string>
-    <string name="sns_oauth_linkserver">正在加载授权页面，请稍等...</string>
-    <string name="sns_snsservice_link_server">正在连接服务器，请稍等</string>
-    <string name="sns_snsservice_oauth_successed"> 授权成功！ </string>
-    <string name="sns_snsservice_oauth_failed">抱歉，授权失败！</string>
-    <string name="sns_snsservice_no_network">抱歉，无网络服务！</string>
-
+  <string name="know_content_0">古人喜欢穿长衣服，一方面是为了礼仪，其实另一方面也是养生之需。无论冬夏，都要给自己的颈椎以舒适的温度。即使是为了美丽，也要在办公室准备一件披肩，以保护好颈背部。偶然有受寒现象，给自己煎一碗驱寒汤：材料是红糖2汤匙、生姜7片，水煎10分钟，饮用1~2次就可以驱走寒气。</string>
+  <string name="know_content_1">即使身处人多的办公室，你也可以很好地保养颈椎，比如利用工间休息练习一下颈椎操：端坐，全身不动，单头部运动，分别做低头、抬头、左转、右转、前伸、后缩;顺、逆时针环绕动作。每次坚持5分钟，动作要轻缓、柔和。</string>
+  <string name="know_content_2">经过一上午的工作，到了下午两点钟，可能脖子早已疲惫不堪，精力有些不支，这里有两个最简单的急救方法：1.脖子后面，从头颅底端到躯干上部这一段分布着百劳穴的3个点。在不遗余力工作时，不妨抽出短短几分钟来按摩这3个反应点，即刻缓解颈椎疲劳，放松全身。2.两手手指互相交叉，放在颈部后方，来回摩擦颈部，力度要轻柔，连续摩擦50次，颈部发热后，会有很放松和舒适的感觉。</string>
+  <string name="know_content_3">软骨组织的营养可不是通过血液供给的，而是通过压力的变化来进行营养交换。如果缺乏活动的话，软骨就会遭遇营养不良，进而导致退化。增加户外活动是保养颈椎的方法之一，要向你推荐的运动项目是游泳、打球、放风筝、练瑜伽等。</string>
+  <string name="know_content_4">作为一位忙碌的上班族，你可能没有足够时间准备健康营养的早餐和午餐，那晚餐的时候可以吃一些营养骨髓的食物。中医认为胡桃、山萸肉、生地、黑芝麻、牛骨等具有补肾髓功能，可以把这些材料加入到你的晚餐中，以起到强壮筋骨，推迟肾与脊柱衰退的效果。</string>
+  <string name="know_content_5">将小茴香些许、盐250克一起炒热，装入布袋，放在颈背部热敷30分钟。每日1次。可改善颈背部血液循环，缓解肌肉痉挛。注意，别让温度太高或时间过久。</string>
+  <string name="know_content_6">枕头和床也是颈椎的亲密伴侣，枕头过高或者过低，床垫过于柔软都会连累颈椎。枕头宽度应达肩部，中间低、两端高的元宝形保健枕头对颈椎有很好的支撑作用，可以让颈椎得到很好的休息;对于颈椎不好的人来说，木板床、棕绷床是上选，而那种过分柔软的床不利于颈椎的保养。</string>
+  
+  <string name="sns_shareto_top"> 选择分享方式</string>
+  <string name="sns_shareto_renren">人人网</string>
+  <string name="sns_shareto_sina">新浪微博</string>
+  <string name="sns_shareto_tencent">腾讯微博</string>
+  <string name="sns_update_edittext_hint">说点什么...</string>
+  <string name="sns_update_send">发布</string>
+  <string name="sns_update_img_load_failed">抱歉，图片文件加载失败！</string>
+  <string name="sns_update_content_empty">抱歉，分享内容不能为空！</string>
+  <string name="sns_update_unedit_topic">抱歉，尚未编辑话题！</string>
+  <string name="sns_update_updated"> 发布成功！ </string>
+  <string name="sns_update_updatefailed">抱歉，发布失败</string>
+  <string name="sns_update_repeated"> 抱歉，重复发布！ </string>
+  <string name="sns_update_file_too_large"> 抱歉，图片大小超过限制！ </string>
+  <string name="sns_update_file_not_exist"> 抱歉，文件不存在！ </string>
+  <string name="sns_update_msg_length_extends_limit">抱歉，字数超过限制！</string>
+  <string name="sns_update_network_unavailable">抱歉，网络原因请稍后再试！</string>
+  <string name="sns_update_extends_send_limit">抱歉，已超过一小时内的最大发送限制，请稍后重试！</string>
+  <string name="sns_update_uid_not_exist">尚未绑定账号或有效期已过，请重新绑定</string>
+  <string name="sns_update_app_blocked">抱歉，该分享功能已被停用！</string>
+  <string name="sns_oauth_linkserver">正在加载授权页面，请稍等...</string>
+  <string name="sns_snsservice_link_server">正在连接服务器，请稍等</string>
+  <string name="sns_snsservice_oauth_successed"> 授权成功！ </string>
+  <string name="sns_snsservice_oauth_failed">抱歉，授权失败！</string>
+  <string name="sns_snsservice_no_network">抱歉，无网络服务！</string>
 </resources>

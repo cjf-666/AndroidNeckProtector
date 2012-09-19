@@ -1,36 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+    android:layout_width="200dp"
     android:layout_height="wrap_content"
+    android:background="@drawable/btn_bg"
     android:orientation="vertical">
 
-  <View
-      android:layout_width="fill_parent"
-      android:layout_height="50dp"
-      android:alpha="1"
-      android:background="#000000"
-      android:id="@+id/trans_view">
-  </View>
-
-  <LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <Button
-	android:id="@+id/time_scroll_button"
+  <RelativeLayout
+      android:layout_height="wrap_content"
+      android:layout_width="fill_parent">
+    <TextView
+	android:id="@+id/min_time"
+	android:text="@string/today_rating_text"
+	android:textSize="20sp"
+	android:layout_marginLeft="5dp"
+	android:textColor="#000000"
 	android:layout_width="wrap_content"
-	android:layout_height="fill_parent"
-	android:text="设置" />
+	android:layout_height="40dp"
+	android:layout_alignParentLeft="true"/>
+    <TextView
+	android:id="@+id/now_time"
+	android:text="@string/today_rating_text"
+	android:textSize="20sp"
+	android:layout_marginLeft="20dp"
+	android:textColor="#33ff00"
+	android:layout_width="wrap_content"
+	android:layout_height="40dp"
+	android:layout_centerInParent="true"/>
+    <TextView
+	android:id="@+id/max_time"
+	android:text="@string/today_rating_text"
+	android:textSize="20sp"
+	android:layout_marginRight="5dp"
+	android:textColor="#000000"
+	android:layout_width="wrap_content"
+	android:layout_height="40dp"
+	android:layout_alignParentRight="true"/>
+  </RelativeLayout>
 
-    <SeekBar
-	android:id="@+id/time_interval_seekbar"
-	android:layout_width="100dp"
+  <SeekBar
+      android:id="@+id/time_interval_seekbar"
+      android:layout_width="200dp"
+      android:layout_height="fill_parent"
+      android:background="@drawable/ratingbar_box"
+      android:progressDrawable="@drawable/ratingbar"/>
+
+  <RelativeLayout
+      android:layout_width="wrap_content"
+      android:layout_height="45dp">
+    <Button
+	android:id="@+id/time_yes_button"
+	android:layout_width="80dp"
 	android:layout_height="fill_parent"
-	android:background="@drawable/ratingbar_box"
-	android:progressDrawable="@drawable/ratingbar" >
-    </SeekBar>
-  </LinearLayout>
+	android:drawable="@drawable/btn_bg"
+	android:text="确定"
+	android:textColor="#ffffff"/>
+    <Button
+	android:id="@+id/time_no_button"
+	android:layout_width="80dp"
+	android:layout_height="fill_parent"
+	android:layout_alignParentRight="true"
+	android:drawable="@drawable/btn_bg"
+	android:text="取消"
+	android:textColor="#ffffff"/>
+  </RelativeLayout>
 
 </LinearLayout>

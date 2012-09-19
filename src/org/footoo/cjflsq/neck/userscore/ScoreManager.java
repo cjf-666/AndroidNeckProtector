@@ -16,6 +16,7 @@ public class ScoreManager {
     private String scoreCate;
     private static ScoreManager instance = new ScoreManager();
     private Time startTime;
+    private Time endTime = new Time();
     private int factor = 1;
 
     public static ScoreManager getInstance() {
@@ -23,14 +24,16 @@ public class ScoreManager {
     }
 
     private ScoreManager() {
-        scoreCate = MyApplication.getAppContext().getString(R.string.everyday_score);
-        mSharedPreferences = MyApplication.getAppContext().getSharedPreferences(MyApplication.getAppContext().getString(R.string.score_filename), Context.MODE_PRIVATE);
-        mEditor = mSharedPreferences.edit();
-        score = mSharedPreferences.getInt(scoreCate, 100);
+	scoreCate = MyApplication.getAppContext().getString(R.string.everyday_score);
+	mSharedPreferences = MyApplication.getAppContext().getSharedPreferences(MyApplication.getAppContext().getString(R.string.score_filename), Context.MODE_PRIVATE);
+	mEditor = mSharedPreferences.edit();
+	score = mSharedPreferences.getInt(scoreCate, 99);
+	endTime.set(0);
     }
-
-    public void submitEndTime(Time endTime) {
-        int duration = (int) ((endTime.toMillis(false) - startTime.toMillis(false)) / 60000);
+    
+    public void submitEndTime(Time enTime) {
+	endTime = new Time(enTime);
+	int duration = (int) ((endTime.toMillis(false) - startTime.toMillis(false)) / 60000);
 
         if (endTime.yearDay > startTime.yearDay || endTime.year > startTime.year) {
             Time tmp = new Time(endTime);
@@ -39,7 +42,7 @@ public class ScoreManager {
 
             calc(duration - (int) ((tmp.toMillis(false) - startTime.toMillis(false)) / 60000));
 	    /*putScoreToDatabase()*/
-            set(100);
+            set(99);
             calc(duration - (int) ((endTime.toMillis(false) - tmp.toMillis(false)) / 60000));
         } else {
             calc(duration);
@@ -61,46 +64,76 @@ public class ScoreManager {
         if (score < 0) {
             set(0);
         }
+	set(99);
+	calc(duration - (int) ((endTime.toMillis(false) - tmp.toMillis(false)) / 60000));
+    }     
+    else {
+	calc(duration);
+    }
+}
+
+private void calc(int drt) {
+    Log.v("caojingfan",new Integer(drt).toString());
+    if (drt > 3) {
+	deductScore(min(3, drt - 3) * factor * 1);
+    }
+    if (drt > 6) {
+	deductScore(min(6, drt - 6) * factor * 2);
+    }
+    if (drt > 12) {
+	deductScore((drt - 12) * factor * 3);
     }
 
-    private int min(int a, int b) {
-        if (a < b) {
-            return a;
-        } else {
-            return b;
-        }
+    if (score < 0) {
+	set(0);
     }
 
-    public void submitStartTime(Time stTime) {
-        startTime = new Time(stTime);
-        if (startTime.hour >= 23 || startTime.hour <= 7 || startTime.hour >= 12 && startTime.hour <= 14) {
-            factor = 2;
-        } else {
-            factor = 1;
-        }
-    }
+}
 
-    private int deductScore(int n) {
-        score -= n;
-        mEditor.putInt(scoreCate, score);
-        mEditor.commit();
-        return score;
+private int min(int a, int b) {
+    if (a < b) {
+	return a;
+    } else {
+	return b;
     }
+}
 
-    private int getScore() {
-        return score;
+public void submitStartTime(Time stTime) {
+    startTime = new Time(stTime);
+    if (startTime.hour >= 23 || startTime.hour <= 7 || startTime.hour >= 12 && startTime.hour <= 14) {
+	factor = 2;
     }
+    else {
+	factor = 1;
+    }
+	
+    if (startTime.yearDay > endTime.yearDay || startTime.year > endTime.year) {
+	/*putdata*/
+	set(99);
+    }
+}
 
-    private int rewardScore(int n) {
-        score += n;
-        mEditor.putInt(scoreCate, score);
-        mEditor.commit();
-        return score;
-    }
+private int deductScore(int n) {
+    score -= n;
+    mEditor.putInt(scoreCate, score);
+    mEditor.commit();
+    return score;
+}
 
-    private void set(int s) {
-        score = s;
-        mEditor.putInt(scoreCate, score);
-        mEditor.commit();
-    }
+private int getScore() {
+    return score;
+}
+
+private int rewardScore(int n) {
+    score += n;
+    mEditor.putInt(scoreCate, score);
+    mEditor.commit();
+    return score;
+}
+
+private void set(int s) {
+    score = s;
+    mEditor.putInt(scoreCate, score);
+    mEditor.commit();
+}
 }
