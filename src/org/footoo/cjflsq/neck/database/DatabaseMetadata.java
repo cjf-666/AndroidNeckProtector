@@ -15,5 +15,9 @@ public class DatabaseMetadata {
 	public static final String TABLE_STATISTICS_LENGTH_NAME = "stat_length";
 	
 	public static final String TABLE_HISTORY_NAME = "histroy";
+	
+	public static final String TABLE_SCORE_NAME = "score";
+	
+	public static final String TABLE_TIME_NAME = "time";
 
 }

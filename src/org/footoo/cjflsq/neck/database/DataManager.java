@@ -22,7 +22,7 @@ public class DataManager {
 		return theSingleton;
 	}
 
-	private ContentValues getStat(String name){
+/*	private ContentValues getStat(String name){
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		Cursor cursor = db.query(name, null, null, null, null, null, null);
 		if (cursor == null)
@@ -68,9 +68,9 @@ public class DataManager {
 		cursor.close();
 		db.close();
 		return cv;	
-	}
+	}*/
 	
-	public void submitStartTime(Time begin){
+/*	public void submitStartTime(Time begin){
 		start = begin;
 	}
 	
@@ -80,9 +80,46 @@ public class DataManager {
 		putData(start, end);
 		start.set(0);
 		return;
+	}*/
+	
+	public void putData(int score, Time total) {
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		Time date = new Time();
+		date.setToNow();
+		String[] col = new String[]{"date"};
+		String[] d = new String[]{String.valueOf(date.year)+date.month+date.monthDay};
+		Cursor cursor = db.query(DatabaseMetadata.TABLE_SCORE_NAME, col, "date=?", d, null, null, null);
+		if (cursor == null || cursor.moveToFirst() == false)
+		{
+			ContentValues cv = new ContentValues();
+			cv.put("score", score);
+			db.update(DatabaseMetadata.TABLE_SCORE_NAME, cv, "date=?", d);
+		}else{
+			ContentValues cv = new ContentValues();
+			cv.put("score", score);
+			cv.put("date", d[0]);
+			db.insert(DatabaseMetadata.TABLE_SCORE_NAME, null, cv);
+		}
+		cursor.close();
+		
+		cursor = db.query(DatabaseMetadata.TABLE_TIME_NAME, col, "date=?", d, null, null, null);
+		if (cursor == null || cursor.moveToFirst() == false)
+		{
+			ContentValues cv = new ContentValues();
+			long tmp = total.toMillis(true);
+			cv.put("time", tmp);
+			db.update(DatabaseMetadata.TABLE_TIME_NAME, cv, "date=?", d);
+		}else{
+			ContentValues cv = new ContentValues();
+			long tmp = total.toMillis(true);
+			cv.put("time", tmp);
+			cv.put("score", score);
+			db.insert(DatabaseMetadata.TABLE_TIME_NAME, null, cv);
+		}
+		cursor.close();
 	}
 	
-	public void putData(Time begin, Time end) {
+	/*public void putData(Time begin, Time end) {
 		if ((int)(end.hour / 2) == (int)(begin.hour / 2)) {
 			SQLiteDatabase db = dbHelper.getWritableDatabase();
 			String[] col = new String[1];
@@ -168,6 +205,6 @@ public class DataManager {
 		cursor.close();
 		db.close();
 		return ret;
-	}
+	}*/
 
 }

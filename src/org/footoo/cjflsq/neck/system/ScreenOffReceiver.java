@@ -13,8 +13,8 @@ public class ScreenOffReceiver extends BroadcastReceiver {
     static private Time endTime = new Time();
     public void onReceive(Context context, Intent intent) {
 	endTime.setToNow();
-	DataManager.getInstance().submitEndTime(endTime);
-	ScoreManager.getInstance().submitEndTime(endTime);
+	//DataManager.getInstance().submitEndTime(endTime);
+	//ScoreManager.getInstance().submitEndTime(endTime);
 	
 	Intent stopIntent = new Intent(context, TimeService.class);
 	context.stopService(stopIntent);

@@ -31,6 +31,14 @@ class DatabaseHelper extends SQLiteOpenHelper {
 			+ DatabaseMetadata.TABLE_HISTORY_NAME
 			+ "( _id INTEGER PRIMARY KEY, date TEXT, time TEXT)";
 
+	private static final String TABLE_SCORE_CREATE = "CREATE TABLE "
+			+ DatabaseMetadata.TABLE_SCORE_NAME
+			+ " ( _id INTEGER PRIMARY KEY, score INTEGER, date TEXT)";
+	
+	private static final String TABLE_TIME_CREATE = "CREATE TABLE "
+			+ DatabaseMetadata.TABLE_TIME_NAME
+			+ "( _id INTEGER PRIMARY KEY,  time TEXT, date TEXT)";
+	
 	public DatabaseHelper() {
 		super(MyApplication.getAppContext(), 
 				DatabaseMetadata.DB_NAME, null, DatabaseMetadata.DB_VERSION);
@@ -45,6 +53,8 @@ class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(TABLE_STATISTICS_TIME_CREATE);
 		db.execSQL(TABLE_STATISTICS_LENGTH_CREATE);
 		db.execSQL(TABLE_HISTORY_CREATE);
+		db.execSQL(TABLE_TIME_CREATE);
+		db.execSQL(TABLE_SCORE_CREATE);
 	}
 
 	@Override
