@@ -4,7 +4,7 @@ import org.footoo.cjflsq.neck.R;
 import org.footoo.cjflsq.neck.sns.SNSSupport;
 import org.footoo.cjflsq.neck.sns.SNSShareActivity;
 import org.footoo.cjflsq.neck.system.TimeService;
-import org.footoo.cjflsq.neck.settings.TimeSettingScrollView;
+import org.footoo.cjflsq.neck.settings.TimeSeekBarActivity;
 import org.footoo.cjflsq.neck.settings.SizeCallBackForSetting;
 import org.footoo.cjflsq.neck.settings.SizeCallBack;
 
@@ -38,6 +38,9 @@ public class MainActivity extends Activity {
 
 	Button knButton = (Button) findViewById(R.id.knowledge_button);
         knButton.setOnClickListener(new KNOnClickListener());
+
+	Button setButton = (Button) findViewById(R.id.time_scroll_button);
+	setButton.setOnClickListener(new SetOnClickListener());
 
 	/*mScrollView = (TimeSettingScrollView) findViewById(R.id.seekbar_scroll_view);
  
@@ -126,7 +129,16 @@ public class MainActivity extends Activity {
     private class KNOnClickListener implements OnClickListener {
 	@Override
 	public void onClick(View v) {
-	    Intent intent = new Intent(MainActivity.this, KnowActivity.class);
+	    Intent intent = new Intent(MainActivity.this, KNActivity.class);
+	    startActivity(intent);
+	    MainActivity.this.finish();
+	}
+    }
+
+    private class SetOnClickListener implements OnClickListener {
+	@Override
+	public void onClick(View v) {
+	    Intent intent = new Intent(MainActivity.this, TimeSeekBarActivity.class);
 	    startActivity(intent);
 	    MainActivity.this.finish();
 	}

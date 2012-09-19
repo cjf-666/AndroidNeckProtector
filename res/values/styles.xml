@@ -1,16 +1,40 @@
 <resources>
 
-    <style name="AppTheme" parent="android:Theme.Light" />
-    <style name="title_text_style">
-        <item name="android:textSize">25.0sp</item>
-	<item name="android:textColor">#66cc66</item>
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">50dp</item>
-        <item name="android:background">@drawable/title_bar_bg</item>
-	<item name="android:gravity">center</item>
-    </style>
-    
-    <style name="custom_dialog_style" parent="android:style/Theme.Dialog">
-	<item name="android:windowNoTitle">true</item>
-    </style>
+  <style name="AppTheme" parent="android:Theme.Light" />
+  <style name="title_text_style">
+    <item name="android:textSize">25.0sp</item>
+    <item name="android:textColor">#66cc66</item>
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:background">@drawable/title_bar_bg</item>
+    <item name="android:gravity">center</item>
+  </style>
+
+  <style name="tips_title_text_style">
+    <item name="android:textSize">25.0sp</item>
+    <item name="android:textColor">#66cc66</item>
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:gravity">center</item>
+  </style>
+
+  <style name="know_title_style">
+    <item name="android:textSize">20.0sp</item>
+    <item name="android:textColor">#000000</item>
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:gravity">left</item>
+  </style>
+  
+  <style name="know_content_style">
+    <item name="android:textSize">15.0sp</item>
+    <item name="android:textColor">#5e6b49</item>
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:gravity">left</item>
+  </style>
+  
+  <style name="custom_dialog_style" parent="android:style/Theme.Dialog">
+    <item name="android:windowNoTitle">true</item>
+  </style>
 </resources>

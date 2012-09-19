@@ -59,8 +59,16 @@
 	</activity>
 
 	<activity
+	    android:name=".settings.TimeSeekBarActivity"
+	    android:theme="@style/custom_dialog_style">
+	</activity>
+
+	<activity
 	    android:name=".settings.SettingsActivity"
 	    android:label="@string/settings_activity_label">
+	</activity>
+	<activity
+	    android:name="KNActivity">
 	</activity>
 
     </application>
