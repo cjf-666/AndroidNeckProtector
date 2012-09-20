@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.footoo.cjflsq.neck"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0"
+    android:installLocation="preferExternal">
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -16,6 +17,11 @@
         <activity
             android:name=".MainActivity"
             android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity
+                android:name=".VideoViewActivity"
+                android:theme="@android:style/Theme.NoTitleBar"
+                android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".WelcomeActivity"

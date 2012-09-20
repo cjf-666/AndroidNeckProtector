@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
+import org.footoo.cjflsq.neck.database.DataManager;
 import org.footoo.cjflsq.neck.gallery.GalleryFlow;
 import org.footoo.cjflsq.neck.gallery.ImageAdapter;
 import org.footoo.cjflsq.neck.sns.SNSShareActivity;
@@ -30,6 +31,8 @@ public class MainActivity extends Activity {
 
         Button cinfoButton = (Button) findViewById(R.id.count_info_button);
         cinfoButton.setOnClickListener(new CountInfoOnClickListener());
+
+        DataManager.getInstance().putScore(1);
 	/*mScrollView = (TimeSettingScrollView) findViewById(R.id.seekbar_scroll_view);
  
 	  mSeekBar = getLayoutInflater().inflate(R.layout.time_seekbar_scrollview, null);
@@ -61,11 +64,12 @@ public class MainActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 if (parent.getSelectedItemId() == id) {
-                    Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
-                            //"://org.footoo.cjflsq.neck/res/raw/m" + (id + 1) + ".mp4");
+                  /*  Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
                             "://org.footoo.cjflsq.neck/" + R.raw.m2);
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setDataAndType(uri, "video/*");
+                    Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                    intent.setDataAndType(uri, "video*//*");
+                    startActivity(intent);*/
+                    Intent intent = new Intent(MainActivity.this, VideoViewActivity.class);
                     startActivity(intent);
                 }
             }

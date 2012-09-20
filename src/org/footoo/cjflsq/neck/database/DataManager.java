@@ -176,7 +176,11 @@ public class DataManager {
 
     public long getDayTime() {
         SharedPreferences mSharedPreferences = MyApplication.getAppContext().getSharedPreferences(MyApplication.getAppContext().getString(R.string.score_filename), Context.MODE_PRIVATE);
-        return mSharedPreferences.getLong("time", 0);
+        long ret =  mSharedPreferences.getLong("time", 0);
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putLong("time", 0);
+        editor.commit();
+        return ret;
     }
 	/*public void putData(Time begin, Time end) {
 		if ((int)(end.hour / 2) == (int)(begin.hour / 2)) {
