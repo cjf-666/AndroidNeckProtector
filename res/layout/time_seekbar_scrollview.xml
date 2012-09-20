@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="200dp"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/btn_bg"
     android:orientation="vertical">
+
+  <RelativeLayout
+      android:layout_width="fill_parent"
+      android:layout_height="50dp"
+      android:background="@drawable/title_bar_bg">
+    <Button
+	android:id="@+id/noti_off_button"
+	android:layout_width="50dp"
+	android:layout_height="50dp"
+	android:background="@drawable/btn_bg"
+	android:textColor="#ffffff"/>
+    <TextView
+	android:id="@+id/adjust_title_text"
+	android:layout_centerInParent="true"
+	android:layout_alignParentTop="true"
+	style="@style/tips_title_text_style"
+	android:text="@string/time_adjust_text"/>
+  </RelativeLayout>
 
   <RelativeLayout
       android:layout_height="wrap_content"
@@ -14,40 +32,41 @@
 	android:text="@string/today_rating_text"
 	android:textSize="20sp"
 	android:layout_marginLeft="5dp"
-	android:textColor="#000000"
+	android:textColor="#339900"
 	android:layout_width="wrap_content"
-	android:layout_height="40dp"
+	android:layout_height="35dp"
 	android:layout_alignParentLeft="true"/>
     <TextView
 	android:id="@+id/now_time"
 	android:text="@string/today_rating_text"
 	android:textSize="20sp"
 	android:layout_marginLeft="20dp"
-	android:textColor="#33ff00"
+	android:textColor="#8eb94b"
 	android:layout_width="wrap_content"
-	android:layout_height="40dp"
+	android:layout_height="35dp"
 	android:layout_centerInParent="true"/>
     <TextView
 	android:id="@+id/max_time"
 	android:text="@string/today_rating_text"
 	android:textSize="20sp"
 	android:layout_marginRight="5dp"
-	android:textColor="#000000"
+	android:textColor="#339900"
 	android:layout_width="wrap_content"
-	android:layout_height="40dp"
+	android:layout_height="35dp"
 	android:layout_alignParentRight="true"/>
   </RelativeLayout>
 
   <SeekBar
       android:id="@+id/time_interval_seekbar"
-      android:layout_width="200dp"
+      android:layout_width="fill_parent"
       android:layout_height="fill_parent"
-      android:background="@drawable/ratingbar_box"
-      android:progressDrawable="@drawable/ratingbar"/>
+      android:progressDrawable="@drawable/ratingbar"
+      android:thumb="@drawable/thumb"/>
 
   <RelativeLayout
       android:layout_width="wrap_content"
-      android:layout_height="45dp">
+      android:layout_height="45dp"
+      android:layout_marginTop="5dp">
     <Button
 	android:id="@+id/time_yes_button"
 	android:layout_width="80dp"

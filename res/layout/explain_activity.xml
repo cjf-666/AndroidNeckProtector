@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:orientation="vertical"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"
+    android:background="@drawable/tips_bg">
+  
+  <RelativeLayout
+      android:layout_width="fill_parent"
+      android:layout_height="50dp"
+      android:background="@drawable/title_bar_bg">
+    <Button
+	android:id="@+id/exp_return_button"
+	android:layout_width="50dp"
+	android:layout_height="50dp"
+	android:background="@drawable/back_green"/>
+    <TextView
+	android:id="@+id/tips_title_text"
+	android:layout_centerInParent="true"
+	android:layout_alignParentTop="true"
+	style="@style/tips_title_text_style"
+	android:text="@string/exp_title_bar_text"/>
+  </RelativeLayout>
+  
+    <LinearLayout                       
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"  >   
+      <TextView    
+	  style="@style/know_title_style"
+	  android:text="@string/exp_title"
+	  android:layout_marginLeft="15dp"/>
+       <ImageView
+	  android:layout_width="fill_parent"
+	  android:layout_height="1dp"
+	  android:layout_marginLeft="15dp"
+	  android:layout_marginRight="15dp"
+	  android:src="@drawable/tips_line"
+	  android:scaleType="fitXY"
+	  android:layout_marginTop="5dp"/>
+      <TextView    
+	  style="@style/know_content_style"
+	  android:text="@string/exp_content"
+	  android:layout_marginLeft="5dp"
+	  android:layout_marginTop="10dp" />
+    </LinearLayout>  
+
+</LinearLayout>

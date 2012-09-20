@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+
 
 public class ImageAdapter extends BaseAdapter {
     int mGalleryItemBackground;
@@ -83,8 +85,8 @@ public class ImageAdapter extends BaseAdapter {
             ImageView imageView = new ImageView(mContext);
             imageView.setImageBitmap(bitmapWithReflection);
             //设置imageView大小 ，也就是最终显示的图片大小
-            imageView.setLayoutParams(new GalleryFlow.LayoutParams(300, 400));
-            //imageView.setScaleType(ScaleType.MATRIX);
+            imageView.setLayoutParams(new GalleryFlow.LayoutParams(120, 200));
+            imageView.setScaleType(ScaleType.FIT_XY);
             mImages[index++] = imageView;
         }
         return true;

@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:background="@drawable/bar_bg">
-    <LinearLayout android:id="@+id/chart"
-                  android:orientation="horizontal"
-                  android:gravity="center"
-                  android:layout_width="fill_parent"
-                  android:layout_height="220dip"
-                  android:layout_marginTop="150dip"
-                  android:layout_marginLeft="20dip"
-                  android:layout_marginRight="20dip"/>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/tips_bg">
+
+  <RelativeLayout
+      android:layout_width="fill_parent"
+      android:layout_height="50dp"
+      android:background="@drawable/title_bar_bg"
+      android:gravity="center_vertical">
+    <Button
+	android:id="@+id/ct_return_button"
+	android:layout_width="40dp"
+	android:layout_height="40dp"
+	android:background="@drawable/back_green"/>
+    <TextView
+	android:id="@+id/count_title_text"
+	android:layout_centerInParent="true"
+	style="@style/tips_title_text_style"
+	android:text="@string/count_title_bar_text"/>
+  </RelativeLayout>
+
+  <LinearLayout
+      android:id="@+id/chart"
+      android:orientation="horizontal"
+      android:gravity="center"
+      android:layout_width="fill_parent"
+      android:layout_height="220dip"
+      android:layout_marginTop="150dip"
+      android:layout_marginLeft="20dip"
+      android:layout_marginRight="20dip"/>
 </LinearLayout>

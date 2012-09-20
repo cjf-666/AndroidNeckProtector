@@ -5,8 +5,8 @@
     <clip>
       <shape>
 	<corners android:radius="3dp"/>
-	<gradient android:startColor="#cc0000" 
-		  android:endColor="#cc0000"
+	<gradient android:startColor="#8eb94b" 
+		  android:endColor="#8eb94b"
 		  android:angle="270" 
 		  android:centerY="0.75" />
       </shape>
@@ -16,8 +16,8 @@
     <clip>
       <shape>
 	<corners android:radius="3dp"/>
-	<gradient android:startColor="#cc0000"
-		  android:endColor="#cc0000"
+	<gradient android:startColor="#8eb94b"
+		  android:endColor="#8eb94b"
 		  android:angle="270"
 		  android:centerY="0.25"/>
       </shape>

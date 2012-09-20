@@ -8,10 +8,12 @@
   <string name="main_title_bar_text">颈椎休息区</string>
   <string name="tips_title_bar_text">颈椎病小贴士</string>
   <string name="today_rating_text">您的颈椎健康得分是</string>
+  <string name="exp_title_bar_text">颈椎健康得分解释</string>
+  <string name="time_adjust_text">提醒时间间隔(分钟)</string>
+  <string name="count_title_bar_text">数据统计</string>
 
   <string name="pref_key_time">time_interval</string>
-  <string name="pref_title_time">时间间隔</string>
-  <string name="pref_summ_time">调整两次提醒之间的时间间隔</string>
+  <string name="pref_key_on">adjust_on_off</string>
   <string name="settings_preferences_filename">org.footoo.cjflsq.neck_preferences</string>
 
   <string name="cervical_test_score">test_score</string>
@@ -23,7 +25,8 @@
   <string name="notification_content_title">猫头鹰颈椎保健提示您</string>
   <string name="notification_content_text">时间到了，休息一下</string>
 
-  <string name="cervical_knowledge">颈椎病是一种常见病，凡长期从事办公室工作的人，如打字、写作等都会因姿势不当造成颈椎伤，此外，其发病还与受寒及潮湿等因素刺激有关。要防止颈椎病的发生，除了要纠正不良姿势、注意防潮、防冷外，还应积极加强锻炼，经常活动颈部。猫头鹰颈椎保健应用为您的颈椎保驾护航！</string>
+  <string name="exp_title">颈椎健康得分是如何计算的？</string>
+  <string name="exp_content">猫头鹰颈椎保健根据您使用手机的时长来推测您颈椎的健康程度。若一次持续使用手机时间过长，会导致分数降低；且一天内使用手机总时长过长，也会导致分数降低。别急，跟着猫头鹰颈椎保健一起做颈椎保健操，有助于提高得分。加油，为了您的颈椎健康！</string>
 
   <string name="know_title_0">7：00——早晨主动调温</string>
   <string name="know_title_1">10：00——5分钟的颈椎操</string>

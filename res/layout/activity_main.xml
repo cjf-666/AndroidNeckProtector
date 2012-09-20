@@ -86,7 +86,7 @@
     <Button
 	android:id="@+id/time_scroll_button"
 	android:layout_width="wrap_content"
-	android:layout_height="45dp"
+	android:layout_height="43dp"
 	android:layout_alignParentRight="true"
 	android:layout_above="@id/count_info_button"
 	android:layout_marginBottom="10dp"
@@ -94,35 +94,37 @@
 
   </RelativeLayout>
 
+    <org.footoo.cjflsq.neck.gallery.GalleryFlow
+	android:layout_marginTop="5dp"
+	android:layout_below="@id/main_pannel"
+	android:id="@+id/gallery"
+	android:layout_width="fill_parent"
+	android:layout_height="300dp"/>
+
   <RelativeLayout
       android:layout_width="fill_parent"
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
-      android:id="@+id/home_bottom_bar">
+      android:layout_marginBottom="5dp"
+      android:layout_below="@id/gallery"
+      android:id="@+id/home_bottom_bar"
+      android:gravity="center_vertical">
 
     <Button
 	android:id="@+id/knowledge_button"
 	android:layout_alignParentLeft="true"
-	android:layout_width="30dp"
-	android:layout_height="30dp"
+	android:layout_marginLeft="5dp"
+	android:layout_width="32dp"
+	android:layout_height="35dp"
 	android:background="@drawable/home_know" />
 
     <Button
 	android:id="@+id/help_button"
 	android:layout_alignParentRight="true"
-	android:layout_width="30dp"
-	android:layout_height="30dp"
+	android:layout_marginRight="5dp"
+	android:layout_width="32dp"
+	android:layout_height="35dp"
 	android:background="@drawable/home_help" />
   </RelativeLayout>
-
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_below="@id/main_pannel">
-    <org.footoo.cjflsq.neck.gallery.GalleryFlow
-	android:id="@+id/gallery"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"/>
-  </LinearLayout>
 
 </RelativeLayout>

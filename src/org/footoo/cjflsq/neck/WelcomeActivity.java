@@ -53,7 +53,7 @@ public class WelcomeActivity extends Activity {
                 // 默认进入程序后第一张图片被选中;
                 imageViews[i].setBackgroundResource(R.drawable.guide_dot_white);
             } else {
-                imageViews[i].setBackgroundResource(R.drawable.guide_dot_black);
+                imageViews[i].setBackgroundResource(R.drawable.guide_dot_white);
             }
             group.addView(imageView);
         }
@@ -173,7 +173,7 @@ public class WelcomeActivity extends Activity {
                         .setBackgroundResource(R.drawable.guide_dot_white);
                 if (arg0 != i) {
                     imageViews[i]
-                            .setBackgroundResource(R.drawable.guide_dot_black);
+                            .setBackgroundResource(R.drawable.guide_dot_white);
                 }
             }
             currentitem = arg0;

@@ -51,11 +51,11 @@
 	  style="@style/know_content_style"
 	  android:id="@+id/kn_ct_0"
 	  android:text="@string/know_content_0"
-	  android:layout_marginLeft="5dp"
+	  android:layout_marginLeft="15dp"
 	  android:layout_marginTop="10dp" />
       <ImageView
 	  android:layout_width="fill_parent"
-	  android:layout_height="2dp"
+	  android:layout_height="1dp"
 	  android:layout_marginLeft="10dp"
 	  android:layout_marginRight="10dp"
 	  android:src="@drawable/tips_line"
@@ -80,10 +80,10 @@
 	  android:id="@+id/kn_ct_1"
 	  android:text="@string/know_content_1"
 	  android:layout_marginTop="10dp"
-	  android:layout_marginLeft="5dp"/>
+	  android:layout_marginLeft="15dp"/>
       <ImageView
 	  android:layout_width="fill_parent"
-	  android:layout_height="2dp"
+	  android:layout_height="1dp"
 	  android:layout_marginLeft="10dp"
 	  android:layout_marginRight="10dp"
 	  android:src="@drawable/tips_line"
@@ -108,7 +108,7 @@
 	  android:id="@+id/kn_ct_2"
 	  android:text="@string/know_content_2"
 	  android:layout_marginTop="10dp"
-	  android:layout_marginLeft="5dp"/>
+	  android:layout_marginLeft="15dp"/>
       <ImageView
 	  android:layout_width="fill_parent"
 	  android:layout_height="2dp"
@@ -136,10 +136,10 @@
 	  android:id="@+id/kn_ct_4"
 	  android:text="@string/know_content_4"
 	  android:layout_marginTop="10dp"
-	  android:layout_marginLeft="5dp"/>
+	  android:layout_marginLeft="15dp"/>
       <ImageView
 	  android:layout_width="fill_parent"
-	  android:layout_height="2dp"
+	  android:layout_height="1dp"
 	  android:layout_marginLeft="10dp"
 	  android:layout_marginRight="10dp"
 	  android:src="@drawable/tips_line"
@@ -164,10 +164,10 @@
 	  android:id="@+id/kn_ct_5"
 	  android:text="@string/know_content_5"
 	  android:layout_marginTop="10dp"
-	  android:layout_marginLeft="5dp"/>
+	  android:layout_marginLeft="15dp"/>
       <ImageView
 	  android:layout_width="fill_parent"
-	  android:layout_height="2dp"
+	  android:layout_height="1dp"
 	  android:layout_marginLeft="10dp"
 	  android:layout_marginRight="10dp"
 	  android:src="@drawable/tips_line"
@@ -192,7 +192,7 @@
 	  android:id="@+id/kn_ct_6"
 	  android:text="@string/know_content_6"
 	  android:layout_marginTop="10dp"
-	  android:layout_marginLeft="5dp"/>
+	  android:layout_marginLeft="15dp"/>
     </LinearLayout>  
   </ScrollView>
 </LinearLayout>

@@ -57,7 +57,11 @@ public class TimeService extends Service {
     }
 
     public int onStartCommand(Intent intent, int flags, int startID) {
-        sendMsgDld();
+	int on = getSharedPreferences(getString(R.string.settings_preferences_filename), 0).getInt(MyApplication.getAppContext().getString(R.string.pref_key_on), 0);
+	
+	if (on != 0) {
+	    sendMsgDld();
+	}
         return START_REDELIVER_INTENT;
     }
 

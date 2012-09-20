@@ -1,10 +1,13 @@
 package org.footoo.cjflsq.neck.userscore;
 
+import org.footoo.cjflsq.neck.database.DataManager;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.format.Time;
 import android.util.Log;
+import android.view.KeyEvent;
 import org.footoo.cjflsq.neck.MyApplication;
 import org.footoo.cjflsq.neck.R;
 
@@ -41,6 +44,9 @@ public class ScoreManager {
             tmp.minute = 0;
 
             calc(duration - (int) ((tmp.toMillis(false) - startTime.toMillis(false)) / 60000));
+	    if (DataManager.getInstance().getDayTime() / (60000 * 60) > 1) {
+		deductScore(6);
+	    }
 	    DataManager.getInstance().putScore(score);
             set(99);
             calc(duration - (int) ((endTime.toMillis(false) - tmp.toMillis(false)) / 60000));
@@ -84,7 +90,10 @@ public class ScoreManager {
 	    factor = 1;
 	}
 	
-	if (startTime.yearDay > endTime.yearDay || startTime.year > endTime.year) {
+	if (endTime.toMillis(false) != 0 && (startTime.yearDay > endTime.yearDay || startTime.year > endTime.year)) {
+	     if (DataManager.getInstance().getDayTime() / (60000 * 60) > 1) {
+		deductScore(6);
+	    }
 	    DataManager.getInstance().putScore(score);
 	    set(99);
 	}
@@ -97,7 +106,7 @@ public class ScoreManager {
 	return score;
     }
 
-    private int getScore() {
+    public int getScore() {
 	return score;
     }
 

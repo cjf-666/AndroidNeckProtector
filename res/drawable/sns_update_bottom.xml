@@ -2,9 +2,11 @@
 
 <!-- 分享编辑界面底部bar背景 -->  
 <shape xmlns:android="http://schemas.android.com/apk/res/android">   
-    
-    <gradient android:startColor="#FFFFFF" android:centerColor="#FFFFFF" 
-    android:centerY="0.50" android:endColor="#FDFDFD" android:angle="270">
-    </gradient>   
-   
+  
+  <gradient 
+      android:startColor="#dadada"
+      android:centerColor="#dadada" 
+      android:centerY="0.50" android:endColor="#FDFDFD" android:angle="270">
+  </gradient>   
+  
 </shape>  

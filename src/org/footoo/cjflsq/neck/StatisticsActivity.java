@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.Time;
 import android.view.*;
+import android.widget.Button;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.LinearLayout;
@@ -66,6 +67,9 @@ public class StatisticsActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
+
+	Button rtBtn = (Button) findViewById(R.id.ct_return_button);
+	rtBtn.setOnClickListener(new RTOnClickListener());
         LayoutInflater inflater = LayoutInflater.from(StatisticsActivity.this);
         View layout = inflater.inflate(R.layout.popup, null);
         popupWindow = new PopupWindow(layout, LayoutParams.WRAP_CONTENT,
@@ -129,6 +133,13 @@ public class StatisticsActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_statistics, menu);
         return true;
+    }
+
+    private class RTOnClickListener implements OnClickListener {
+	@Override
+	    public void onClick(View v) {
+	    StatisticsActivity.this.finish();
+	}
     }
 
     private class ChartViewListener implements OnClickListener, OnTouchListener {
