@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.format.Time;
 
+import android.util.Log;
+
 public class ScreenOffReceiver extends BroadcastReceiver {
     static private Time endTime = new Time();
 
@@ -18,5 +20,7 @@ public class ScreenOffReceiver extends BroadcastReceiver {
 
         Intent stopIntent = new Intent(context, TimeService.class);
         context.stopService(stopIntent);
+
+	Log.v("caojingfan", "true");
     }
 }

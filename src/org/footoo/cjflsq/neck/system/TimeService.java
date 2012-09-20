@@ -33,11 +33,13 @@ public class TimeService extends Service {
         }
 
         public void handleMessage(Message msg) {
-            startNotification();
+	    int on = getSharedPreferences(getString(R.string.settings_preferences_filename), 0).getInt(MyApplication.getAppContext().getString(R.string.pref_key_on), 0);
+	
             ActivityManager mActivityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
             ComponentName mComponentName = mActivityManager.getRunningTasks(1).get(0).topActivity;
-            if (!mComponentName.getClassName().equals(MainActivity.class.getName())) {
+            if (!mComponentName.getPackageName().equals("org.footoo.cjflsq.neck") || on != 0) {
                 mVibrator.vibrate(700);
+		startNotification();
             }
             sendMsgDld();
         }
@@ -57,11 +59,9 @@ public class TimeService extends Service {
     }
 
     public int onStartCommand(Intent intent, int flags, int startID) {
-	int on = getSharedPreferences(getString(R.string.settings_preferences_filename), 0).getInt(MyApplication.getAppContext().getString(R.string.pref_key_on), 0);
-	
-	if (on != 0) {
-	    sendMsgDld();
-	}
+
+	sendMsgDld();
+    
         return START_REDELIVER_INTENT;
     }
 
@@ -70,7 +70,7 @@ public class TimeService extends Service {
         msg.what = 1;
 
         intervalTime = getSharedPreferences(getString(R.string.settings_preferences_filename).toString(), 0).getInt(getString(R.string.pref_key_time).toString(), 5);
-        mTimeServiceHandler.sendMessageDelayed(msg, intervalTime * 1000);
+        mTimeServiceHandler.sendMessageDelayed(msg, intervalTime * 60000);
     }
 
     public IBinder onBind(Intent intent) {

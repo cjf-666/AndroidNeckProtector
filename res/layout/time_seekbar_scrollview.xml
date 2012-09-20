@@ -10,12 +10,7 @@
       android:layout_width="fill_parent"
       android:layout_height="50dp"
       android:background="@drawable/title_bar_bg">
-    <Button
-	android:id="@+id/noti_off_button"
-	android:layout_width="50dp"
-	android:layout_height="50dp"
-	android:background="@drawable/btn_bg"
-	android:textColor="#ffffff"/>
+   
     <TextView
 	android:id="@+id/adjust_title_text"
 	android:layout_centerInParent="true"
@@ -73,6 +68,14 @@
 	android:layout_height="fill_parent"
 	android:drawable="@drawable/btn_bg"
 	android:text="确定"
+	android:textColor="#ffffff"/>
+     <Button
+	android:id="@+id/noti_off_button"
+	android:layout_width="50dp"
+	android:layout_height="50dp"
+	android:background="@drawable/btn_bg"
+	android:layout_toRightOf="@id/time_yes_button"
+	android:layout_centerInParent="true"
 	android:textColor="#ffffff"/>
     <Button
 	android:id="@+id/time_no_button"

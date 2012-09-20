@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">AndroidNeckProtector</string>
+  <string name="app_name">猫头鹰颈椎保健</string>
   <string name="menu_settings">Settings</string>
   <string name="title_activity_main">MainActivity</string>
   <string name="dialog_activity_remind">提示您：</string>

@@ -45,14 +45,16 @@ public class TimeSeekBarActivity extends Activity implements OnSeekBarChangeList
 	Button noBtn = (Button) findViewById(R.id.time_no_button);
 	noBtn.setOnClickListener(new NoOnClickListener());
 
-	Button offBtn = (Button) findViewById(R.id.noti_off_button);
+	offBtn = (Button) findViewById(R.id.noti_off_button);
 	offBtn.setOnClickListener(new OffOnClickListener());
 	
 	int on = MyApplication.getAppContext().getSharedPreferences(getString(R.string.settings_preferences_filename), 0).getInt(getString(R.string.pref_key_on),0);
 	if (on != 0) {
+	    isOn = 0;
 	    offBtn.setText("OFF");
 	}
 	else {
+	    isOn = 1;
 	    offBtn.setText("ON");
 	}
 
@@ -89,8 +91,8 @@ public class TimeSeekBarActivity extends Activity implements OnSeekBarChangeList
 	    public void onClick(View v) {
 	    mEditor.putInt(timeCate, mCurrentTime);
 	    mEditor.commit();
-	    Intent intent = new Intent(TimeSeekBarActivity.this, MainActivity.class);
-	    startActivity(intent);
+	    mEditor.putInt(onCate, isOn);
+	    mEditor.commit();
 	    TimeSeekBarActivity.this.finish();
 	}
     }
@@ -99,8 +101,6 @@ public class TimeSeekBarActivity extends Activity implements OnSeekBarChangeList
     private class NoOnClickListener implements OnClickListener {
 	@Override 
 	    public void onClick(View v) {
-	    Intent intent = new Intent(TimeSeekBarActivity.this, MainActivity.class);
-	    startActivity(intent);
 	    TimeSeekBarActivity.this.finish();
 	}
     }
@@ -108,31 +108,20 @@ public class TimeSeekBarActivity extends Activity implements OnSeekBarChangeList
     private class OffOnClickListener implements OnClickListener {
 	@Override 
 	public void onClick(View v) {
-	    int on = MyApplication.getAppContext().getSharedPreferences(getString(R.string.settings_preferences_filename), 0).getInt(getString(R.string.pref_key_on), 0);
-
-	    if (on != 0) {
-		mEditor.putInt(onCate, 0);
-		mEditor.commit();
-		Intent stopIntent = new Intent(MyApplication.getAppContext(), TimeService.class);
-		MyApplication.getAppContext().stopService(stopIntent);
-	    } else {
-		mEditor.putInt(onCate, 1);
-		mEditor.commit();
-		Intent timeServiceIntent = new Intent(MyApplication.getAppContext(), TimeService.class);
-		MyApplication.getAppContext().startService(timeServiceIntent);
+	    if (isOn != 0) {
+		offBtn.setText("OFF");
+		isOn = 0;
 	    }
-
-	    Intent intent = new Intent(TimeSeekBarActivity.this, MainActivity.class);
-	    startActivity(intent);
-	    TimeSeekBarActivity.this.finish();
+	    else {
+		offBtn.setText("ON");
+		isOn = 1;
+	    }
 	}
     }
 
     @Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	if (keyCode == KeyEvent.KEYCODE_BACK) {
-	    Intent intent = new Intent(TimeSeekBarActivity.this, MainActivity.class);
-	    startActivity(intent);
 	    TimeSeekBarActivity.this.finish();
 	}
 	return super.onKeyDown(keyCode, event);
@@ -146,18 +135,12 @@ public class TimeSeekBarActivity extends Activity implements OnSeekBarChangeList
     TextView mValueText;
     
     private SeekBar mSeekBar;
-
-    private static final String PREFERENCE_NS = "http://schemas.android.com/apk/res/org.footoo.cjflsq.neck";
-    private static final String ANDROID_NS = "http://schemas.android.com/apk/res/android";
-    private static final String ATTR_DEFAULT_TIME = "defaultValue";
-    private static final String ATTR_MIN_TIME = "minTime";
-    private static final String ATTR_MAX_TIME = "maxTime";
-    private static final int DEFAULT_MIN_TIME = 5;
-    private static final int DEFAULT_MAX_TIME = 20;
-    private static final int DEFAULT_CURRENT_TIME = 5;
-
     private SharedPreferences mSharedPreferences;	
     private Editor mEditor;
     private String timeCate;
     private String onCate;
+
+    private int isOn;
+
+    Button offBtn;
 }

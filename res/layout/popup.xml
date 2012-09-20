@@ -4,20 +4,26 @@
               android:layout_height="500dip"
               android:orientation="vertical"
               android:background="#668eb94b">
-
+    <TextView
+            android:id="@+id/date"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:textColor="#FFF"
+            android:layout_marginTop="5dip"
+            android:layout_marginLeft="5dip"
+            />
     <TextView
             android:id="@+id/score"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
             android:textColor="#FFF"
-            android:layout_marginLeft="15dip"
-            android:layout_marginTop="15dip"
+            android:layout_marginLeft="5dip"
             />
     <TextView
             android:id="@+id/time"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
             android:textColor="#FFF"
-            android:layout_marginLeft="15dip"
+            android:layout_marginLeft="5dip"
             />
 </LinearLayout>

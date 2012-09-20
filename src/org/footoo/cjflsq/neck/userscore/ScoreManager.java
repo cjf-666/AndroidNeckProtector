@@ -21,6 +21,7 @@ public class ScoreManager {
     private Time startTime;
     private Time endTime = new Time();
     private int factor = 1;
+    private int millisToMin = 60000;
 
     public static ScoreManager getInstance() {
         return instance;
@@ -36,35 +37,36 @@ public class ScoreManager {
     
     public void submitEndTime(Time enTime) {
 	endTime = new Time(enTime);
-	int duration = (int) ((endTime.toMillis(false) - startTime.toMillis(false)) / 60000);
+	int duration = (int) ((endTime.toMillis(false) - startTime.toMillis(false)) / millisToMin);
 
         if (endTime.yearDay > startTime.yearDay || endTime.year > startTime.year) {
             Time tmp = new Time(endTime);
             tmp.hour = 0;
             tmp.minute = 0;
 
-            calc(duration - (int) ((tmp.toMillis(false) - startTime.toMillis(false)) / 60000));
-	    if (DataManager.getInstance().getDayTime() / (60000 * 60) > 1) {
+            calc(duration - (int) ((tmp.toMillis(false) - startTime.toMillis(false)) / millisToMin));
+	    if (DataManager.getInstance().getDayTime() / (millisToMin * 60) > 1) {
 		deductScore(6);
 	    }
 	    DataManager.getInstance().putScore(score);
             set(99);
-            calc(duration - (int) ((endTime.toMillis(false) - tmp.toMillis(false)) / 60000));
+            calc(duration - (int) ((endTime.toMillis(false) - tmp.toMillis(false)) / millisToMin));
         } else {
             calc(duration);
         }
+	Log.v("caojingfan", new Integer(duration).toString());
     }
 
     private void calc(int drt) {
 	//Log.v("caojingfan",new Integer(drt).toString());
-	if (drt > 3) {
-	    deductScore(min(3, drt - 3) * factor * 1);
+	if (drt > 5) {
+	    deductScore(min(10, drt - 5) * factor * 1);
 	}
-	if (drt > 6) {
-	    deductScore(min(6, drt - 6) * factor * 2);
+	if (drt > 15) {
+	    deductScore(min(15, drt - 15) * factor * 2);
 	}
-	if (drt > 12) {
-	    deductScore((drt - 12) * factor * 3);
+	if (drt > 30) {
+	    deductScore((drt - 30) * factor * 3);
 	}
 
 	if (score < 0) {
@@ -91,7 +93,7 @@ public class ScoreManager {
 	}
 	
 	if (endTime.toMillis(false) != 0 && (startTime.yearDay > endTime.yearDay || startTime.year > endTime.year)) {
-	     if (DataManager.getInstance().getDayTime() / (60000 * 60) > 1) {
+	     if (DataManager.getInstance().getDayTime() / (millisToMin * 60) > 1) {
 		deductScore(6);
 	    }
 	    DataManager.getInstance().putScore(score);
@@ -110,8 +112,11 @@ public class ScoreManager {
 	return score;
     }
 
-    private int rewardScore(int n) {
+    public int rewardScore(int n) {
 	score += n;
+	if (score > 99) {
+	    set(99);
+	}
 	mEditor.putInt(scoreCate, score);
 	mEditor.commit();
 	return score;

@@ -82,7 +82,7 @@ public class SNSShareActivity extends Activity {
     private class SendOnClickListener implements OnClickListener {
         @Override
 	    public void onClick(View v) {
-            SNSSupport.shareToRenren(SNSShareActivity.this, mEditText.getText().toString(), new ShareCompletedListener());
+            SNSSupport.shareToSina(SNSShareActivity.this, mEditText.getText().toString(), new ShareCompletedListener());
         }
     }
     

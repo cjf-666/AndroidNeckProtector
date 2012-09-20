@@ -150,33 +150,37 @@ public class DataManager {
 
     public int getScore(Time date) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String[] col = new String[]{"date"};
+        String[] col = new String[]{"score"};
         String[] d = new String[]{String.valueOf(date.year) + date.month + date.monthDay};
         Cursor cursor = db.query(DatabaseMetadata.TABLE_SCORE_NAME, col, "date=?", d, null, null, null);
         if (cursor == null || cursor.moveToFirst() == false) {
             return 0;
         }
-        int ret = cursor.getInt(2);
+        int ret = cursor.getInt(0);
         cursor.close();
         return ret;
     }
 
     public long getTime(Time date) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String[] col = new String[]{"date"};
+        String[] col = new String[]{"time"};
         String[] d = new String[]{String.valueOf(date.year) + date.month + date.monthDay};
         Cursor cursor = db.query(DatabaseMetadata.TABLE_TIME_NAME, col, "date=?", d, null, null, null);
         if (cursor == null || cursor.moveToFirst() == false) {
             return 0;
         }
-        long ret = cursor.getLong(2);
+        long ret = cursor.getLong(0);
         cursor.close();
         return ret;
     }
 
     public long getDayTime() {
         SharedPreferences mSharedPreferences = MyApplication.getAppContext().getSharedPreferences(MyApplication.getAppContext().getString(R.string.score_filename), Context.MODE_PRIVATE);
-        return mSharedPreferences.getLong("time", 0);
+        long ret =  mSharedPreferences.getLong("time", 0);
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putLong("time", 0);
+        editor.commit();
+        return ret;
     }
 	/*public void putData(Time begin, Time end) {
 		if ((int)(end.hour / 2) == (int)(begin.hour / 2)) {

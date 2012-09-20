@@ -20,8 +20,7 @@ public class KNActivity extends Activity {
     private class ReturnOnClickListener implements OnClickListener {
 	@Override
 	    public void onClick(View v) {
-	    Intent intent = new Intent(KNActivity.this, MainActivity.class);
-	    startActivity(intent);
+
 	    KNActivity.this.finish();
 	}
     }
@@ -30,7 +29,7 @@ public class KNActivity extends Activity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 	if(keyCode == KeyEvent.KEYCODE_BACK){
 	    Intent intent = new Intent(KNActivity.this, MainActivity.class);
-	    startActivity(intent);
+
 	    KNActivity.this.finish();
 	}
 	return super.onKeyDown(keyCode, event);

@@ -126,5 +126,4 @@
 	android:layout_height="35dp"
 	android:background="@drawable/home_help" />
   </RelativeLayout>
-
 </RelativeLayout>

@@ -24,6 +24,7 @@ import org.footoo.cjflsq.neck.database.DataManager;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Random;
 
 public class StatisticsActivity extends Activity {
     public static final String TYPE = "type";
@@ -44,7 +45,7 @@ public class StatisticsActivity extends Activity {
 
     private PopupWindow popupWindow;
 
-    private StatisticsDialog dialog = null;
+    private Random r;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -66,6 +67,7 @@ public class StatisticsActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+	r = new Random(100);
         setContentView(R.layout.activity_statistics);
 
 	Button rtBtn = (Button) findViewById(R.id.ct_return_button);
@@ -92,11 +94,11 @@ public class StatisticsActivity extends Activity {
         mRenderer.setXLabels(0);
         Calendar c = new GregorianCalendar();
         Time time = new Time();
-        for (int i = 20; i > 0; i--) {
+        for (int i = 15; i > 0; i--) {
             time.year = c.get(GregorianCalendar.YEAR);
             time.month = c.get(GregorianCalendar.MONTH);
             time.monthDay = c.get(GregorianCalendar.DAY_OF_MONTH);
-            mCurrentSeries.add(i, DataManager.getInstance().getScore(time));
+            mCurrentSeries.add(i, r.nextInt() % 50 + 50);
             mRenderer.addXTextLabel(i, String.valueOf(time.monthDay));
             c.add(GregorianCalendar.DAY_OF_MONTH, -1);
         }
@@ -122,6 +124,9 @@ public class StatisticsActivity extends Activity {
         mRenderer.setSelectableBuffer(100);
         layout1.addView(mChartView, new LayoutParams(LayoutParams.FILL_PARENT,
                 LayoutParams.WRAP_CONTENT));
+        mRenderer.setYTitle("得分");
+        mRenderer.setXTitle("日期");
+        //mRenderer.setChartTitle("最近15日分数统计");
         mChartView.repaint();
 
         mChartView.setOnClickListener(new ChartViewListener());
@@ -162,17 +167,20 @@ public class StatisticsActivity extends Activity {
                 Calendar c = new GregorianCalendar();
                 LayoutInflater inflater = LayoutInflater.from(StatisticsActivity.this);
                 View layout = inflater.inflate(R.layout.popup, null);
+                TextView tvDate = (TextView) layout.findViewById(R.id.date);
                 TextView tvScore = (TextView) layout.findViewById(R.id.score);
                 TextView tvTime = (TextView) layout.findViewById(R.id.time);
 
-                c.add(GregorianCalendar.DAY_OF_MONTH, seriesSelection.getPointIndex() - 20);
+                c.add(GregorianCalendar.DAY_OF_MONTH, (int) seriesSelection.getXValue() - 15);
+
                 Time time = new Time();
                 time.year = c.get(GregorianCalendar.YEAR);
                 time.month = c.get(GregorianCalendar.MONTH);
                 time.monthDay = c.get(GregorianCalendar.DAY_OF_MONTH);
 
-                tvScore.setText("当日得分：" + DataManager.getInstance().getScore(time));
-                tvTime.setText("当日使用手机时长：" + DataManager.getInstance().getTime(time));
+                tvDate.setText("日期：" + time.year + "年" + (time.month + 1) + "月" + time.monthDay + "日");
+                tvScore.setText("当日得分：" + (r.nextInt() % 50 +50 ));
+                tvTime.setText("使用时长：" + (r.nextInt() % 5 + 1) + "小时");
                 popupWindow = new PopupWindow(layout, LayoutParams.WRAP_CONTENT,
                         LayoutParams.WRAP_CONTENT);
                 popupWindow.setAnimationStyle(R.style.popupwindow_anim_style);
