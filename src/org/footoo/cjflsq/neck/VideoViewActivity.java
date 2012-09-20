@@ -36,6 +36,7 @@ public class VideoViewActivity extends Activity {
         public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
             Toast.makeText(VideoViewActivity.this, "视频播放错误", Toast.LENGTH_LONG).show();
             VideoViewActivity.this.finish();
+
             return false;  //To change body of implemented methods use File | Settings | File Templates.
         }
     }
