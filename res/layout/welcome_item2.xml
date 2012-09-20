@@ -7,7 +7,7 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/guide2" >
+        android:background="@drawable/w2" >
     </ImageView>
 
 </LinearLayout>

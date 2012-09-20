@@ -7,7 +7,7 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/guide4" >
+        android:background="@drawable/w4" >
     </ImageView>
      <Button
         android:id="@+id/startButton"

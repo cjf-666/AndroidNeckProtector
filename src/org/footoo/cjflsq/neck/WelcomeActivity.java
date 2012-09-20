@@ -1,24 +1,27 @@
 package org.footoo.cjflsq.neck;
 
+import java.util.ArrayList;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
-import android.view.*;
+import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
 import android.widget.ImageView;
-import org.footoo.cjflsq.neck.welcomepage.WelcomeFragment1;
 
-import java.util.ArrayList;
-
-public class WelcomeActivity extends FragmentActivity {
+public class WelcomeActivity extends Activity {
     ViewPager viewPager;
     ArrayList<View> list;
     ViewGroup main, group;
@@ -27,7 +30,6 @@ public class WelcomeActivity extends FragmentActivity {
     int currentitem = 0;
     private int flaggingWidth;
     private GestureDetector gestureDetector;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,8 @@ public class WelcomeActivity extends FragmentActivity {
         list.add(inflater.inflate(R.layout.welcome_item3, null));
         list.add(inflater.inflate(R.layout.welcome_item4, null));
 
+
+
         imageViews = new ImageView[list.size()];
         ViewGroup main = (ViewGroup) inflater.inflate(R.layout.welcome_page, null);
         // group是R.layou.main中的负责包裹小圆点的LinearLayout.
@@ -49,7 +53,7 @@ public class WelcomeActivity extends FragmentActivity {
 
         for (int i = 0; i < list.size(); i++) {
             imageView = new ImageView(WelcomeActivity.this);
-            imageView.setLayoutParams(new LayoutParams(20, 10));
+            imageView.setLayoutParams(new LayoutParams(20,10));
             imageView.setPadding(10, 0, 10, 0);
             imageViews[i] = imageView;
             if (i == 0) {
@@ -67,15 +71,15 @@ public class WelcomeActivity extends FragmentActivity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         flaggingWidth = dm.widthPixels / 3;
 
-        viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
+        viewPager.setAdapter(new MyAdapter());
         viewPager.setOnPageChangeListener(new MyListener());
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        /*if (gestureDetector.onTouchEvent(event)) {
+        if (gestureDetector.onTouchEvent(event)) {
             event.setAction(MotionEvent.ACTION_CANCEL);
-        }*/
+        }
         return super.dispatchTouchEvent(event);
     }
 
@@ -99,73 +103,59 @@ public class WelcomeActivity extends FragmentActivity {
     }
 
 
-    class MyAdapter extends FragmentPagerAdapter {
-        private ArrayList<Fragment> fragments = new ArrayList<Fragment>();
+    class MyAdapter extends PagerAdapter {
 
         @Override
         public int getCount() {
-            return fragments.size();  //To change body of implemented methods use File | Settings | File Templates.
+            return list.size();
+        }
+
+        @Override
+        public boolean isViewFromObject(View arg0, Object arg1) {
+            return arg0 == arg1;
         }
 
         @Override
         public int getItemPosition(Object object) {
-            return super.getItemPosition(object);    //To change body of overridden methods use File | Settings | File Templates.
+            // TODO Auto-generated method stub
+            return super.getItemPosition(object);
         }
 
         @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            super.destroyItem(container, position, object);    //To change body of overridden methods use File | Settings | File Templates.
+        public void destroyItem(View arg0, int arg1, Object arg2) {
+            // TODO Auto-generated method stub
+            ((ViewPager) arg0).removeView(list.get(arg1));
         }
 
         @Override
-        public void finishUpdate(ViewGroup container) {
-            super.finishUpdate(container);    //To change body of overridden methods use File | Settings | File Templates.
-        }
-
-        public MyAdapter(FragmentManager fm) {
-            super(fm);    //To change body of overridden methods use File | Settings | File Templates.
-            WelcomeFragment1 a = new WelcomeFragment1();
-            fragments.add(a);
+        public Object instantiateItem(View arg0, int arg1) {
+            // TODO Auto-generated method stub
+            ((ViewPager) arg0).addView(list.get(arg1));
+            return list.get(arg1);
         }
 
         @Override
-        public Fragment getItem(int i) {
-            return fragments.get(i);  //To change body of implemented methods use File | Settings | File Templates.
-        }
+        public void restoreState(Parcelable arg0, ClassLoader arg1) {
+            // TODO Auto-generated method stub
 
-        @Override
-        public long getItemId(int position) {
-            return super.getItemId(position);    //To change body of overridden methods use File | Settings | File Templates.
-        }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            return super.instantiateItem(container, position);    //To change body of overridden methods use File | Settings | File Templates.
-        }
-
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return super.isViewFromObject(view, object);    //To change body of overridden methods use File | Settings | File Templates.
-        }
-
-        @Override
-        public void restoreState(Parcelable state, ClassLoader loader) {
-            super.restoreState(state, loader);    //To change body of overridden methods use File | Settings | File Templates.
         }
 
         @Override
         public Parcelable saveState() {
-            return super.saveState();    //To change body of overridden methods use File | Settings | File Templates.
+            // TODO Auto-generated method stub
+            return null;
         }
 
         @Override
-        public void setPrimaryItem(ViewGroup container, int position, Object object) {
-            super.setPrimaryItem(container, position, object);    //To change body of overridden methods use File | Settings | File Templates.
+        public void startUpdate(View arg0) {
+            // TODO Auto-generated method stub
+
         }
 
         @Override
-        public void startUpdate(ViewGroup container) {
-            super.startUpdate(container);    //To change body of overridden methods use File | Settings | File Templates.
+        public void finishUpdate(View arg0) {
+            // TODO Auto-generated method stub
+
         }
     }
 
@@ -197,7 +187,6 @@ public class WelcomeActivity extends FragmentActivity {
         }
 
     }
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO Auto-generated method stub
@@ -208,7 +197,7 @@ public class WelcomeActivity extends FragmentActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    void GoToMainActivity() {
+    void GoToMainActivity(){
         Intent i = new Intent(WelcomeActivity.this, MainActivity.class);
         startActivity(i);
         finish();
