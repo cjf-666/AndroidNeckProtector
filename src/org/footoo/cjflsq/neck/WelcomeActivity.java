@@ -1,10 +1,12 @@
 package org.footoo.cjflsq.neck;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.view.PagerAdapter;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
@@ -12,10 +14,11 @@ import android.view.*;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import org.footoo.cjflsq.neck.welcomepage.WelcomeFragment1;
 
 import java.util.ArrayList;
 
-public class WelcomeActivity extends Activity {
+public class WelcomeActivity extends FragmentActivity {
     ViewPager viewPager;
     ArrayList<View> list;
     ViewGroup main, group;
@@ -64,15 +67,15 @@ public class WelcomeActivity extends Activity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         flaggingWidth = dm.widthPixels / 3;
 
-        viewPager.setAdapter(new MyAdapter());
+        viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
         viewPager.setOnPageChangeListener(new MyListener());
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        if (gestureDetector.onTouchEvent(event)) {
+        /*if (gestureDetector.onTouchEvent(event)) {
             event.setAction(MotionEvent.ACTION_CANCEL);
-        }
+        }*/
         return super.dispatchTouchEvent(event);
     }
 
@@ -96,59 +99,73 @@ public class WelcomeActivity extends Activity {
     }
 
 
-    class MyAdapter extends PagerAdapter {
+    class MyAdapter extends FragmentPagerAdapter {
+        private ArrayList<Fragment> fragments = new ArrayList<Fragment>();
 
         @Override
         public int getCount() {
-            return list.size();
-        }
-
-        @Override
-        public boolean isViewFromObject(View arg0, Object arg1) {
-            return arg0 == arg1;
+            return fragments.size();  //To change body of implemented methods use File | Settings | File Templates.
         }
 
         @Override
         public int getItemPosition(Object object) {
-            // TODO Auto-generated method stub
-            return super.getItemPosition(object);
+            return super.getItemPosition(object);    //To change body of overridden methods use File | Settings | File Templates.
         }
 
         @Override
-        public void destroyItem(View arg0, int arg1, Object arg2) {
-            // TODO Auto-generated method stub
-            ((ViewPager) arg0).removeView(list.get(arg1));
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            super.destroyItem(container, position, object);    //To change body of overridden methods use File | Settings | File Templates.
         }
 
         @Override
-        public Object instantiateItem(View arg0, int arg1) {
-            // TODO Auto-generated method stub
-            ((ViewPager) arg0).addView(list.get(arg1));
-            return list.get(arg1);
+        public void finishUpdate(ViewGroup container) {
+            super.finishUpdate(container);    //To change body of overridden methods use File | Settings | File Templates.
+        }
+
+        public MyAdapter(FragmentManager fm) {
+            super(fm);    //To change body of overridden methods use File | Settings | File Templates.
+            WelcomeFragment1 a = new WelcomeFragment1();
+            fragments.add(a);
         }
 
         @Override
-        public void restoreState(Parcelable arg0, ClassLoader arg1) {
-            // TODO Auto-generated method stub
+        public Fragment getItem(int i) {
+            return fragments.get(i);  //To change body of implemented methods use File | Settings | File Templates.
+        }
 
+        @Override
+        public long getItemId(int position) {
+            return super.getItemId(position);    //To change body of overridden methods use File | Settings | File Templates.
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            return super.instantiateItem(container, position);    //To change body of overridden methods use File | Settings | File Templates.
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return super.isViewFromObject(view, object);    //To change body of overridden methods use File | Settings | File Templates.
+        }
+
+        @Override
+        public void restoreState(Parcelable state, ClassLoader loader) {
+            super.restoreState(state, loader);    //To change body of overridden methods use File | Settings | File Templates.
         }
 
         @Override
         public Parcelable saveState() {
-            // TODO Auto-generated method stub
-            return null;
+            return super.saveState();    //To change body of overridden methods use File | Settings | File Templates.
         }
 
         @Override
-        public void startUpdate(View arg0) {
-            // TODO Auto-generated method stub
-
+        public void setPrimaryItem(ViewGroup container, int position, Object object) {
+            super.setPrimaryItem(container, position, object);    //To change body of overridden methods use File | Settings | File Templates.
         }
 
         @Override
-        public void finishUpdate(View arg0) {
-            // TODO Auto-generated method stub
-
+        public void startUpdate(ViewGroup container) {
+            super.startUpdate(container);    //To change body of overridden methods use File | Settings | File Templates.
         }
     }
 

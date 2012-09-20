@@ -3,11 +3,31 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
+    <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content">
+    <ImageView
+            android:id="@+id/score_image_0"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/green_9"/>
 
     <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="@drawable/guide1" >
-    </ImageView>
+            android:id="@+id/score_image_1"
+            android:layout_toRightOf="@id/score_image_0"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/green_9"/>
+    </RelativeLayout>
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="这里是您每天的评分哦"
+        android:background="#66FFFFFF"
+        android:textColor="#FFF"
+        />
 
 </LinearLayout>

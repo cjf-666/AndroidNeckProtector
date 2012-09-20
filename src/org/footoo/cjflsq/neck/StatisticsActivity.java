@@ -43,8 +43,6 @@ public class StatisticsActivity extends Activity {
 
     private PopupWindow popupWindow;
 
-    private StatisticsDialog dialog = null;
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (popupWindow.isShowing()) {
@@ -88,7 +86,7 @@ public class StatisticsActivity extends Activity {
         mRenderer.setXLabels(0);
         Calendar c = new GregorianCalendar();
         Time time = new Time();
-        for (int i = 20; i > 0; i--) {
+        for (int i = 15; i > 0; i--) {
             time.year = c.get(GregorianCalendar.YEAR);
             time.month = c.get(GregorianCalendar.MONTH);
             time.monthDay = c.get(GregorianCalendar.DAY_OF_MONTH);
@@ -118,6 +116,9 @@ public class StatisticsActivity extends Activity {
         mRenderer.setSelectableBuffer(100);
         layout1.addView(mChartView, new LayoutParams(LayoutParams.FILL_PARENT,
                 LayoutParams.WRAP_CONTENT));
+        mRenderer.setYTitle("得分");
+        mRenderer.setXTitle("日期");
+        //mRenderer.setChartTitle("最近15日分数统计");
         mChartView.repaint();
 
         mChartView.setOnClickListener(new ChartViewListener());
@@ -151,17 +152,20 @@ public class StatisticsActivity extends Activity {
                 Calendar c = new GregorianCalendar();
                 LayoutInflater inflater = LayoutInflater.from(StatisticsActivity.this);
                 View layout = inflater.inflate(R.layout.popup, null);
+                TextView tvDate = (TextView) layout.findViewById(R.id.date);
                 TextView tvScore = (TextView) layout.findViewById(R.id.score);
                 TextView tvTime = (TextView) layout.findViewById(R.id.time);
 
-                c.add(GregorianCalendar.DAY_OF_MONTH, seriesSelection.getPointIndex() - 20);
+                c.add(GregorianCalendar.DAY_OF_MONTH, (int) seriesSelection.getXValue() - 15);
+
                 Time time = new Time();
                 time.year = c.get(GregorianCalendar.YEAR);
                 time.month = c.get(GregorianCalendar.MONTH);
                 time.monthDay = c.get(GregorianCalendar.DAY_OF_MONTH);
 
+                tvDate.setText("日期：" + time.year + "年" + (time.month + 1) + "月" + time.monthDay + "日");
                 tvScore.setText("当日得分：" + DataManager.getInstance().getScore(time));
-                tvTime.setText("当日使用手机时长：" + DataManager.getInstance().getTime(time));
+                tvTime.setText("使用时长：" + DataManager.getInstance().getTime(time) / 60000 + "分钟");
                 popupWindow = new PopupWindow(layout, LayoutParams.WRAP_CONTENT,
                         LayoutParams.WRAP_CONTENT);
                 popupWindow.setAnimationStyle(R.style.popupwindow_anim_style);

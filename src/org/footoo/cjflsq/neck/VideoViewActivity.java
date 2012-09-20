@@ -17,7 +17,8 @@ public class VideoViewActivity extends Activity {
         setContentView(R.layout.activity_video_view);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,    WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置全屏
         VideoView vv = (VideoView)findViewById(R.id.videoview);
-        vv.setVideoURI(Uri.parse("android.resource://org.footoo.cjflsq.neck/raw/m2"));
+        Intent intent = getIntent();
+        vv.setVideoURI(Uri.parse("android.resource://org.footoo.cjflsq.neck/raw/video" + intent.getIntExtra("id",0)));
         vv.setMediaController(new MediaController(this));
         vv.requestFocus();
         vv.start();

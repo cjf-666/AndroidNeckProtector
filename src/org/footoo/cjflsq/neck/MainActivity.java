@@ -1,16 +1,16 @@
 package org.footoo.cjflsq.neck;
 
 import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.*;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import org.footoo.cjflsq.neck.database.DataManager;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import org.footoo.cjflsq.neck.gallery.GalleryFlow;
 import org.footoo.cjflsq.neck.gallery.ImageAdapter;
 import org.footoo.cjflsq.neck.sns.SNSShareActivity;
@@ -32,7 +32,6 @@ public class MainActivity extends Activity {
         Button cinfoButton = (Button) findViewById(R.id.count_info_button);
         cinfoButton.setOnClickListener(new CountInfoOnClickListener());
 
-        DataManager.getInstance().putScore(1);
 	/*mScrollView = (TimeSettingScrollView) findViewById(R.id.seekbar_scroll_view);
  
 	  mSeekBar = getLayoutInflater().inflate(R.layout.time_seekbar_scrollview, null);
@@ -51,7 +50,7 @@ public class MainActivity extends Activity {
 
     private void prepareGallery() {
         Integer[] images = {R.drawable.guide1, R.drawable.guide1,
-                R.drawable.guide1, R.drawable.guide1, R.drawable.guide1};
+                R.drawable.guide1};
 
         ImageAdapter adapter = new ImageAdapter(this, images);
         adapter.createReflectedImages();//创建倒影效果
@@ -70,12 +69,13 @@ public class MainActivity extends Activity {
                     intent.setDataAndType(uri, "video*//*");
                     startActivity(intent);*/
                     Intent intent = new Intent(MainActivity.this, VideoViewActivity.class);
+                    intent.putExtra("id", position + 1);
                     startActivity(intent);
                 }
             }
 
         });
-        galleryFlow.setSelection(4);
+        galleryFlow.setSelection(1);
     }
 
     @Override
