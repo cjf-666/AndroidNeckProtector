@@ -24,7 +24,6 @@ import org.footoo.cjflsq.neck.database.DataManager;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.Random;
 
 public class StatisticsActivity extends Activity {
     public static final String TYPE = "type";
@@ -44,8 +43,6 @@ public class StatisticsActivity extends Activity {
     private int index = 0;
 
     private PopupWindow popupWindow;
-
-    private Random r;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -67,7 +64,6 @@ public class StatisticsActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-	r = new Random(100);
         setContentView(R.layout.activity_statistics);
 
 	Button rtBtn = (Button) findViewById(R.id.ct_return_button);
@@ -98,7 +94,7 @@ public class StatisticsActivity extends Activity {
             time.year = c.get(GregorianCalendar.YEAR);
             time.month = c.get(GregorianCalendar.MONTH);
             time.monthDay = c.get(GregorianCalendar.DAY_OF_MONTH);
-            mCurrentSeries.add(i, r.nextInt() % 50 + 50);
+            mCurrentSeries.add(i, DataManager.getInstance().getScore(time));
             mRenderer.addXTextLabel(i, String.valueOf(time.monthDay));
             c.add(GregorianCalendar.DAY_OF_MONTH, -1);
         }
@@ -179,8 +175,8 @@ public class StatisticsActivity extends Activity {
                 time.monthDay = c.get(GregorianCalendar.DAY_OF_MONTH);
 
                 tvDate.setText("日期：" + time.year + "年" + (time.month + 1) + "月" + time.monthDay + "日");
-                tvScore.setText("当日得分：" + (r.nextInt() % 50 +50 ));
-                tvTime.setText("使用时长：" + (r.nextInt() % 5 + 1) + "小时");
+                tvScore.setText("当日得分：" + DataManager.getInstance().getScore(time));
+                tvTime.setText("使用时长：" + DataManager.getInstance().getTime(time) + "小时");
                 popupWindow = new PopupWindow(layout, LayoutParams.WRAP_CONTENT,
                         LayoutParams.WRAP_CONTENT);
                 popupWindow.setAnimationStyle(R.style.popupwindow_anim_style);

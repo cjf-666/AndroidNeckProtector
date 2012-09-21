@@ -20,6 +20,8 @@ import android.net.NetworkInfo;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import org.footoo.cjflsq.neck.gallery.GalleryFlow;
 import org.footoo.cjflsq.neck.gallery.ImageAdapter;
 import org.footoo.cjflsq.neck.sns.SNSShareActivity;
@@ -47,8 +49,21 @@ public class MainActivity extends Activity {
 	Button expButton = (Button) findViewById(R.id.info_button);
 	expButton.setOnClickListener(new ExpOnClickListener());
 
+	Button hpButton = (Button) findViewById(R.id.help_button);
+	hpButton.setOnClickListener(new HpOnClickListener());
+
         presentScore();
         prepareGallery();
+
+	int first = getSharedPreferences("first_filename", 0).getInt("if_first", 1);
+	
+	if (first == 1) {
+	    Intent i = new Intent(MainActivity.this, WelcomeActivity.class);
+	    startActivity(i);
+	    Editor mE = getSharedPreferences("first_filename", 0).edit();
+	    mE.putInt("if_first", 0);
+	    mE.commit();
+	}
     }
 
     private void prepareGallery() {
@@ -266,6 +281,14 @@ public class MainActivity extends Activity {
 	@Override
 	    public void onClick(View v) {
 	    Intent intent = new Intent(MainActivity.this, ExplainActivity.class);
+	    startActivity(intent);
+	}
+    }
+
+    private class HpOnClickListener implements OnClickListener {
+	@Override
+	    public void onClick(View v) {
+	    Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
 	    startActivity(intent);
 	}
     }

@@ -198,8 +198,6 @@ public class WelcomeActivity extends Activity {
     }
 
     void GoToMainActivity(){
-        Intent i = new Intent(WelcomeActivity.this, MainActivity.class);
-        startActivity(i);
         finish();
     }
 }
